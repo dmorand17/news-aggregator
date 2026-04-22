@@ -17,18 +17,15 @@ jobs:
 
       - uses: astral-sh/setup-uv@v5
         with:
-          python-version: '3.12'
-
-      - name: Install dependencies
-        run: uv pip install --system -r scripts/requirements.txt
+          python-version: '3.13'
 
       - name: Fetch RSS feeds
-        run: uv run python scripts/aggregate_news.py
+        run: uv run python aggregate_news.py
 
       - name: Generate report with Claude Code
         uses: anthropics/claude-code-action@v1
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           prompt: |
             Read the raw feed data from reports/raw-*.json (today's file).

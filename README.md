@@ -5,59 +5,39 @@ Automated daily news reports powered by RSS feeds + Claude Code.
 ## How It Works
 
 ```
-┌─────────────────────────────────────────────────────┐
-│    GitHub Actions  (daily cron 12:00 UTC / 7 AM EST)│
-└───────────────────────────┬─────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────┐
-│           Step 1: Python RSS Aggregator             │
-│                                                     │
-│  config/feeds.yaml                                  │
-│       │                                             │
-│       ▼                                             │
-│  Fetch RSS/Atom feeds                               │
-│       │                                             │
-│       ▼                                             │
-│  Filter to last 24h · Deduplicate via seen.json     │
-│       │                                             │
-│       ▼                                             │
-│  reports/raw-YYYY-MM-DD.json                        │
-└───────────────────────────┬─────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────┐
-│                  Step 2: Claude Code                │
-│                                                     │
-│  Read raw JSON                                      │
-│       │                                             │
-│       ▼                                             │
-│  WebSearch for breaking news RSS may have missed    │
-│       │                                             │
-│       ▼                                             │
-│  Synthesize into markdown + HTML report             │
-│       │                                             │
-│       ▼                                             │
-│  reports/YYYY-MM-DD.md · reports/YYYY-MM-DD.html    │
-└───────────────────────────┬─────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────┐
-│             Step 3: git-auto-commit-action          │
-│                                                     │
-│  Commit report + seen.json to main                  │
-└─────────────────────────────────────────────────────┘
+  GitHub Actions (daily cron 7 AM EST)
+  │
+  ├─[1: Python RSS Aggregator]──────────────────────────────────────────┐
+  │  feeds.yaml → fetch feeds → filter 24h → dedupe → raw-YYYY-MM-DD.json
+  │
+  ├─[2: Claude Code]────────────────────────────────────────────────────┐
+  │  raw JSON + WebSearch → synthesize → YYYY-MM-DD.{md,html}
+  │
+  └─[3: git-auto-commit]────────────────────────────────────────────────┐
+     commit report + seen.json → main
 ```
 
 ## Configuring Feeds
 
 All RSS feeds are defined in **`config/feeds.yaml`** — no code changes needed.
 
+**Simple feed** (include all items):
 ```yaml
 feeds:
   "Category Name":
     "Source Display Name": "https://feed-url"
 ```
+
+**Filtered feed** (only include items whose title contains the filter string):
+```yaml
+feeds:
+  "Category Name":
+    "Source Display Name":
+      url: "https://feed-url"
+      filter: "keyword to match"
+```
+
+The `filter` value is matched case-insensitively against each entry's title. Items that don't match are skipped. This is useful for high-volume feeds where you only want a specific series or tag (e.g., filtering an AWS blog feed to just "AWS Weekly Roundup").
 
 Add, remove, or rename feeds by editing that file.
 
