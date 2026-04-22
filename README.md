@@ -45,15 +45,15 @@ Add, remove, or rename feeds by editing that file.
 
 ### Prerequisites
 - GitHub repo with Actions enabled
-- Anthropic API key
+- Claude Code OAuth token
 - Python 3.13+ and [uv](https://docs.astral.sh/uv/)
 
-### Adding the Anthropic API Key
+### Adding the Claude Code OAuth Token
 
-1. Get your API key at https://console.anthropic.com/settings/keys
+1. Get your OAuth token from [claude.ai/settings](https://claude.ai/settings) under **Claude Code**
 2. In your GitHub repo, go to **Settings** > **Secrets and variables** > **Actions**
 3. Click **New repository secret**
-4. Name: `ANTHROPIC_API_KEY`, Value: paste your key
+4. Name: `CLAUDE_CODE_OAUTH_TOKEN`, Value: paste your token
 5. Click **Add secret**
 
 ### Local Development
@@ -61,11 +61,8 @@ Add, remove, or rename feeds by editing that file.
 #### Step 1 — Fetch RSS feeds
 
 ```bash
-# Install dependencies
-uv pip install -r scripts/requirements.txt
-
 # Run the aggregator (writes reports/raw-YYYY-MM-DD.json)
-uv run python scripts/aggregate_news.py
+uv run python aggregate_news.py
 
 # Inspect the output
 cat reports/raw-$(date +%Y-%m-%d).json | python -m json.tool | head -50
@@ -73,10 +70,10 @@ cat reports/raw-$(date +%Y-%m-%d).json | python -m json.tool | head -50
 
 #### Step 2 — Generate the report with Claude Code
 
-Make sure `ANTHROPIC_API_KEY` is set in your environment, then run Claude Code directly against the raw JSON:
+Make sure `CLAUDE_CODE_OAUTH_TOKEN` is set in your environment, then run Claude Code directly against the raw JSON:
 
 ```bash
-export ANTHROPIC_API_KEY=sk-ant-...
+export CLAUDE_CODE_OAUTH_TOKEN=...
 
 claude --model claude-sonnet-4-6 \
   --max-turns 30 \
@@ -85,7 +82,8 @@ claude --model claude-sonnet-4-6 \
   "Read the raw feed data from reports/raw-$(date +%Y-%m-%d).json. \
    Follow the instructions in CLAUDE.md to generate a polished daily news report. \
    Save a markdown report to reports/$(date +%Y-%m-%d).md and an HTML digest to \
-   reports/$(date +%Y-%m-%d).html. Use templates/digest-template.html as the HTML template."
+   reports/$(date +%Y-%m-%d).html. Use templates/digest-template.html as the HTML template. \
+   Use WebSearch to find any breaking news that RSS feeds may have missed."
 ```
 
 #### Step 3 — View the output

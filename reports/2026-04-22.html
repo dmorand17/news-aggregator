@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Anthropic's Mythos AI security model hit by unauthorized access while Google Cloud Next unleashes enterprise AI features and SpaceX eyes a $60B Cursor acquisition.">
+<title>AI Security Breach and $60B Deals Mark a High-Stakes Day in Tech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:           #0d0f14;
+  --surface:      #141720;
+  --surface2:     #1b1f2e;
+  --border:       #252a3a;
+  --border-light: #1e2332;
+  --text:         #e8e6df;
+  --text-sub:     #9a97a0;
+  --text-muted:   #555c70;
+  --amber:        #e8a020;
+  --amber-dim:    rgba(232,160,32,0.12);
+  --amber-glow:   rgba(232,160,32,0.06);
+  --red:          #e05050;
+  --red-dim:      rgba(224,80,80,0.10);
+  --orange:       #d97c30;
+  --serif:        'Playfair Display', Georgia, serif;
+  --sans:         'IBM Plex Sans', system-ui, sans-serif;
+  --mono:         'IBM Plex Mono', 'Courier New', monospace;
+  --rule:         1px solid var(--border);
+  --max-w:        820px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+.hero {
+  padding: 3.5rem 2.5rem 2.5rem;
+  border-bottom: var(--rule);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      var(--border-light) 39px,
+      var(--border-light) 40px
+    );
+  opacity: 0.5;
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--amber);
+}
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1rem;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+  max-width: 680px;
+  position: relative;
+}
+.hero-meta {
+  font-size: 0.9rem;
+  color: var(--text-sub);
+  line-height: 1.65;
+  max-width: 600px;
+  position: relative;
+}
+
+.ticker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  background: var(--surface);
+  border-bottom: var(--rule);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border-right: var(--rule);
+  color: var(--text-sub);
+  white-space: nowrap;
+}
+.ticker-item:last-child { border-right: none; }
+.ticker-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.ticker-dot.total  { background: var(--text-muted); }
+.ticker-dot.high   { background: var(--red); }
+.ticker-dot.med    { background: var(--orange); }
+.ticker-num { color: var(--text); font-weight: 500; }
+
+.toc {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg);
+  border-bottom: var(--rule);
+  padding: 0.7rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.toc::before {
+  content: 'SECTIONS';
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  align-self: center;
+  margin-right: 0.5rem;
+}
+.toc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.75rem;
+  border-radius: 2px;
+  border: var(--rule);
+  background: transparent;
+  color: var(--text-sub);
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.toc-btn:hover { border-color: var(--amber); color: var(--amber); background: var(--amber-glow); }
+.toc-n { font-family: var(--mono); font-size: 0.65rem; color: var(--text-muted); }
+.toc-hot { font-family: var(--mono); font-size: 0.6rem; color: var(--red); font-weight: 500; }
+
+.top-story {
+  margin: 2rem 2.5rem;
+  padding: 1.5rem 1.75rem;
+  background: var(--amber-dim);
+  border: 1px solid rgba(232,160,32,0.25);
+  border-radius: 2px;
+  position: relative;
+}
+.top-story::before {
+  content: '★ TOP STORY';
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  color: var(--amber);
+  margin-bottom: 0.75rem;
+}
+.top-story p { font-size: 0.92rem; color: var(--text-sub); line-height: 1.7; }
+.top-story strong a { font-weight: 600; color: var(--text); }
+.top-story strong a:hover { color: var(--amber); }
+
+.content { padding: 0.5rem 2.5rem 3rem; }
+
+.category { margin-top: 2.75rem; }
+.cat-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--border);
+  position: relative;
+}
+.cat-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--amber);
+}
+.cat-header h2 {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+}
+.cat-count { font-family: var(--mono); font-size: 0.65rem; color: var(--text-muted); margin-left: auto; }
+
+.card-high {
+  border-left: 2px solid var(--red);
+  background: var(--red-dim);
+  border-radius: 0 2px 2px 0;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.card-high .card-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+.card-high a {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.35;
+  transition: color 0.12s;
+}
+.card-high a:hover { color: var(--red); }
+.card-summary { font-size: 0.84rem; color: var(--text-sub); line-height: 1.6; }
+
+.src {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  padding: 0.1rem 0.45rem;
+  border-radius: 2px;
+  background: var(--surface2);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.card-high .src {
+  background: rgba(224,80,80,0.08);
+  border-color: rgba(224,80,80,0.2);
+  color: var(--red);
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.55rem 0.25rem;
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.1s;
+  border-radius: 2px;
+}
+.row:last-child { border-bottom: none; }
+.row:hover { background: var(--surface); }
+
+.row-mark { margin-top: 0.52rem; flex-shrink: 0; }
+.rel-medium .row-mark {
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 4px 0 4px 6px;
+  border-color: transparent transparent transparent var(--orange);
+  margin-top: 0.58rem;
+}
+.rel-low .row-mark {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--border);
+  margin-top: 0.62rem;
+}
+
+.row-body { flex: 1; min-width: 0; }
+.row-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; line-height: 1.4; }
+.row a { font-size: 0.88rem; font-weight: 600; color: var(--text); transition: color 0.12s; }
+.rel-medium .row a:hover { color: var(--orange); }
+.rel-low    .row a:hover { color: var(--text-sub); }
+
+details { margin-top: 0.25rem; }
+summary.expand-btn {
+  list-style: none;
+  font-size: 0.7rem;
+  font-family: var(--mono);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.12s;
+  display: inline;
+}
+summary.expand-btn::-webkit-details-marker { display: none; }
+summary.expand-btn::marker { content: ''; }
+summary.expand-btn:hover { color: var(--amber); }
+.row-summary {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  line-height: 1.55;
+  margin-top: 0.3rem;
+  padding-top: 0.2rem;
+  border-top: 1px solid var(--border-light);
+}
+
+footer {
+  margin-top: 2rem;
+  padding: 1.25rem 2.5rem;
+  border-top: var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+footer::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--amber);
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .hero        { padding: 2rem 1rem 1.75rem; }
+  .hero h1     { font-size: 1.6rem; }
+  .content     { padding: 0.25rem 1rem 2rem; }
+  .top-story   { margin: 1rem; padding: 1.1rem 1.1rem; }
+  .ticker      { display: none; }
+  .toc         { padding: 0.5rem 0.75rem; gap: 0.35rem; }
+  .toc::before { display: none; }
+  .toc-btn     { padding: 0.4rem 0.7rem; font-size: 0.78rem; min-height: 36px; }
+  .card-high   { padding: 0.85rem 1rem; }
+  .card-high a { font-size: 0.95rem; }
+  .row         { padding: 0.6rem 0.1rem; gap: 0.6rem; }
+  .row a       { font-size: 0.86rem; }
+  .src         { display: none; }
+  .cat-count   { display: none; }
+}
+@media print {
+  body { background: #fff; color: #111; max-width: 100%; }
+  .toc, .ticker { display: none; }
+  .hero { padding: 1rem 0; border-bottom: 2px solid #111; }
+  .hero::before, .hero::after { display: none; }
+  .hero h1 { color: #111; font-size: 1.6rem; }
+  .hero-eyebrow, .hero-meta { color: #444; }
+  .top-story { background: none; border: 1px solid #ccc; margin: 1rem 0; }
+  .top-story::before { color: #111; }
+  .card-high { background: none; border-left: 2px solid #111; }
+  .card-high a, .row a { color: #111; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.65rem; color: #666; word-break: break-all; }
+  .src::after { content: none; }
+  details { display: block; }
+  details summary { display: none; }
+  .row-summary { display: block !important; }
+  .cat-header::after { display: none; }
+  footer { color: #666; border-top: 1px solid #ccc; }
+  footer::before { background: #111; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-eyebrow">Daily Digest &bull; April 22, 2026</div>
+  <h1>AI Security Breach and $60B Deals Mark a High-Stakes Day in Tech</h1>
+  <p class="hero-meta">Google Cloud Next dominated enterprise AI news with new TPU chips, Gemini-powered Chrome, and AI-infused Gmail and Maps. Meanwhile, Anthropic's Mythos cybersecurity model made headlines twice: once for discovering 271 zero-day vulnerabilities in Firefox, and again when an unauthorized group gained access to the tool Anthropic itself called dangerous. SpaceX's $60B option to acquire Cursor and Google's multibillion-dollar deal with Thinking Machines Lab signal a consolidation wave reshaping the AI landscape.</p>
+</header>
+
+<div class="ticker">
+  <div class="ticker-item"><span class="ticker-dot total"></span><span class="ticker-num">25</span> stories</div>
+  <div class="ticker-item"><span class="ticker-dot high"></span><span class="ticker-num">6</span> important</div>
+  <div class="ticker-item"><span class="ticker-dot med"></span><span class="ticker-num">15</span> notable</div>
+  <div class="ticker-item"><span class="ticker-num">5</span> topics</div>
+</div>
+
+<nav class="toc">
+  <a href="#cat-1" class="toc-btn">🔒 Security &amp; AI Safety <span class="toc-n">5 <span class="toc-hot">2!</span></span></a>
+  <a href="#cat-2" class="toc-btn">☁️ Google Cloud Next <span class="toc-n">5 <span class="toc-hot">1!</span></span></a>
+  <a href="#cat-3" class="toc-btn">💻 Developer Tools <span class="toc-n">5 <span class="toc-hot">1!</span></span></a>
+  <a href="#cat-4" class="toc-btn">🤝 Industry &amp; Deals <span class="toc-n">4 <span class="toc-hot">2!</span></span></a>
+  <a href="#cat-5" class="toc-btn">📊 DevOps &amp; Infra <span class="toc-n">6</span></a>
+</nav>
+
+<aside class="top-story" aria-label="Top story">
+  <p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/916501/anthropic-mythos-unauthorized-users-access-security" target="_blank" rel="noopener noreferrer">Anthropic's Mythos AI model accessed by unauthorized users</a></strong> — Anthropic's Mythos, a powerful AI cybersecurity tool the company warned could be dangerous in the wrong hands, was accessed by a "small group of unauthorized users" including a third-party contractor who reportedly shared access via a private online forum. The breach is particularly alarming given that Mythos can autonomously find and exploit security vulnerabilities — as demonstrated the same day by its discovery of 271 zero-day flaws in Firefox 150. Anthropic says it is investigating and maintains no evidence of system impact, but the incident raises serious questions about the governance of offensive AI security tools.</p>
+</aside>
+
+<div class="content">
+
+  <section class="category" id="cat-1">
+    <div class="cat-header">
+      <h2>🔒 Security &amp; AI Safety</h2>
+      <span class="cat-count">5 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://www.theverge.com/ai-artificial-intelligence/916501/anthropic-mythos-unauthorized-users-access-security" target="_blank" rel="noopener noreferrer">Anthropic's most dangerous AI model just fell into the wrong hands</a>
+        <span class="src">The Verge</span>
+      </div>
+      <p class="card-summary">Anthropic's Mythos AI model — a powerful cybersecurity tool the company itself warned could be dangerous — was accessed by a "small group of unauthorized users," according to Bloomberg. A member of the group identified as a third-party contractor reportedly shared access via a private online forum. Anthropic says it is investigating but claims no systems were impacted, a response that may not satisfy regulators or enterprise customers given Mythos's offensive security capabilities.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://arstechnica.com/ai/2026/04/mozilla-anthropics-mythos-found-271-zero-day-vulnerabilities-in-firefox-150/" target="_blank" rel="noopener noreferrer">Mozilla: Anthropic's Mythos found 271 security vulnerabilities in Firefox 150</a>
+        <span class="src">Ars Technica</span>
+      </div>
+      <p class="card-summary">Using Anthropic's Mythos AI, Mozilla identified and patched 271 zero-day security vulnerabilities in Firefox 150 — a scale that would have taken months longer with traditional fuzzing or even elite human researchers. The result powerfully illustrates both the defensive potential and the serious risks of AI-powered security tooling, providing stark context for the Mythos unauthorized access incident reported the same day.</p>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.theverge.com/policy/916758/anthropic-mythos-preview-cisa-left-out" target="_blank" rel="noopener noreferrer">Anthropic's Mythos rollout has missed America's cybersecurity agency</a>
+          <span class="src">The Verge</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">CISA, the nation's central cybersecurity coordinator, was reportedly not given access to Mythos Preview even as other federal agencies received it — a curious omission for a tool Anthropic has touted as a powerful security asset.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://arstechnica.com/ai/2026/04/meta-will-use-employee-tracking-software-to-help-train-ai-agents-report/" target="_blank" rel="noopener noreferrer">Meta will train AI agents by tracking employees' mouse, keyboard use</a>
+          <span class="src">Ars Technica</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Meta's new Model Capability Initiative software records US employees' mouse movements, clicks, keystrokes, and periodic screenshots within work apps to generate AI agent training data — tracking that would be illegal in the EU.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.malwarebytes.com/blog/mobile/2026/04/android-17-ends-all-or-nothing-access-to-your-contacts" target="_blank" rel="noopener noreferrer">Android 17 ends all-or-nothing access to your contacts</a>
+          <span class="src">Malwarebytes</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Android 17 introduces a Contact Picker letting users grant apps access to specific contacts rather than their entire address book.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="category" id="cat-2">
+    <div class="cat-header">
+      <h2>☁️ Google Cloud Next 2026</h2>
+      <span class="cat-count">5 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://techcrunch.com/2026/04/22/google-cloud-next-new-tpu-ai-chips-compete-with-nvidia/" target="_blank" rel="noopener noreferrer">Google Cloud launches two new AI chips to compete with Nvidia</a>
+        <span class="src">TechCrunch</span>
+      </div>
+      <p class="card-summary">Google unveiled two new TPU generations at Cloud Next 2026 in Las Vegas, positioning them as faster and cheaper alternatives to Nvidia for AI workloads. The announcement signals Google's intent to compete more aggressively for AI infrastructure spend while still offering Nvidia hardware to customers who demand it — a dual-track strategy that highlights the stakes of the GPU supply chain battle.</p>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://techcrunch.com/2026/04/22/google-turns-chrome-into-an-ai-coworker-for-the-workplace/" target="_blank" rel="noopener noreferrer">Google turns Chrome into an AI co-worker for the workplace</a>
+          <span class="src">TechCrunch</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Gemini-powered "auto browse" capabilities are coming to Chrome for enterprise users, letting workers automate research, data entry, and repetitive web tasks directly from the browser.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://techcrunch.com/2026/04/22/google-makes-an-interesting-choice-with-its-new-agent-building-tool-for-enterprises/" target="_blank" rel="noopener noreferrer">Google makes an interesting choice with its new agent-building tool for enterprises</a>
+          <span class="src">TechCrunch</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">The Gemini Enterprise Agent Platform targets IT and technical users rather than business teams — a deliberate positioning choice for Google's enterprise agent builder announced at Cloud Next.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://techcrunch.com/2026/04/22/ai-overviews-are-coming-to-your-gmail-at-work/" target="_blank" rel="noopener noreferrer">AI Overviews are coming to your Gmail at work</a>
+          <span class="src">TechCrunch</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Google is extending AI Overviews to Gmail for Workspace users, providing instant summaries pulled from across multiple emails in a thread or topic.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://techcrunch.com/2026/04/22/google-maps-is-about-to-get-a-big-dose-of-ai/" target="_blank" rel="noopener noreferrer">Google Maps is about to get a big dose of AI</a>
+          <span class="src">TechCrunch</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">New generative AI capabilities announced at Cloud Next add enhanced visual search and data analytics powers to Google Maps.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="category" id="cat-3">
+    <div class="cat-header">
+      <h2>💻 Developer Tools</h2>
+      <span class="cat-count">5 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://devblogs.microsoft.com/typescript/announcing-typescript-7-0-beta/" target="_blank" rel="noopener noreferrer">Announcing TypeScript 7.0 Beta</a>
+        <span class="src">Microsoft DevBlogs</span>
+      </div>
+      <p class="card-summary">TypeScript 7.0 Beta arrives on a completely new Go-based foundation, delivering approximately 10x faster performance than TypeScript 6.0. The compiler was ported methodically from the original TypeScript implementation rather than rewritten, preserving identical type-checking logic while dramatically improving build and type-check speeds — making it immediately usable in daily workflows and CI pipelines despite its beta status.</p>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://simonwillison.net/2026/Apr/22/claude-code-confusion/" target="_blank" rel="noopener noreferrer">Is Claude Code going to cost $100/month? Probably not — it's all very confusing</a>
+          <span class="src">Simon Willison</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Anthropic says it's running a small price test on ~2% of new prosumer signups, but widespread user reports suggest the rollout may be broader than acknowledged, creating significant confusion in the developer community.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://aws.amazon.com/about-aws/whats-new/2026/04/aws-lambda-amazon-s3/" target="_blank" rel="noopener noreferrer">AWS Lambda functions can now mount Amazon S3 buckets as file systems with S3 Files</a>
+          <span class="src">AWS</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Lambda functions can now mount S3 buckets directly as file systems, enabling standard file I/O without downloading data first — simplifying patterns for ML inference and large-file processing workloads.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.devopsdigest.com/gitlab-extends-agentic-ai-with-new-automated-security-remediation-pipeline-setup-and-delivery" target="_blank" rel="noopener noreferrer">GitLab Extends Agentic AI with Automated Security Remediation, Pipeline Setup, and Delivery Analytics</a>
+          <span class="src">DevOps Digest</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">GitLab 18.11 adds AI-automated vulnerability fixes, pipeline configuration, and delivery analytics with new usage controls for AI spending to enable cost-predictable adoption of GitLab Duo agents.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://emilkowal.ski/ui/agents-with-taste" target="_blank" rel="noopener noreferrer">Agents with Taste</a>
+          <span class="src">Emil Kowalski</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">A practical technique for improving AI-generated UI: author skill files defining what "great" looks and feels like for each interface component, giving coding agents the aesthetic context needed to produce better visual output.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="category" id="cat-4">
+    <div class="cat-header">
+      <h2>🤝 Industry &amp; Deals</h2>
+      <span class="cat-count">4 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://www.theverge.com/science/916427/spacex-cursor-potential-deal-acquisition" target="_blank" rel="noopener noreferrer">SpaceX cuts a deal to maybe buy Cursor for $60 billion</a>
+        <span class="src">The Verge</span>
+      </div>
+      <p class="card-summary">SpaceX has negotiated an option to acquire AI coding platform Cursor for $60 billion — or alternatively pay $10 billion for the ongoing joint work between SpaceXAI and Cursor. The deal addresses weaknesses for both parties: Cursor lacks proprietary frontier models, and xAI needs developer tools to compete with OpenAI Codex and Anthropic Claude. Simultaneously, Cursor is in talks to raise $2 billion from Andreessen Horowitz, Nvidia, and Thrive Capital, making this one of the most structurally complex startup deals in recent memory.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://techcrunch.com/2026/04/22/exclusive-google-deepens-thinking-machines-lab-ties-with-new-multi-billion-dollar-deal/" target="_blank" rel="noopener noreferrer">Exclusive: Google deepens Thinking Machines Lab ties with new multibillion-dollar deal</a>
+        <span class="src">TechCrunch</span>
+      </div>
+      <p class="card-summary">Mira Murati's Thinking Machines Lab has signed a multibillion-dollar infrastructure deal with Google Cloud, powered by Nvidia's latest GB300 chips. The exclusive deal signals serious momentum for Murati's post-OpenAI venture and strengthens Google Cloud's position as the preferred infrastructure provider for leading AI frontier labs.</p>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://techcrunch.com/2026/04/22/openai-teams-up-with-infosys-to-bring-ai-tools-to-more-businesses/" target="_blank" rel="noopener noreferrer">OpenAI teams up with Infosys to bring AI tools to more businesses</a>
+          <span class="src">TechCrunch</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Infosys will integrate OpenAI tools to help enterprise clients modernize software development, automate workflows, and deploy AI systems, with an initial focus on legacy modernization and DevOps.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://techcrunch.com/2026/04/21/apples-john-ternus-will-run-one-of-the-worlds-most-powerful-companies-the-job-is-a-minefield/" target="_blank" rel="noopener noreferrer">Apple's John Ternus will run one of the world's most powerful companies; the job is a minefield</a>
+          <span class="src">TechCrunch</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Hardware chief John Ternus is set to succeed Tim Cook as Apple CEO, inheriting unrivaled resources alongside significant challenges in AI strategy and ongoing regulatory pressure.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="category" id="cat-5">
+    <div class="cat-header">
+      <h2>📊 DevOps &amp; Infrastructure</h2>
+      <span class="cat-count">6 items</span>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://grafana.com/blog/grafana-13-release-all-the-latest-features/" target="_blank" rel="noopener noreferrer">Grafana 13 release: get value from your data faster, manage operations at scale, and more!</a>
+          <span class="src">Grafana</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Released at GrafanaCON 2026 in Barcelona, Grafana 13 adds an AI-powered Grafana Assistant now available to OSS and Enterprise users, suggested dashboards with Prometheus compatibility scoring, Git Sync GA, and dynamic dashboards v2 schema on by default.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.hashicorp.com/en/blog/advancing-secret-sync-with-workload-identity-federation" target="_blank" rel="noopener noreferrer">Advancing secret sync with workload identity federation</a>
+          <span class="src">HashiCorp</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Vault Enterprise 2.0 replaces static cloud credentials with short-lived workload identity tokens for AWS, Azure, and GCP secret sync, reducing credential sprawl and aligning with zero-trust security models.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://blog.cloudflare.com/ai-code-review/" target="_blank" rel="noopener noreferrer">Orchestrating AI Code Review at scale</a>
+          <span class="src">Cloudflare</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Cloudflare's custom AI code review system completed 131,246 reviews across 48,095 merge requests in its first month using up to seven specialized agents at a median 3 min 39 sec per review and $1.19 average cost.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.cncf.io/blog/2026/04/21/auto-diagnosing-kubernetes-alerts-with-holmesgpt-and-cncf-tools/" target="_blank" rel="noopener noreferrer">Auto-diagnosing Kubernetes alerts with HolmesGPT and CNCF tools</a>
+          <span class="src">CNCF</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">A two-person SRE team cut Kubernetes alert investigation from 15-20 minutes to under 2 minutes using HolmesGPT with custom runbooks at ~$12/month total operating cost.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://blog.cloudflare.com/shared-dictionaries/" target="_blank" rel="noopener noreferrer">Shared Dictionaries: compression that keeps up with the agentic web</a>
+          <span class="src">Cloudflare</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Cloudflare's shared compression dictionaries send only file diffs between versions rather than full files, significantly reducing bandwidth for pages that rebuild frequently due to AI-driven activity.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://github.blog/news-insights/company-news/bringing-more-transparency-to-githubs-status-page/" target="_blank" rel="noopener noreferrer">Bringing more transparency to GitHub's status page</a>
+          <span class="src">GitHub</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">GitHub added a Degraded Performance state, per-service uptime metrics, and a Copilot AI model providers component to improve incident transparency.</p></details>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  RSS Digest &bull; claude-sonnet-4-6 &bull; 2026-04-22T18:45:00Z
+</footer>
+</body>
+</html>
