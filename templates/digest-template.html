@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- TITLE: Use the editorial headline -->
+<title><!-- TITLE_TEXT --></title>
+<style>
+:root {
+  --bg: #fafbfc; --surface: #ffffff; --text: #1a1a2e; --text-secondary: #4a5568;
+  --text-muted: #8892a4; --border: #e2e8f0; --border-light: #f0f2f5;
+  --accent: #3b82f6; --accent-hover: #2563eb; --accent-subtle: #eff6ff;
+  --high-bg: #fef2f2; --high-border: #fca5a5; --high-accent: #dc2626;
+  --medium-dot: #f59e0b; --low-dot: #cbd5e1;
+  --top-bg: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+  --top-text: #ffffff; --top-muted: #93c5fd;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06); --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --text: #e2e8f0; --text-secondary: #a0aec0;
+    --text-muted: #64748b; --border: #2d3348; --border-light: #232839;
+    --accent: #60a5fa; --accent-hover: #93bbfd; --accent-subtle: #1e293b;
+    --high-bg: #2d1b1b; --high-border: #7f1d1d; --high-accent: #f87171;
+    --medium-dot: #fbbf24; --low-dot: #475569;
+    --top-bg: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    --top-text: #f1f5f9; --top-muted: #94a3b8;
+    --shadow: 0 1px 3px rgba(0,0,0,0.3); --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+  }
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6;
+  max-width: 860px; margin: 0 auto; padding: 0;
+}
+
+/* --- Hero header --- */
+.hero {
+  background: var(--top-bg); color: var(--top-text);
+  padding: 2.5rem 2rem 2rem; margin-bottom: 0;
+}
+.hero h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.4rem; }
+.hero .period { color: var(--top-muted); font-size: 0.85rem; }
+.hero .meta { margin-top: 1rem; font-size: 0.92rem; line-height: 1.55; opacity: 0.92; }
+
+/* --- Stats bar --- */
+.stats-bar {
+  display: flex; gap: 1.5rem; padding: 0.75rem 2rem;
+  background: var(--surface); border-bottom: 1px solid var(--border);
+  font-size: 0.8rem; color: var(--text-muted);
+}
+.stat { display: flex; align-items: center; gap: 0.35rem; }
+.stat-dot { width: 8px; height: 8px; border-radius: 50%; }
+.stat-dot.high { background: var(--high-accent); }
+.stat-dot.med { background: var(--medium-dot); }
+.stat-dot.total { background: var(--accent); }
+
+/* --- TOC --- */
+.toc {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 1rem 2rem;
+  background: var(--surface); border-bottom: 1px solid var(--border);
+}
+.toc-item {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.35rem 0.75rem; border-radius: 6px;
+  background: var(--bg); border: 1px solid var(--border);
+  color: var(--text-secondary); font-size: 0.8rem; font-weight: 500;
+  text-decoration: none; transition: all 0.15s;
+}
+.toc-item:hover { border-color: var(--accent); color: var(--accent); }
+.toc-count { color: var(--text-muted); font-weight: 400; }
+.toc-hot { color: var(--high-accent); font-weight: 600; font-size: 0.7rem; }
+
+/* --- Top story --- */
+.top-story {
+  margin: 1.5rem 2rem; padding: 1.25rem 1.5rem;
+  background: var(--accent-subtle); border: 1px solid var(--border);
+  border-radius: 10px; position: relative;
+}
+.top-story::before {
+  content: "TOP STORY"; position: absolute; top: -0.6rem; left: 1rem;
+  background: var(--accent); color: #fff; font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.08em; padding: 0.15rem 0.6rem; border-radius: 4px;
+}
+.top-story p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; }
+
+/* --- Content area --- */
+.content { padding: 0 2rem 2rem; }
+
+/* --- Category sections --- */
+.category { margin-top: 2rem; }
+.category h2 {
+  font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em;
+  padding-bottom: 0.6rem; margin-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border); display: flex; align-items: center; gap: 0.5rem;
+}
+.cat-count {
+  font-size: 0.7rem; font-weight: 500; color: var(--text-muted);
+  background: var(--bg); border: 1px solid var(--border);
+  padding: 0.1rem 0.5rem; border-radius: 10px;
+}
+
+/* --- High-relevance cards --- */
+.card-high {
+  background: var(--high-bg); border: 1px solid var(--high-border);
+  border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 0.6rem;
+}
+.card-header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; }
+.card-high a {
+  color: var(--high-accent); font-weight: 700; font-size: 0.95rem;
+  text-decoration: none; line-height: 1.4;
+}
+.card-high a:hover { text-decoration: underline; }
+.card-summary {
+  color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.4rem; line-height: 1.5;
+}
+
+/* --- Regular rows (medium/low) --- */
+.row {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);
+}
+.row:last-child { border-bottom: none; }
+.row-dot {
+  width: 7px; height: 7px; border-radius: 50%; margin-top: 0.55rem; flex-shrink: 0;
+}
+.rel-medium .row-dot { background: var(--medium-dot); }
+.rel-low .row-dot { background: var(--low-dot); }
+.row-content { flex: 1; min-width: 0; }
+.row a {
+  color: var(--accent); font-weight: 600; font-size: 0.9rem;
+  text-decoration: none; line-height: 1.4;
+}
+.row a:hover { text-decoration: underline; }
+.source-badge {
+  display: inline-block; font-size: 0.65rem; padding: 0.05rem 0.45rem;
+  background: var(--border-light); color: var(--text-muted); border-radius: 4px;
+  margin-left: 0.4rem; vertical-align: middle; font-weight: 500;
+}
+.card-high .source-badge { background: rgba(220,38,38,0.1); color: var(--high-accent); }
+
+/* --- Expandable summary --- */
+details { display: inline; }
+.expand-btn {
+  display: inline; font-size: 0.75rem; color: var(--text-muted);
+  cursor: pointer; margin-left: 0.3rem; font-style: italic;
+}
+.expand-btn:hover { color: var(--accent); }
+.expand-btn::marker { content: ""; }
+.expand-btn::-webkit-details-marker { display: none; }
+.row-summary {
+  color: var(--text-muted); font-size: 0.82rem; margin-top: 0.25rem; line-height: 1.5;
+}
+
+/* --- Footer --- */
+footer {
+  margin-top: 2rem; padding: 1rem 2rem; border-top: 1px solid var(--border);
+  color: var(--text-muted); font-size: 0.75rem; text-align: center;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .hero { padding: 1.5rem 1rem; }
+  .hero h1 { font-size: 1.3rem; }
+  .stats-bar, .toc, .content { padding-left: 1rem; padding-right: 1rem; }
+  .top-story { margin-left: 1rem; margin-right: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO: Editorial headline, date range, and summary paragraph -->
+<div class="hero">
+  <h1><!-- HEADLINE: Short, editorial headline summarizing the day's top theme --></h1>
+  <div class="period">Last 24 hours &bull; Generated <!-- DATE_AND_TIME --></div>
+  <p class="meta"><!-- SUMMARY: 2-3 sentence editorial overview of the day's key themes --></p>
+</div>
+
+<!-- STATS BAR: Total stories counted, high/medium/low breakdown -->
+<div class="stats-bar">
+  <span class="stat"><span class="stat-dot total"></span> <!-- N --> stories</span>
+  <span class="stat"><span class="stat-dot high"></span> <!-- N --> important</span>
+  <span class="stat"><span class="stat-dot med"></span> <!-- N --> notable</span>
+  <span class="stat"><!-- N --> topics</span>
+</div>
+
+<!-- TOC: One nav item per category with emoji, name, count, and optional "N important" badge -->
+<nav class="toc">
+  <!--
+    Repeat for each category:
+    <a href="#cat-INDEX" class="toc-item">EMOJI Category Name <span class="toc-count">N <span class="toc-hot">N important</span></span></a>
+    Omit the toc-hot span if category has no high-relevance items.
+  -->
+</nav>
+
+<!-- TOP STORY: Blue callout box with 2-3 sentence summary of the single most important story -->
+<div class="top-story">
+  <p><!-- TOP_STORY_SUMMARY --></p>
+</div>
+
+<div class="content">
+  <!--
+    CATEGORIES: Repeat for each category. Use dynamic categories based on the day's
+    content -- don't force empty categories. Assign each an id="cat-INDEX".
+
+    <section class="category" id="cat-INDEX">
+      <h2>EMOJI Category Name <span class="cat-count">N</span></h2>
+
+      HIGH-RELEVANCE items -- red-bordered cards with summary paragraph:
+      <div class="card card-high">
+        <div class="card-header">
+          <a href="URL" target="_blank" rel="noopener">Title</a>
+          <span class="source-badge">Source</span>
+        </div>
+        <p class="card-summary">2-3 sentence summary explaining why this matters.</p>
+      </div>
+
+      MEDIUM-RELEVANCE items -- orange dot rows with expandable summary:
+      <div class="row rel-medium">
+        <span class="row-dot"></span>
+        <div class="row-content">
+          <a href="URL" target="_blank" rel="noopener">Title</a>
+          <span class="source-badge">Source</span>
+          <details><summary class="expand-btn">more</summary><p class="row-summary">1-2 sentence summary.</p></details>
+        </div>
+      </div>
+
+      LOW-RELEVANCE items -- gray dot rows with expandable summary:
+      <div class="row rel-low">
+        <span class="row-dot"></span>
+        <div class="row-content">
+          <a href="URL" target="_blank" rel="noopener">Title</a>
+          <span class="source-badge">Source</span>
+          <details><summary class="expand-btn">more</summary><p class="row-summary">1-2 sentence summary.</p></details>
+        </div>
+      </div>
+    </section>
+  -->
+</div>
+
+<!-- FOOTER: Model name and generation timestamp -->
+<footer>
+  RSS Digest &bull; <!-- MODEL_NAME --> &bull; <!-- TIMESTAMP -->
+</footer>
+</body>
+</html>

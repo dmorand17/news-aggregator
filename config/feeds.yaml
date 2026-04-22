@@ -1,0 +1,60 @@
+# RSS/Atom feed configuration
+# Organized by category. Add, remove, or rename feeds here without touching any Python code.
+#
+# Structure:
+#   feeds:
+#     "Category Name":
+#       "Source Display Name": "https://feed-url"
+
+feeds:
+  "AI Labs":
+    "OpenAI": "https://openai.com/news/rss.xml"
+    "OpenAI Research": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_openai_research.xml"
+    "Google DeepMind": "https://deepmind.google/blog/rss.xml"
+    "Google Developers AI": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_google_ai.xml"
+    "Meta AI": "https://ai.meta.com/blog/rss/"
+    "Microsoft AI": "https://blogs.microsoft.com/ai/feed/"
+    "Mistral AI": "https://mistral.ai/feed/rss"
+    "Anthropic News": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_news.xml"
+    "Anthropic Engineering": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml"
+    "Anthropic Research": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_research.xml"
+    "Anthropic Frontier Red Team": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_red.xml"
+    "xAI News": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_xainews.xml"
+
+  "Developer Platforms":
+    "Hugging Face": "https://huggingface.co/blog/feed.xml"
+    "LangChain": "https://blog.langchain.dev/rss/"
+    "AWS AI": "https://aws.amazon.com/blogs/ai/feed/"
+    "NVIDIA Developer": "https://developer.nvidia.com/blog/feed/"
+    "GitHub Blog": "https://github.blog/feed/"
+    "Ollama Blog": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_ollama.xml"
+    "Claude Blog": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml"
+    "Claude Code Changelog": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_changelog_claude_code.xml"
+    "Cursor Blog": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_cursor.xml"
+    "Windsurf Blog": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_windsurf_blog.xml"
+    "Windsurf Changelog": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_windsurf_changelog.xml"
+    "Dagster Blog": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_dagster.xml"
+
+  "News Sites":
+    "The Verge AI": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
+    "TechCrunch AI": "https://techcrunch.com/category/artificial-intelligence/feed/"
+    "Ars Technica AI": "https://feeds.arstechnica.com/arstechnica/technology-lab"
+    "VentureBeat AI": "https://venturebeat.com/category/ai/feed/"
+    "The Register AI": "https://www.theregister.com/software/ai_ml/headlines.atom"
+
+  "Content Creators":
+    "NetworkChuck": "https://www.youtube.com/feeds/videos.xml?channel_id=UC9-y-6csu5WGm29I7JiwpnA"
+    "Fireship": "https://www.youtube.com/feeds/videos.xml?channel_id=UCsBjURrPoezykLs9EqgamOA"
+    "Matt Wolfe": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJIfeSCssxSC_Dhc5s7woww"
+    "Andrej Karpathy": "https://www.youtube.com/feeds/videos.xml?channel_id=UCXUPKJO5MZQN11PqgIvyuvQ"
+
+  "Newsletters & Blogs":
+    "Latent Space": "https://www.latent.space/feed"
+    "Ahead of AI": "https://magazine.sebastianraschka.com/feed"
+    "Last Week in AI": "https://lastweekin.ai/feed"
+    "Interconnects": "https://www.interconnects.ai/feed"
+    "Simon Willison": "https://simonwillison.net/atom/everything/"
+    "Lil'Log (Lilian Weng)": "https://lilianweng.github.io/index.xml"
+    "The Batch (DeepLearning.AI)": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_the_batch.xml"
+    "Paul Graham": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_paulgraham.xml"
+    "Hamel Husain": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_hamel.xml"

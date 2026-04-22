@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ruff_cache/
+.pytest_cache/
+
+# Environment
+.env
+
+# Raw feed data (regenerated daily, not needed in history)
+reports/raw-*.json

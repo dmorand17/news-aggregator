@@ -1,0 +1,21 @@
+# RSS/Atom feed configuration
+# Organized by category. Add, remove, or rename feeds here without touching any Python code.
+#
+# Structure:
+#   feeds:
+#     "Category Name":
+#       "Source Display Name": "https://feed-url"
+
+feeds:
+  "TLDR":
+    "AI": "https://bullrich.dev/tldr-rss/ai.rss"
+    "Tech": "https://bullrich.dev/tldr-rss/tech.rss"
+    "DevOps": "https://bullrich.dev/tldr-rss/devops.rss"
+  "AWS":
+    "News Blog": "https://aws.amazon.com/blogs/aws/feed/" # Need to filter based on title == 'AWS Weekly Roundup'
+  "AI":
+    "Ahead of AI": "https://magazine.sebastianraschka.com/feed"
+    "Last Week in AI": "https://lastweekin.ai/feed"
+  "ChangeLogs":
+    "Obsidian": "https://obsidian.md/changelog.xml"
+    "Kiro": "https://kiro.dev/changelog/feed.rss"
