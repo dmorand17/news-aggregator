@@ -25,6 +25,9 @@ feeds:
     "Hugging Face": "https://huggingface.co/blog/feed.xml"
     "LangChain": "https://blog.langchain.dev/rss/"
     "AWS AI": "https://aws.amazon.com/blogs/ai/feed/"
+    "AWS News":
+      url: "https://aws.amazon.com/blogs/aws/feed/"
+      filter: "AWS Weekly Roundup"
     "NVIDIA Developer": "https://developer.nvidia.com/blog/feed/"
     "GitHub Blog": "https://github.blog/feed/"
     "Ollama Blog": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_ollama.xml"
