@@ -68,7 +68,14 @@ def fetch_feeds(
     """Fetch all feeds and return entries newer than cutoff that haven't been seen."""
     entries = []
     for category, sources in feeds.items():
-        for source_name, url in sources.items():
+        for source_name, feed_config in sources.items():
+            if isinstance(feed_config, dict):
+                url = feed_config["url"]
+                title_filter = feed_config.get("filter", "").lower()
+            else:
+                url = feed_config
+                title_filter = ""
+
             try:
                 feed = feedparser.parse(url)
             except Exception as exc:
@@ -80,13 +87,17 @@ def fetch_feeds(
                 if not link or link in seen:
                     continue
 
+                title = entry.get("title", "(untitled)")
+                if title_filter and title_filter not in title.lower():
+                    continue
+
                 pub_date = parse_entry_date(entry)
                 if pub_date is None or pub_date < cutoff:
                     continue
 
                 entries.append(
                     {
-                        "title": entry.get("title", "(untitled)"),
+                        "title": title,
                         "url": link,
                         "source": source_name,
                         "category": category,
