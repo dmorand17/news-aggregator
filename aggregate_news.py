@@ -4,7 +4,8 @@
 from __future__ import annotations
 
 import json
-import sys
+import logging
+from calendar import timegm
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -12,7 +13,9 @@ import feedparser
 import yaml
 from dateutil import parser as dateparser
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
+log = logging.getLogger(__name__)
+
+REPO_ROOT = Path(__file__).resolve().parent
 REPORTS_DIR = REPO_ROOT / "reports"
 SEEN_FILE = REPORTS_DIR / "seen.json"
 FEEDS_CONFIG = REPO_ROOT / "config" / "feeds.yaml"
@@ -47,8 +50,6 @@ def parse_entry_date(entry: feedparser.FeedParserDict) -> datetime | None:
             continue
         # feedparser's *_parsed is a time.struct_time
         if hasattr(raw, "tm_year"):
-            from calendar import timegm
-
             return datetime.fromtimestamp(timegm(raw), tz=timezone.utc)
         # Fall back to dateutil for string dates
         if isinstance(raw, str):
@@ -79,7 +80,7 @@ def fetch_feeds(
             try:
                 feed = feedparser.parse(url)
             except Exception as exc:
-                print(f"  [WARN] Failed to fetch {source_name}: {exc}", file=sys.stderr)
+                log.warning("Failed to fetch %s: %s", source_name, exc)
                 continue
 
             for entry in feed.entries:
@@ -107,22 +108,23 @@ def fetch_feeds(
                 )
                 seen[link] = pub_date.isoformat()
 
-            print(
-                f"  [{category}] {source_name}: OK ({len(feed.entries)} total entries)"
-            )
+            log.info("[%s] %s: OK (%d total entries)", category, source_name, len(feed.entries))
     return entries
 
 
 def main() -> None:
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
     REPORTS_DIR.mkdir(exist_ok=True)
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     cutoff = datetime.now(timezone.utc) - timedelta(hours=24)
 
     feeds = load_feeds()
-    print(
-        f"Loaded {sum(len(v) for v in feeds.values())} feeds across {len(feeds)} categories."
+    log.info(
+        "Loaded %d feeds across %d categories.",
+        sum(len(v) for v in feeds.values()),
+        len(feeds),
     )
-    print(f"Fetching feeds (cutoff: {cutoff.isoformat()})...")
+    log.info("Fetching feeds (cutoff: %s)...", cutoff.isoformat())
 
     seen = load_seen()
     entries = fetch_feeds(cutoff, seen, feeds)
@@ -130,7 +132,7 @@ def main() -> None:
 
     out_file = REPORTS_DIR / f"raw-{today}.json"
     out_file.write_text(json.dumps(entries, indent=2))
-    print(f"\nCollected {len(entries)} new entries -> {out_file}")
+    log.info("Collected %d new entries -> %s", len(entries), out_file)
 
 
 if __name__ == "__main__":
