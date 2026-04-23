@@ -45,3 +45,23 @@ jobs:
         with:
           commit_message: "docs: daily news report"
           file_pattern: "reports/*.md reports/*.html reports/seen.json"
+
+      - name: Notify Slack
+        if: always()
+        uses: slackapi/slack-github-action@v2
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: incoming-webhook
+          payload: |
+            {
+              "text": "Daily news report: ${{ job.status == 'success' && '✅ Done' || '❌ Failed' }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Daily News Report* — ${{ job.status == 'success' && '✅ Completed' || '❌ Failed' }}\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>"
+                  }
+                }
+              ]
+            }
