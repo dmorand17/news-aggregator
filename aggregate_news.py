@@ -71,10 +71,10 @@ def fetch_feeds(
         for source_name, feed_config in sources.items():
             if isinstance(feed_config, dict):
                 url = feed_config["url"]
-                title_filter = feed_config.get("filter", "").lower()
+                category_filter = feed_config.get("category_filter", "").lower()
             else:
                 url = feed_config
-                title_filter = ""
+                category_filter = ""
 
             try:
                 feed = feedparser.parse(url)
@@ -88,8 +88,12 @@ def fetch_feeds(
                     continue
 
                 title = entry.get("title", "(untitled)")
-                if title_filter and title_filter not in title.lower():
-                    continue
+
+                if category_filter:
+                    tags = entry.tags if hasattr(entry, "tags") else []
+                    entry_categories = [t.get("term", "").lower() for t in (tags or [])]
+                    if not any(category_filter in c for c in entry_categories):
+                        continue
 
                 pub_date = parse_entry_date(entry)
                 if pub_date is None or pub_date < cutoff:

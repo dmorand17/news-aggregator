@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // empty' | grep -q 'feeds.yaml' && uv run python $CLAUDE_PROJECT_DIR/.claude/hooks/sync_feeds_readme.py 2>/dev/null || true",
+            "statusMessage": "Syncing feeds to README..."
+          }
+        ]
+      }
+    ]
+  }
+}

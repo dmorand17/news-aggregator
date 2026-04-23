@@ -5,6 +5,9 @@
 #   feeds:
 #     "Category Name":
 #       "Source Display Name": "https://feed-url"
+#
+# Optional filter (case-insensitive):
+#   category_filter: "text" — match against RSS <category> tags (CDATA)
 
 feeds:
   "TLDR":
@@ -17,7 +20,7 @@ feeds:
   "Developer Platforms":
     "AWS News":
       url: "https://aws.amazon.com/blogs/aws/feed/"
-      filter: "AWS Weekly Roundup"
+      category_filter: "Week in Review"
     "Ollama Blog": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_ollama.xml"
     "Claude Blog": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml"
     "Claude Code Changelog": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_changelog_claude_code.xml"

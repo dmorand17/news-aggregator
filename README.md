@@ -21,6 +21,14 @@ Automated daily news reports powered by RSS feeds + Claude Code.
 
 All RSS feeds are defined in **`config/feeds.yaml`** — no code changes needed.
 
+### Using Claude Code (recommended)
+
+Run `/add-feed` in Claude Code — it will prompt you for the category, name, and URL, then update `config/feeds.yaml` automatically. The [Feeds](#feeds) section of this README is kept in sync via a post-edit hook.
+
+### Manually editing feeds.yaml
+
+Edit `config/feeds.yaml` directly. Two formats are supported:
+
 **Simple feed** (include all items):
 ```yaml
 feeds:
@@ -28,18 +36,22 @@ feeds:
     "Source Display Name": "https://feed-url"
 ```
 
-**Filtered feed** (only include items whose title contains the filter string):
+**Filtered feed** (only items tagged with a matching RSS `<category>` CDATA value):
 ```yaml
 feeds:
   "Category Name":
     "Source Display Name":
       url: "https://feed-url"
-      filter: "keyword to match"
+      category_filter: "Week in Review"
 ```
 
-The `filter` value is matched case-insensitively against each entry's title. Items that don't match are skipped. This is useful for high-volume feeds where you only want a specific series or tag (e.g., filtering an AWS blog feed to just "AWS Weekly Roundup").
+The `category_filter` value is matched case-insensitively against the entry's `<category>` tags. This is useful for high-volume feeds where you only want a specific series or tag.
 
-Add, remove, or rename feeds by editing that file.
+After editing manually, sync the README feeds list by running:
+
+```bash
+uv run python .claude/hooks/sync_feeds_readme.py
+```
 
 ## Setup
 
@@ -120,3 +132,32 @@ Each daily report includes:
 | Claude Code API (~10 turns/day, sonnet) | ~$0.10-0.25/day |
 | GitHub Actions (<2 min/run) | Free tier |
 | **Total** | **~$3-8/month** |
+
+## Feeds
+
+<!-- feeds-start -->
+
+### TLDR
+- [AI](https://bullrich.dev/tldr-rss/ai.rss)
+- [Tech](https://bullrich.dev/tldr-rss/tech.rss)
+- [DevOps](https://bullrich.dev/tldr-rss/devops.rss)
+
+### News Sites
+- [The Verge AI](https://www.theverge.com/rss/ai-artificial-intelligence/index.xml)
+- [TechCrunch AI](https://techcrunch.com/category/artificial-intelligence/feed/)
+
+### Developer Platforms
+- [AWS News](https://aws.amazon.com/blogs/aws/feed/) *(filtered: AWS Weekly Roundup)*
+- [Ollama Blog](https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_ollama.xml)
+- [Claude Blog](https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml)
+- [Claude Code Changelog](https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_changelog_claude_code.xml)
+
+### AI
+- [Ahead of AI](https://magazine.sebastianraschka.com/feed)
+- [Last Week in AI](https://lastweekin.ai/feed)
+
+### ChangeLogs
+- [Obsidian](https://obsidian.md/changelog.xml)
+- [Kiro](https://kiro.dev/changelog/feed.rss)
+
+<!-- feeds-end -->
