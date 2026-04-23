@@ -5,7 +5,7 @@ from pathlib import Path
 import re
 import yaml
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 FEEDS_CONFIG = REPO_ROOT / "config" / "feeds.yaml"
 README = REPO_ROOT / "README.md"
 

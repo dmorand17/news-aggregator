@@ -146,8 +146,10 @@ Each daily report includes:
 - [The Verge AI](https://www.theverge.com/rss/ai-artificial-intelligence/index.xml)
 - [TechCrunch AI](https://techcrunch.com/category/artificial-intelligence/feed/)
 
+### Cloud
+- [AWS News](https://aws.amazon.com/blogs/aws/feed/)
+
 ### Developer Platforms
-- [AWS News](https://aws.amazon.com/blogs/aws/feed/) *(filtered: AWS Weekly Roundup)*
 - [Ollama Blog](https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_ollama.xml)
 - [Claude Blog](https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml)
 - [Claude Code Changelog](https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_changelog_claude_code.xml)
@@ -159,5 +161,8 @@ Each daily report includes:
 ### ChangeLogs
 - [Obsidian](https://obsidian.md/changelog.xml)
 - [Kiro](https://kiro.dev/changelog/feed.rss)
+
+### Investing
+- [TechCrunch Venture](https://techcrunch.com/category/venture/feed/)
 
 <!-- feeds-end -->
