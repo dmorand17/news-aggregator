@@ -46,7 +46,9 @@ jobs:
           for f in reports/[0-9]*.md reports/[0-9]*.html; do
             [ -f "$f" ] || continue
             fname=$(basename "${f%.*}")
-            [ "$fname" \< "$cutoff" ] && rm "$f"
+            if [ "$fname" \< "$cutoff" ]; then
+              rm "$f"
+            fi
           done
 
       - name: Commit report
