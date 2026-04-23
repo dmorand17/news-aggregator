@@ -17,10 +17,11 @@ feeds:
   "News Sites":
     "The Verge AI": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
     "TechCrunch AI": "https://techcrunch.com/category/artificial-intelligence/feed/"
-  "Developer Platforms":
+  "Cloud":
     "AWS News":
       url: "https://aws.amazon.com/blogs/aws/feed/"
       category_filter: "Week in Review"
+  "Developer Platforms":
     "Ollama Blog": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_ollama.xml"
     "Claude Blog": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml"
     "Claude Code Changelog": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_changelog_claude_code.xml"
