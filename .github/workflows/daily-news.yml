@@ -40,6 +40,15 @@ jobs:
             --max-turns 30
             --allowedTools "Read,Write,Glob,Grep,WebFetch,WebSearch,Bash(date *),Bash(ls *)"
 
+      - name: Prune reports older than 90 days
+        run: |
+          cutoff=$(date -d "90 days ago" +%Y-%m-%d)
+          for f in reports/[0-9]*.md reports/[0-9]*.html; do
+            [ -f "$f" ] || continue
+            fname=$(basename "${f%.*}")
+            [ "$fname" \< "$cutoff" ] && rm "$f"
+          done
+
       - name: Commit report
         uses: stefanzweifel/git-auto-commit-action@v5
         with:

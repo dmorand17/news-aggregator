@@ -8,6 +8,7 @@ uv run python aggregate_news.py
 echo "Running report generation..."
 claude --model claude-sonnet-4-6 \
   --allowedTools "Read,Write,Glob,Grep,WebFetch,WebSearch,Bash(date *),Bash(ls *)" \
+  --max-turns 30 \
   --print \
   "Read the raw feed data from reports/raw-$(date +%Y-%m-%d).json. \
    Follow the instructions in CLAUDE.md to generate a polished daily news report. \
