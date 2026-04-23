@@ -27,7 +27,7 @@ def load_feeds() -> dict[str, dict[str, str]]:
         data = yaml.safe_load(f)
     return data.get("feeds", {})
 
-load_seen() -> dict[str, str]:
+def load_seen() -> dict[str, str]:
     """Load the seen URLs tracker. Values are ISO date strings."""
     if SEEN_FILE.exists():
         return json.loads(SEEN_FILE.read_text())
