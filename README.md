@@ -1,17 +1,17 @@
 # News Aggregator
 
-Automated daily news reports powered by RSS feeds + Claude Code.
+Automated weekly news reports powered by RSS feeds + Claude Code.
 
 ## How It Works
 
 ```
-  GitHub Actions (daily cron 7 AM EST)
+  GitHub Actions (weekly cron Friday 5 AM EST)
   │
   ├─[1: Python RSS Aggregator]──────────────────────────────────────────┐
-  │  feeds.yaml → fetch feeds → filter 24h → dedupe → raw-YYYY-MM-DD.json
+  │  feeds.yaml → fetch feeds → filter 7d → dedupe → raw-YYYY-WNN.json
   │
   ├─[2: Claude Code]────────────────────────────────────────────────────┐
-  │  raw JSON + WebSearch → synthesize → YYYY-MM-DD.{md,html}
+  │  raw JSON + WebSearch → synthesize → YYYY-WNN.{md,html}
   │
   └─[3: git-auto-commit]────────────────────────────────────────────────┐
      commit report + seen.json → main
@@ -73,11 +73,12 @@ uv run python .claude/hooks/sync_feeds_readme.py
 #### Step 1 — Fetch RSS feeds
 
 ```bash
-# Run the aggregator (writes reports/raw-YYYY-MM-DD.json)
+# Run the aggregator (writes reports/raw-YYYY-WNN.json)
 uv run python aggregate_news.py
 
 # Inspect the output
-cat reports/raw-$(date +%Y-%m-%d).json | python -m json.tool | head -50
+WEEK=$(python3 -c "from datetime import datetime; d=datetime.now(); print(f'{d.isocalendar()[0]}-W{d.isocalendar()[1]:02d}')")
+cat reports/raw-${WEEK}.json | python -m json.tool | head -50
 ```
 
 #### Step 2 — Generate the report with Claude Code
@@ -86,15 +87,16 @@ Make sure `CLAUDE_CODE_OAUTH_TOKEN` is set in your environment, then run Claude 
 
 ```bash
 export CLAUDE_CODE_OAUTH_TOKEN=...
+WEEK=$(python3 -c "from datetime import datetime; d=datetime.now(); print(f'{d.isocalendar()[0]}-W{d.isocalendar()[1]:02d}')")
 
 claude --model claude-sonnet-4-6 \
   --max-turns 30 \
   --allowedTools "Read,Write,Glob,Grep,WebFetch,WebSearch,Bash(date *),Bash(ls *)" \
   --print \
-  "Read the raw feed data from reports/raw-$(date +%Y-%m-%d).json. \
-   Follow the instructions in CLAUDE.md to generate a polished daily news report. \
-   Save a markdown report to reports/$(date +%Y-%m-%d).md and an HTML digest to \
-   reports/$(date +%Y-%m-%d).html. Use templates/digest-template.html as the HTML template. \
+  "Read the raw feed data from reports/raw-${WEEK}.json. \
+   Follow the instructions in CLAUDE.md to generate a polished weekly news report. \
+   Save a markdown report to reports/${WEEK}.md and an HTML digest to \
+   reports/${WEEK}.html. Use templates/digest-template.html as the HTML template. \
    Use WebSearch to find any breaking news that RSS feeds may have missed."
 ```
 
@@ -102,24 +104,24 @@ claude --model claude-sonnet-4-6 \
 
 ```bash
 # Open the HTML digest in your browser
-open reports/$(date +%Y-%m-%d).html
+open reports/${WEEK}.html
 
 # Or read the markdown report
-cat reports/$(date +%Y-%m-%d).md
+cat reports/${WEEK}.md
 ```
 
 > **Note:** The aggregator tracks seen URLs in `reports/seen.json` to avoid duplicates across runs. Delete or reset this file if you want to reprocess all items.
 
 ### Manual Trigger (GitHub Actions)
 
-Go to **Actions** > **Daily News Report** > **Run workflow**.
+Go to **Actions** > **Weekly News Report** > **Run workflow**.
 
 ## Report Format
 
-Each daily report includes:
+Each weekly report includes:
 
 1. **Top Story** — single most significant item with 2-3 sentence summary
-2. **Dynamic categories** (4-7 sections based on the day's content)
+2. **Dynamic categories** (4-7 sections based on the week's content)
    - High-relevance: major launches, breaking news
    - Medium-relevance: notable updates, ecosystem moves
    - Low-relevance: minor items, niche updates
@@ -129,9 +131,9 @@ Each daily report includes:
 | Component | Cost |
 |-----------|------|
 | RSS feeds | Free |
-| Claude Code API (~10 turns/day, sonnet) | ~$0.10-0.25/day |
+| Claude Code API (~10 turns/week, sonnet) | ~$0.10-0.25/week |
 | GitHub Actions (<2 min/run) | Free tier |
-| **Total** | **~$3-8/month** |
+| **Total** | **~$0.50-1/month** |
 
 ## Feeds
 

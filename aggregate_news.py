@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch RSS/Atom feeds from configured sources, filter to last 24 hours, de-dupe."""
+"""Fetch RSS/Atom feeds from configured sources, filter to last 7 days, de-dupe."""
 
 from __future__ import annotations
 
@@ -35,8 +35,8 @@ def load_seen() -> dict[str, str]:
 
 
 def save_seen(seen: dict[str, str]) -> None:
-    """Save seen URLs, pruning entries older than 7 days."""
-    cutoff = (datetime.now(timezone.utc) - timedelta(days=7)).isoformat()
+    """Save seen URLs, pruning entries older than 14 days."""
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=14)).isoformat()
     pruned = {url: ts for url, ts in seen.items() if ts > cutoff}
     SEEN_FILE.write_text(json.dumps(pruned, indent=2))
 
@@ -118,8 +118,10 @@ def fetch_feeds(
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
     REPORTS_DIR.mkdir(exist_ok=True)
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    cutoff = datetime.now(timezone.utc) - timedelta(hours=24)
+    now = datetime.now(timezone.utc)
+    iso_year, iso_week, _ = now.isocalendar()
+    week_label = f"{iso_year}-W{iso_week:02d}"
+    cutoff = now - timedelta(days=7)
 
     feeds = load_feeds()
     log.info(
@@ -133,7 +135,7 @@ def main() -> None:
     entries = fetch_feeds(cutoff, seen, feeds)
     save_seen(seen)
 
-    out_file = REPORTS_DIR / f"raw-{today}.json"
+    out_file = REPORTS_DIR / f"raw-{week_label}.json"
     out_file.write_text(json.dumps(entries, indent=2))
     log.info("Collected %d new entries -> %s", len(entries), out_file)
 

@@ -1,8 +1,8 @@
-name: Daily News Report
+name: Weekly News Report
 
 on:
   schedule:
-    - cron: "0 12 * * *" # 12:00 UTC (7 AM EST)
+    - cron: "0 10 * * 5" # 10:00 UTC (5 AM EST) every Friday
   workflow_dispatch: # manual trigger
 
 permissions:
@@ -28,12 +28,13 @@ jobs:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           prompt: |
-            Read the raw feed data from reports/raw-*.json (today's file).
+            Read the raw feed data from reports/raw-*.json (this week's file).
             Follow the instructions in CLAUDE.md to generate a polished
-            daily news report. Save a markdown report to reports/YYYY-MM-DD.md
-            and an HTML digest to reports/YYYY-MM-DD.html using today's date.
-            Use templates/digest-template.html as the HTML template.
-            Use WebSearch to find any breaking news that RSS feeds may have missed.
+            weekly news report. Save a markdown report to reports/YYYY-WNN.md
+            and an HTML digest to reports/YYYY-WNN.html using the current ISO
+            week label (e.g. 2026-W17). Use templates/digest-template.html as
+            the HTML template. Use WebSearch to find any breaking news that RSS
+            feeds may have missed.
           show_full_output: "true"
           claude_args: >-
             --model claude-sonnet-4-6
@@ -54,7 +55,7 @@ jobs:
       - name: Commit report
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "docs: daily news report"
+          commit_message: "docs: weekly news report"
           file_pattern: "reports/*.md reports/*.html reports/seen.json"
 
       - name: Notify Slack
@@ -65,13 +66,13 @@ jobs:
           webhook-type: incoming-webhook
           payload: |
             {
-              "text": "Daily news report: ${{ job.status == 'success' && '✅ Done' || '❌ Failed' }}",
+              "text": "Weekly news report: ${{ job.status == 'success' && '✅ Done' || '❌ Failed' }}",
               "blocks": [
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Daily News Report* — ${{ job.status == 'success' && '✅ Completed' || '❌ Failed' }}\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>"
+                    "text": "*Weekly News Report* — ${{ job.status == 'success' && '✅ Completed' || '❌ Failed' }}\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>"
                   }
                 }
               ]
