@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Model Surge, Mass Layoffs, and a Security Breach: AI's Full-Throttle Week — April 24, 2026">
+<title>AI Digest — April 24, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── Design tokens ─────────────────────────────────────────── */
+:root {
+  --bg:           #0d0f14;
+  --surface:      #141720;
+  --surface2:     #1b1f2e;
+  --border:       #252a3a;
+  --border-light: #1e2332;
+  --text:         #e8e6df;
+  --text-sub:     #9a97a0;
+  --text-muted:   #555c70;
+  --amber:        #e8a020;
+  --amber-dim:    rgba(232,160,32,0.12);
+  --amber-glow:   rgba(232,160,32,0.06);
+  --red:          #e05050;
+  --red-dim:      rgba(224,80,80,0.10);
+  --orange:       #d97c30;
+  --serif:        'Playfair Display', Georgia, serif;
+  --sans:         'IBM Plex Sans', system-ui, sans-serif;
+  --mono:         'IBM Plex Mono', 'Courier New', monospace;
+  --rule:         1px solid var(--border);
+  --max-w:        820px;
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ── Hero ──────────────────────────────────────────────────── */
+.hero {
+  padding: 3.5rem 2.5rem 2.5rem;
+  border-bottom: var(--rule);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      var(--border-light) 39px,
+      var(--border-light) 40px
+    );
+  opacity: 0.5;
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--amber);
+}
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1rem;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+  max-width: 680px;
+  position: relative;
+}
+.hero-meta {
+  font-size: 0.9rem;
+  color: var(--text-sub);
+  line-height: 1.65;
+  max-width: 600px;
+  position: relative;
+}
+
+/* ── Ticker bar ────────────────────────────────────────────── */
+.ticker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  background: var(--surface);
+  border-bottom: var(--rule);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border-right: var(--rule);
+  color: var(--text-sub);
+  white-space: nowrap;
+}
+.ticker-item:last-child { border-right: none; }
+.ticker-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.ticker-dot.total  { background: var(--text-muted); }
+.ticker-dot.high   { background: var(--red); }
+.ticker-dot.med    { background: var(--orange); }
+.ticker-num {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ── TOC ───────────────────────────────────────────────────── */
+.toc {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg);
+  border-bottom: var(--rule);
+  padding: 0.7rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.toc::before {
+  content: 'SECTIONS';
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  align-self: center;
+  margin-right: 0.5rem;
+}
+.toc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.75rem;
+  border-radius: 2px;
+  border: var(--rule);
+  background: transparent;
+  color: var(--text-sub);
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.toc-btn:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+  background: var(--amber-glow);
+}
+.toc-n {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+.toc-hot {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--red);
+  font-weight: 500;
+}
+
+/* ── Top story ─────────────────────────────────────────────── */
+.top-story {
+  margin: 2rem 2.5rem;
+  padding: 1.5rem 1.75rem;
+  background: var(--amber-dim);
+  border: 1px solid rgba(232,160,32,0.25);
+  border-radius: 2px;
+  position: relative;
+}
+.top-story::before {
+  content: '★ TOP STORY';
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  color: var(--amber);
+  margin-bottom: 0.75rem;
+}
+.top-story p {
+  font-size: 0.92rem;
+  color: var(--text-sub);
+  line-height: 1.7;
+}
+.top-story strong a {
+  font-weight: 600;
+  color: var(--text);
+}
+.top-story strong a:hover {
+  color: var(--amber);
+}
+
+/* ── Content ───────────────────────────────────────────────── */
+.content {
+  padding: 0.5rem 2.5rem 3rem;
+}
+
+/* ── Category sections ─────────────────────────────────────── */
+.category {
+  margin-top: 2.75rem;
+}
+.cat-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--border);
+  position: relative;
+}
+.cat-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--amber);
+}
+.cat-header h2 {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+}
+.cat-count {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+/* ── High-relevance cards ──────────────────────────────────── */
+.card-high {
+  border-left: 2px solid var(--red);
+  background: var(--red-dim);
+  border-radius: 0 2px 2px 0;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.card-high .card-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+.card-high a {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.35;
+  transition: color 0.12s;
+}
+.card-high a:hover { color: var(--red); }
+.card-summary {
+  font-size: 0.84rem;
+  color: var(--text-sub);
+  line-height: 1.6;
+}
+
+/* ── Source badge ──────────────────────────────────────────── */
+.src {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  padding: 0.1rem 0.45rem;
+  border-radius: 2px;
+  background: var(--surface2);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.card-high .src {
+  background: rgba(224,80,80,0.08);
+  border-color: rgba(224,80,80,0.2);
+  color: var(--red);
+}
+
+/* ── Medium / Low rows ─────────────────────────────────────── */
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.55rem 0.25rem;
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.1s;
+  border-radius: 2px;
+}
+.row:last-child { border-bottom: none; }
+.row:hover { background: var(--surface); }
+
+.row-mark {
+  margin-top: 0.52rem;
+  flex-shrink: 0;
+}
+.rel-medium .row-mark {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 0 4px 6px;
+  border-color: transparent transparent transparent var(--orange);
+  margin-top: 0.58rem;
+}
+.rel-low .row-mark {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--border);
+  margin-top: 0.62rem;
+}
+
+.row-body { flex: 1; min-width: 0; }
+.row-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  line-height: 1.4;
+}
+.row a {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  transition: color 0.12s;
+}
+.rel-medium .row a:hover { color: var(--orange); }
+.rel-low    .row a:hover { color: var(--text-sub); }
+
+details { margin-top: 0.25rem; }
+summary.expand-btn {
+  list-style: none;
+  font-size: 0.7rem;
+  font-family: var(--mono);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.12s;
+  display: inline;
+}
+summary.expand-btn::-webkit-details-marker { display: none; }
+summary.expand-btn::marker { content: ''; }
+summary.expand-btn:hover { color: var(--amber); }
+.row-summary {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  line-height: 1.55;
+  margin-top: 0.3rem;
+  padding-top: 0.2rem;
+  border-top: 1px solid var(--border-light);
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+footer {
+  margin-top: 2rem;
+  padding: 1.25rem 2.5rem;
+  border-top: var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+footer::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--amber);
+  flex-shrink: 0;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .hero        { padding: 2rem 1rem 1.75rem; }
+  .hero h1     { font-size: 1.6rem; }
+  .content     { padding: 0.25rem 1rem 2rem; }
+  .top-story   { margin: 1rem; padding: 1.1rem 1.1rem; }
+  .ticker      { display: none; }
+  .toc         { padding: 0.5rem 0.75rem; gap: 0.35rem; }
+  .toc::before { display: none; }
+  .toc-btn     { padding: 0.4rem 0.7rem; font-size: 0.78rem; min-height: 36px; }
+  .card-high   { padding: 0.85rem 1rem; }
+  .card-high a { font-size: 0.95rem; }
+  .row         { padding: 0.6rem 0.1rem; gap: 0.6rem; }
+  .row a       { font-size: 0.86rem; }
+  .src         { display: none; }
+  .cat-count   { display: none; }
+}
+
+/* ── Print ─────────────────────────────────────────────────── */
+@media print {
+  body { background: #fff; color: #111; max-width: 100%; }
+  .toc, .ticker { display: none; }
+  .hero { padding: 1rem 0; border-bottom: 2px solid #111; }
+  .hero::before, .hero::after { display: none; }
+  .hero h1 { color: #111; font-size: 1.6rem; }
+  .hero-eyebrow, .hero-meta { color: #444; }
+  .top-story { background: none; border: 1px solid #ccc; margin: 1rem 0; }
+  .top-story::before { color: #111; }
+  .card-high { background: none; border-left: 2px solid #111; }
+  .card-high a, .row a { color: #111; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.65rem; color: #666; word-break: break-all; }
+  .src::after { content: none; }
+  details { display: block; }
+  details summary { display: none; }
+  .row-summary { display: block !important; }
+  .cat-header::after { display: none; }
+  footer { color: #666; border-top: 1px solid #ccc; }
+  footer::before { background: #111; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-eyebrow">Daily Digest &bull; April 24, 2026</div>
+  <h1>Model Surge, Mass Layoffs, and a Security Breach: AI's Full-Throttle Week</h1>
+  <p class="hero-meta">OpenAI and DeepSeek simultaneously unveiled major new models — GPT-5.5 and V4 — as the frontier race enters a rapid-cadence phase with near-monthly releases on multiple fronts. Meta announced a 10% workforce reduction (~8,000 roles) explicitly to fund its AI push, while Anthropic's "too dangerous to release" Claude Mythos model was accessed through a third-party vendor breach. With the Musk-Altman trial opening Monday in Oakland and a critical AI inference-engine exploit already in the wild, the industry's acceleration shows no sign of tapering.</p>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TICKER
+     ═══════════════════════════════════════════════════════════ -->
+<div class="ticker">
+  <div class="ticker-item">
+    <span class="ticker-dot total"></span>
+    <span class="ticker-num">23</span> stories
+  </div>
+  <div class="ticker-item">
+    <span class="ticker-dot high"></span>
+    <span class="ticker-num">7</span> important
+  </div>
+  <div class="ticker-item">
+    <span class="ticker-dot med"></span>
+    <span class="ticker-num">8</span> notable
+  </div>
+  <div class="ticker-item">
+    <span class="ticker-num">6</span> topics
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TOC
+     ═══════════════════════════════════════════════════════════ -->
+<nav class="toc">
+  <a href="#cat-1" class="toc-btn">🤖 Frontier Models <span class="toc-n">2 <span class="toc-hot">2!</span></span></a>
+  <a href="#cat-2" class="toc-btn">⚖️ Industry &amp; Policy <span class="toc-n">5 <span class="toc-hot">2!</span></span></a>
+  <a href="#cat-3" class="toc-btn">🔐 Security &amp; Safety <span class="toc-n">3 <span class="toc-hot">2!</span></span></a>
+  <a href="#cat-4" class="toc-btn">🛠️ Developer Tools <span class="toc-n">6 <span class="toc-hot">1!</span></span></a>
+  <a href="#cat-5" class="toc-btn">🏢 Enterprise <span class="toc-n">4</span></a>
+  <a href="#cat-6" class="toc-btn">🔬 Research &amp; Emerging Tech <span class="toc-n">3</span></a>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TOP STORY
+     ═══════════════════════════════════════════════════════════ -->
+<aside class="top-story" aria-label="Top story">
+  <p><strong><a href="https://www.theverge.com/ai-artificial-intelligence/917644/anthropic-claude-mythos-breach-humiliation" target="_blank" rel="noopener noreferrer">Anthropic's Claude Mythos — deemed "too dangerous to release" — breached via third-party vendor</a></strong> &mdash; <em>The Verge</em>. A small group of unauthorized users accessed Claude Mythos through a third-party contractor environment, reportedly by guessing the model's API URL based on Anthropic's known URL conventions; an insider at the contractor firm with shared API keys reportedly facilitated the breach. Anthropic confirmed it is investigating and says its own systems remain unaffected — but the incident sharply undercuts weeks of public messaging about Mythos being too powerful and dangerous to release publicly.</p>
+</aside>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CONTENT
+     ═══════════════════════════════════════════════════════════ -->
+<div class="content">
+
+  <!-- ── Frontier Models ─────────────────────────────────────── -->
+  <section class="category" id="cat-1">
+    <div class="cat-header">
+      <h2>🤖 Frontier Models</h2>
+      <span class="cat-count">2 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://techcrunch.com/2026/04/23/openai-chatgpt-gpt-5-5-ai-model-superapp/" target="_blank" rel="noopener noreferrer">OpenAI releases GPT-5.5, bringing company one step closer to an AI 'super app'</a>
+        <span class="src">TechCrunch / CNBC</span>
+      </div>
+      <p class="card-summary">GPT-5.5 is rolling out now to Plus, Pro, Business, and Enterprise subscribers across ChatGPT and Codex, with OpenAI calling it its "smartest and most intuitive model yet" — excelling at code, software operation, research, and document generation. The model clears OpenAI's "High" cybersecurity risk threshold, meaning it could amplify existing attack pathways, though it stops short of the "Critical" bar requiring extraordinary deployment safeguards. The rapid release cadence (GPT-5.4 launched last month) signals OpenAI is accelerating to stay ahead of DeepSeek and Anthropic.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://techcrunch.com/2026/04/24/deepseek-previews-new-ai-model-that-closes-the-gap-with-frontier-models/" target="_blank" rel="noopener noreferrer">DeepSeek previews V4 — closes the gap with frontier models, open-sourced under MIT</a>
+        <span class="src">TechCrunch / Bloomberg</span>
+      </div>
+      <p class="card-summary">DeepSeek released preview versions of V4-Pro (1.6T MoE, 49B active parameters) and V4-Flash (284B total, 13B active), both with 1M-token context windows and dual Thinking/Non-Thinking modes. Both are open-sourced under MIT license on Hugging Face, with V4-Flash priced at just $0.14/M input tokens — among the cheapest frontier-class inference available. V4-Pro reportedly nearly matches top closed-source models on reasoning benchmarks, powered by a new Hybrid Attention Architecture that significantly improves long-context memory.</p>
+    </div>
+  </section>
+
+  <!-- ── Industry & Policy ───────────────────────────────────── -->
+  <section class="category" id="cat-2">
+    <div class="cat-header">
+      <h2>⚖️ Industry &amp; Policy</h2>
+      <span class="cat-count">5 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://www.cnbc.com/2026/04/23/meta-will-cut-10percent-of-workforce-as-it-pushes-more-into-ai.html" target="_blank" rel="noopener noreferrer">Meta will cut 10% of workforce as company pushes deeper into AI</a>
+        <span class="src">CNBC / The Verge</span>
+      </div>
+      <p class="card-summary">Meta is laying off roughly 8,000 employees starting May 20, explicitly citing its generative AI investment push and efficiency goals — while also closing 6,000 open roles. At 10% of an ~79,000-person global workforce, this is one of the largest single-company AI-driven workforce reductions in tech to date. Zuckerberg is redirecting the savings directly into AI infrastructure and next-generation LLM development, cementing the Big Tech pattern of framing layoffs as AI reinvestment.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://www.nytimes.com/2026/04/23/technology/elon-musk-sam-altman-openai-trial.html" target="_blank" rel="noopener noreferrer">Elon Musk and Sam Altman's epic fight heads to court — trial opens Monday in Oakland</a>
+        <span class="src">NYT / The Verge</span>
+      </div>
+      <p class="card-summary">Musk is seeking $150B+ in damages from OpenAI and Microsoft, demanding Altman's removal from the board, and seeking to reverse OpenAI's for-profit corporate conversion. Trial begins April 27 in Oakland and is expected to surface internal communications from OpenAI's early years — including the circumstances of Musk's departure — that could reshape the public record of how the company evolved from nonprofit safety lab to commercial giant.</p>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.wsj.com/tech/microsoft-offers-buyouts-to-7-of-workforce-755b8534" target="_blank" rel="noopener noreferrer">Microsoft Offers Its First Ever Buyouts to Shape Workforce Around AI Push</a>
+          <span class="src">WSJ</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Microsoft is offering voluntary retirement packages to US employees at senior director level and below whose combined age and years of service total 70+, accompanying broader changes to its performance evaluation and equity compensation systems in an AI-first workforce realignment.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.theverge.com/ai-artificial-intelligence/917380/ai-monetization-anthropic-openai-token-economics-revenue" target="_blank" rel="noopener noreferrer">You're about to feel the AI money squeeze</a>
+          <span class="src">The Verge</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">AI labs including OpenAI and Anthropic are beginning to restrict previously unlimited agentic tools as infrastructure costs mount, with tighter rate limits and rising subscription tiers expected through 2026.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://blog.pragmaticengineer.com/the-pulse-tokenmaxxing-as-a-weird-new-trend/" target="_blank" rel="noopener noreferrer">'Tokenmaxxing' as a weird new trend</a>
+          <span class="src">Pragmatic Engineer</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Workers are gaming internal AI-usage leaderboards by flooding systems with parallel agents and inflated prompts — producing outages, throwaway work, and massive API waste with no commensurate output, a cautionary tale about choosing the wrong productivity metric.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Security & Safety ───────────────────────────────────── -->
+  <section class="category" id="cat-3">
+    <div class="cat-header">
+      <h2>🔐 Security &amp; Safety</h2>
+      <span class="cat-count">3 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://www.theverge.com/ai-artificial-intelligence/917644/anthropic-claude-mythos-breach-humiliation" target="_blank" rel="noopener noreferrer">Anthropic's Mythos breach was humiliating</a>
+        <span class="src">The Verge</span>
+      </div>
+      <p class="card-summary">Claude Mythos — which Anthropic described as capable of autonomous zero-day discovery and multi-step exploit chaining, and too dangerous to release — was accessed by unauthorized users through a third-party vendor environment. The group reportedly guessed the model's API URL from Anthropic's URL conventions, aided by an insider at a contractor firm with shared API keys. Anthropic says its own systems are unaffected, but the breach is a significant embarrassment given weeks of public messaging about Mythos's unprecedented danger.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://webflow.sysdig.com/blog/cve-2026-33626-how-attackers-exploited-lmdeploy-llm-inference-engines-in-12-hours" target="_blank" rel="noopener noreferrer">CVE-2026-33626: How attackers exploited LMDeploy LLM Inference Engines in 12 hours</a>
+        <span class="src">Sysdig</span>
+      </div>
+      <p class="card-summary">A critical SSRF vulnerability in LMDeploy — an AI model-serving toolkit with ~8,000 GitHub stars — was weaponized just 12.5 hours after public disclosure, with no proof-of-concept code available. Attackers used the vision-language image loader to probe AWS metadata services, Redis, MySQL, and other internal targets in an eight-minute session. The rapid exploitation illustrates how detailed CVE advisories now function as de facto exploit blueprints in an AI-assisted threat environment.</p>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://techcrunch.com/2026/04/23/another-customer-of-troubled-startup-delve-suffered-a-big-security-incident/" target="_blank" rel="noopener noreferrer">Another customer of troubled startup Delve suffered a big security incident</a>
+          <span class="src">TechCrunch</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Compliance startup Delve was confirmed as the security certification vendor for Context AI, which disclosed a breach last week, raising concerns about the vetting of third-party AI compliance vendors.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Developer Tools ─────────────────────────────────────── -->
+  <section class="category" id="cat-4">
+    <div class="cat-header">
+      <h2>🛠️ Developer Tools</h2>
+      <span class="cat-count">6 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://www.theverge.com/ai-artificial-intelligence/917871/anthropic-claude-personal-app-connectors" target="_blank" rel="noopener noreferrer">Claude is connecting directly to your personal apps like Spotify, Uber Eats, and TurboTax</a>
+        <span class="src">The Verge</span>
+      </div>
+      <p class="card-summary">Anthropic expanded Claude's integration catalog to cover a wide range of personal apps — Spotify, Audible, Uber, Instacart, TripAdvisor, AllTrails, TurboTax, and others — building on existing work-app integrations. Some apps offer read/write access, positioning Claude as a capable daily assistant for travel planning, shopping, personal finance, and entertainment. The expansion reflects Anthropic's strategy to make Claude the ambient AI layer for both professional work and everyday personal life.</p>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.anthropic.com/engineering/april-23-postmortem" target="_blank" rel="noopener noreferrer">An update on recent Claude Code quality reports</a>
+          <span class="src">Anthropic Engineering</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Anthropic traced a month of user-reported quality degradation in Claude Code to three separate changes affecting Claude Code, the Claude Agent SDK, and Claude Cowork (API unaffected); issues were resolved April 20 with new engineering controls added to catch similar regressions earlier.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://kubernetes.io/blog/2026/04/22/kubernetes-v1-36-release/" target="_blank" rel="noopener noreferrer">Kubernetes v1.36: ハル (Haru)</a>
+          <span class="src">Kubernetes Blog</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Ships 70 enhancements with 18 graduating to stable, including fine-grained kubelet API authorization, user-namespace container isolation, and volume group snapshots; permanently removes the gitRepo volume type (root-level exploit vector) and deprecates the vulnerable externalIPs Service field.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://grafana.com/blog/pyroscope-2-0-release/" target="_blank" rel="noopener noreferrer">Introducing Pyroscope 2.0: faster, more cost-effective continuous profiling at scale</a>
+          <span class="src">Grafana</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Eliminates write-path replication and reduces symbol storage by up to 95%, with stateless queriers and native OpenTelemetry Profiles support; has already processed 19.5PB of profiling data in Grafana Cloud.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://aws.amazon.com/blogs/devops/automating-incident-investigation-with-aws-devops-agent-and-salesforce-mcp-server/" target="_blank" rel="noopener noreferrer">Automating Incident Investigation with AWS DevOps Agent and Salesforce MCP Server</a>
+          <span class="src">AWS</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">AWS DevOps Agent now integrates with Salesforce MCP Server to auto-investigate infrastructure incidents triggered by support cases, cutting mean time to resolution from hours to minutes without manual handoffs.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://kiro.dev/changelog/general/per-model-message-counts-in-user-activity-reports" target="_blank" rel="noopener noreferrer">General: Per-model message counts in user activity reports</a>
+          <span class="src">Kiro</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Kiro's daily user activity reports now break down message counts by individual AI model (e.g., Auto, Claude Opus 4.6), giving enterprise admins granular visibility into per-model adoption patterns.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Enterprise & Infrastructure ───────────────────────── -->
+  <section class="category" id="cat-5">
+    <div class="cat-header">
+      <h2>🏢 Enterprise &amp; Infrastructure</h2>
+      <span class="cat-count">4 items</span>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://techcrunch.com/2026/04/24/in-another-wild-turn-for-ai-chips-meta-signs-deal-for-millions-of-amazon-ai-cpus/" target="_blank" rel="noopener noreferrer">In another wild turn for AI chips, Meta signs deal for millions of Amazon AI CPUs</a>
+          <span class="src">TechCrunch</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Meta is sourcing millions of Amazon homegrown CPUs — not GPUs — for AI agentic workloads, signaling that agent orchestration at scale demands a different compute profile than training and that specialized CPU architectures are a new competitive front in the AI infrastructure race.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.macrumors.com/2026/04/22/google-gemini-powered-siri-2026/" target="_blank" rel="noopener noreferrer">Google confirms Gemini-powered Siri still on track for 2026</a>
+          <span class="src">MacRumors</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Google Cloud CEO Thomas Kurian confirmed at Google Cloud Next 2026 in Las Vegas that the Apple-Google Gemini deal is on track; the custom 1.2T-parameter model will underpin a redesigned Siri and Apple Intelligence in iOS 27, expected at WWDC on June 8.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://techcrunch.com/2026/04/23/bret-taylors-sierra-buys-yc-backed-ai-startup-fragment/" target="_blank" rel="noopener noreferrer">Bret Taylor's Sierra buys YC-backed AI startup Fragment</a>
+          <span class="src">TechCrunch</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Sierra, the AI customer service agent platform, acquired YC-backed French startup Fragment to expand its agent capabilities and European presence.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.cncf.io/blog/2026/04/13/ingress-nginx-to-envoy-gateway-migration-on-cncf-internal-services-cluster/" target="_blank" rel="noopener noreferrer">ingress-nginx to Envoy Gateway migration on CNCF internal services cluster</a>
+          <span class="src">CNCF</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">CNCF migrated its internal Kubernetes cluster from ingress-nginx to Envoy Gateway via the Kubernetes Gateway API, providing a practical reference for teams planning similar moves ahead of ingress-nginx's pending retirement.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Research & Emerging Tech ───────────────────────────── -->
+  <section class="category" id="cat-6">
+    <div class="cat-header">
+      <h2>🔬 Research &amp; Emerging Tech</h2>
+      <span class="cat-count">3 items</span>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.corememory.com/p/a-hundred-robots-are-running-a-bio-medra-michelle-lee" target="_blank" rel="noopener noreferrer">A Hundred Robots Are Running A Bio Lab</a>
+          <span class="src">Core Memory</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Medra's 38,000 sq ft San Francisco warehouse runs ~100 physical AI scientists operating lab instruments autonomously; five customers are running experiments, and while customers own their data, Medra retains process knowledge — a moat positioning it as a platform for automated biotech research at scale.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://techcrunch.com/2026/04/23/era-computer-raises-11m-to-build-a-software-platform-for-ai-gadgets/" target="_blank" rel="noopener noreferrer">Era raises $11M to build a software platform for AI gadgets</a>
+          <span class="src">TechCrunch</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Era is building an OS-level platform for the coming wave of AI hardware form factors beyond phones — including glasses, rings, and pendants.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://techcrunch.com/2026/04/23/meet-noscroll-an-ai-bot-that-does-your-doomscrolling-for-you/" target="_blank" rel="noopener noreferrer">Meet Noscroll, an AI bot that does your doomscrolling for you</a>
+          <span class="src">TechCrunch</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Noscroll is an AI bot that reads social media on your behalf and summarizes what you missed — curing doomscrolling by delegating it entirely to an algorithm.</p></details>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════ -->
+<footer>
+  RSS Digest &bull; claude-sonnet-4-6 &bull; 2026-04-24T00:00:00Z
+</footer>
+
+</body>
+</html>
