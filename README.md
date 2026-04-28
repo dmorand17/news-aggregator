@@ -154,7 +154,6 @@ Each weekly report includes:
 ### Developer Platforms
 - [Ollama Blog](https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_ollama.xml)
 - [Claude Blog](https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml)
-- [Claude Code Changelog](https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_changelog_claude_code.xml)
 
 ### AI
 - [Ahead of AI](https://magazine.sebastianraschka.com/feed)
@@ -163,6 +162,7 @@ Each weekly report includes:
 ### ChangeLogs
 - [Obsidian](https://obsidian.md/changelog.xml)
 - [Kiro](https://kiro.dev/changelog/feed.rss)
+- [Claude Code](https://code.claude.com/docs/en/changelog/rss.xml)
 
 ### Investing
 - [TechCrunch Venture](https://techcrunch.com/category/venture/feed/)
