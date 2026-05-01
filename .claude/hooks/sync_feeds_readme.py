@@ -14,13 +14,13 @@ END = "<!-- feeds-end -->"
 
 
 def build_section(feeds: dict) -> str:
-    lines = [START]
+    lines = [START, "", "| Category | Source | Filter |", "| --- | --- | --- |"]
     for category, sources in feeds.items():
-        lines.append(f"\n### {category}")
         for name, value in sources.items():
             url = value if isinstance(value, str) else value["url"]
-            suffix = f" *(filtered: {value['filter']})*" if isinstance(value, dict) and "filter" in value else ""
-            lines.append(f"- [{name}]({url}){suffix}")
+            filter_val = value.get("category_filter", "") if isinstance(value, dict) else ""
+            filter_col = f"`{filter_val}`" if filter_val else ""
+            lines.append(f"| {category} | [{name}]({url}) | {filter_col} |")
     lines.append(f"\n{END}")
     return "\n".join(lines)
 

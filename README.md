@@ -139,32 +139,21 @@ Each weekly report includes:
 
 <!-- feeds-start -->
 
-### TLDR
-- [AI](https://bullrich.dev/tldr-rss/ai.rss)
-- [Tech](https://bullrich.dev/tldr-rss/tech.rss)
-- [DevOps](https://bullrich.dev/tldr-rss/devops.rss)
-
-### News Sites
-- [The Verge AI](https://www.theverge.com/rss/ai-artificial-intelligence/index.xml)
-- [TechCrunch AI](https://techcrunch.com/category/artificial-intelligence/feed/)
-
-### Cloud
-- [AWS News](https://aws.amazon.com/blogs/aws/feed/)
-
-### Developer Platforms
-- [Ollama Blog](https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_ollama.xml)
-- [Claude Blog](https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml)
-
-### AI
-- [Ahead of AI](https://magazine.sebastianraschka.com/feed)
-- [Last Week in AI](https://lastweekin.ai/feed)
-
-### ChangeLogs
-- [Obsidian](https://obsidian.md/changelog.xml)
-- [Kiro](https://kiro.dev/changelog/feed.rss)
-- [Claude Code](https://code.claude.com/docs/en/changelog/rss.xml)
-
-### Investing
-- [TechCrunch Venture](https://techcrunch.com/category/venture/feed/)
+| Category | Source | Filter |
+| --- | --- | --- |
+| TLDR | [AI](https://bullrich.dev/tldr-rss/ai.rss) |  |
+| TLDR | [Tech](https://bullrich.dev/tldr-rss/tech.rss) |  |
+| TLDR | [DevOps](https://bullrich.dev/tldr-rss/devops.rss) |  |
+| News Sites | [The Verge AI](https://www.theverge.com/rss/ai-artificial-intelligence/index.xml) |  |
+| News Sites | [TechCrunch AI](https://techcrunch.com/category/artificial-intelligence/feed/) |  |
+| Cloud | [AWS News](https://aws.amazon.com/blogs/aws/feed/) | `Week in Review` |
+| Developer Platforms | [Ollama Blog](https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_ollama.xml) |  |
+| Developer Platforms | [Claude Blog](https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml) |  |
+| AI | [Ahead of AI](https://magazine.sebastianraschka.com/feed) |  |
+| AI | [Last Week in AI](https://lastweekin.ai/feed) |  |
+| ChangeLogs | [Obsidian](https://obsidian.md/changelog.xml) |  |
+| ChangeLogs | [Kiro](https://kiro.dev/changelog/feed.rss) |  |
+| ChangeLogs | [Claude Code](https://code.claude.com/docs/en/changelog/rss.xml) |  |
+| Investing | [TechCrunch Venture](https://techcrunch.com/category/venture/feed/) |  |
 
 <!-- feeds-end -->
