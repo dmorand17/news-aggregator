@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Elon Musk took the stand against OpenAI as Anthropic raced toward a $900B valuation, hyperscalers committed $112B in Q1 capex, and the Cursor SDK and Stripe Link redefined agentic commerce.">
+<title>2026-W18 — The Week AI Went to Court</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── Design tokens ─────────────────────────────────────────── */
+:root {
+  --bg:           #0d0f14;
+  --surface:      #141720;
+  --surface2:     #1b1f2e;
+  --border:       #252a3a;
+  --border-light: #1e2332;
+  --text:         #e8e6df;
+  --text-sub:     #9a97a0;
+  --text-muted:   #555c70;
+  --amber:        #e8a020;
+  --amber-dim:    rgba(232,160,32,0.12);
+  --amber-glow:   rgba(232,160,32,0.06);
+  --red:          #e05050;
+  --red-dim:      rgba(224,80,80,0.10);
+  --orange:       #d97c30;
+  --serif:        'Playfair Display', Georgia, serif;
+  --sans:         'IBM Plex Sans', system-ui, sans-serif;
+  --mono:         'IBM Plex Mono', 'Courier New', monospace;
+  --rule:         1px solid var(--border);
+  --max-w:        820px;
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ── Hero ──────────────────────────────────────────────────── */
+.hero {
+  padding: 3.5rem 2.5rem 2.5rem;
+  border-bottom: var(--rule);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      var(--border-light) 39px,
+      var(--border-light) 40px
+    );
+  opacity: 0.5;
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--amber);
+}
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1rem;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+  max-width: 680px;
+  position: relative;
+}
+.hero-meta {
+  font-size: 0.9rem;
+  color: var(--text-sub);
+  line-height: 1.65;
+  max-width: 600px;
+  position: relative;
+}
+
+/* ── Ticker bar ────────────────────────────────────────────── */
+.ticker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  background: var(--surface);
+  border-bottom: var(--rule);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border-right: var(--rule);
+  color: var(--text-sub);
+  white-space: nowrap;
+}
+.ticker-item:last-child { border-right: none; }
+.ticker-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.ticker-dot.total  { background: var(--text-muted); }
+.ticker-dot.high   { background: var(--red); }
+.ticker-dot.med    { background: var(--orange); }
+.ticker-num {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ── TOC ───────────────────────────────────────────────────── */
+.toc {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg);
+  border-bottom: var(--rule);
+  padding: 0.7rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.toc::before {
+  content: 'SECTIONS';
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  align-self: center;
+  margin-right: 0.5rem;
+}
+.toc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.75rem;
+  border-radius: 2px;
+  border: var(--rule);
+  background: transparent;
+  color: var(--text-sub);
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.toc-btn:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+  background: var(--amber-glow);
+}
+.toc-n {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+.toc-hot {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--red);
+  font-weight: 500;
+}
+
+/* ── Top story ─────────────────────────────────────────────── */
+.top-story {
+  margin: 2rem 2.5rem;
+  padding: 1.5rem 1.75rem;
+  background: var(--amber-dim);
+  border: 1px solid rgba(232,160,32,0.25);
+  border-radius: 2px;
+  position: relative;
+}
+.top-story::before {
+  content: '★ TOP STORY';
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  color: var(--amber);
+  margin-bottom: 0.75rem;
+}
+.top-story p {
+  font-size: 0.92rem;
+  color: var(--text-sub);
+  line-height: 1.7;
+}
+.top-story strong a {
+  font-weight: 600;
+  color: var(--text);
+}
+.top-story strong a:hover {
+  color: var(--amber);
+}
+
+/* ── Content ───────────────────────────────────────────────── */
+.content {
+  padding: 0.5rem 2.5rem 3rem;
+}
+
+/* ── Category sections ─────────────────────────────────────── */
+.category {
+  margin-top: 2.75rem;
+}
+.cat-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--border);
+  position: relative;
+}
+.cat-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--amber);
+}
+.cat-header h2 {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+}
+.cat-count {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+/* ── High-relevance cards ──────────────────────────────────── */
+.card-high {
+  border-left: 2px solid var(--red);
+  background: var(--red-dim);
+  border-radius: 0 2px 2px 0;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.card-high .card-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+.card-high a {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.35;
+  transition: color 0.12s;
+}
+.card-high a:hover { color: var(--red); }
+.card-summary {
+  font-size: 0.84rem;
+  color: var(--text-sub);
+  line-height: 1.6;
+}
+
+/* ── Source badge ──────────────────────────────────────────── */
+.src {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  padding: 0.1rem 0.45rem;
+  border-radius: 2px;
+  background: var(--surface2);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.card-high .src {
+  background: rgba(224,80,80,0.08);
+  border-color: rgba(224,80,80,0.2);
+  color: var(--red);
+}
+
+/* ── Medium / Low rows ─────────────────────────────────────── */
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.55rem 0.25rem;
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.1s;
+  border-radius: 2px;
+}
+.row:last-child { border-bottom: none; }
+.row:hover { background: var(--surface); }
+
+.row-mark {
+  margin-top: 0.52rem;
+  flex-shrink: 0;
+}
+.rel-medium .row-mark {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 0 4px 6px;
+  border-color: transparent transparent transparent var(--orange);
+  margin-top: 0.58rem;
+}
+.rel-low .row-mark {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--border);
+  margin-top: 0.62rem;
+}
+
+.row-body { flex: 1; min-width: 0; }
+.row-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  line-height: 1.4;
+}
+.row a {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  transition: color 0.12s;
+}
+.rel-medium .row a:hover { color: var(--orange); }
+.rel-low    .row a:hover { color: var(--text-sub); }
+
+details { margin-top: 0.25rem; }
+summary.expand-btn {
+  list-style: none;
+  font-size: 0.7rem;
+  font-family: var(--mono);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.12s;
+  display: inline;
+}
+summary.expand-btn::-webkit-details-marker { display: none; }
+summary.expand-btn::marker { content: ''; }
+summary.expand-btn:hover { color: var(--amber); }
+.row-summary {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  line-height: 1.55;
+  margin-top: 0.3rem;
+  padding-top: 0.2rem;
+  border-top: 1px solid var(--border-light);
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+footer {
+  margin-top: 2rem;
+  padding: 1.25rem 2.5rem;
+  border-top: var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+footer::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--amber);
+  flex-shrink: 0;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .hero        { padding: 2rem 1rem 1.75rem; }
+  .hero h1     { font-size: 1.6rem; }
+  .content     { padding: 0.25rem 1rem 2rem; }
+  .top-story   { margin: 1rem; padding: 1.1rem 1.1rem; }
+  .ticker      { display: none; }
+  .toc         { padding: 0.5rem 0.75rem; gap: 0.35rem; }
+  .toc::before { display: none; }
+  .toc-btn     { padding: 0.4rem 0.7rem; font-size: 0.78rem; min-height: 36px; }
+  .card-high   { padding: 0.85rem 1rem; }
+  .card-high a { font-size: 0.95rem; }
+  .row         { padding: 0.6rem 0.1rem; gap: 0.6rem; }
+  .row a       { font-size: 0.86rem; }
+  .src         { display: none; }
+  .cat-count   { display: none; }
+}
+
+/* ── Print ─────────────────────────────────────────────────── */
+@media print {
+  body { background: #fff; color: #111; max-width: 100%; }
+  .toc, .ticker { display: none; }
+  .hero { padding: 1rem 0; border-bottom: 2px solid #111; }
+  .hero::before, .hero::after { display: none; }
+  .hero h1 { color: #111; font-size: 1.6rem; }
+  .hero-eyebrow, .hero-meta { color: #444; }
+  .top-story { background: none; border: 1px solid #ccc; margin: 1rem 0; }
+  .top-story::before { color: #111; }
+  .card-high { background: none; border-left: 2px solid #111; }
+  .card-high a, .row a { color: #111; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.65rem; color: #666; word-break: break-all; }
+  .src::after { content: none; }
+  details { display: block; }
+  details summary { display: none; }
+  .row-summary { display: block !important; }
+  .cat-header::after { display: none; }
+  footer { color: #666; border-top: 1px solid #ccc; }
+  footer::before { background: #111; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-eyebrow">Weekly Digest &bull; Apr 27 – May 1, 2026</div>
+  <h1>The Week AI Went to Court — and Rivals Raced Past OpenAI</h1>
+  <p class="hero-meta">Elon Musk took the stand against OpenAI in what may be the decade's most consequential AI trial, even as damaging testimony revealed xAI trained Grok on OpenAI models. With OpenAI simultaneously missing its own revenue targets, Anthropic moved toward a near-$900 billion valuation set to surpass its rival — while hyperscalers collectively committed $112 billion in a single quarter to AI infrastructure.</p>
+</header>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-item">
+    <span class="ticker-dot total"></span>
+    <span class="ticker-num">38</span> stories
+  </div>
+  <div class="ticker-item">
+    <span class="ticker-dot high"></span>
+    <span class="ticker-num">12</span> important
+  </div>
+  <div class="ticker-item">
+    <span class="ticker-dot med"></span>
+    <span class="ticker-num">19</span> notable
+  </div>
+  <div class="ticker-item">
+    <span class="ticker-num">6</span> topics
+  </div>
+</div>
+
+<!-- TOC -->
+<nav class="toc">
+  <a href="#cat-1" class="toc-btn">⚖️ Legal &amp; Policy <span class="toc-n">6 <span class="toc-hot">2!</span></span></a>
+  <a href="#cat-2" class="toc-btn">💰 Capital &amp; Deals <span class="toc-n">7 <span class="toc-hot">3!</span></span></a>
+  <a href="#cat-3" class="toc-btn">🔥 Frontier Models <span class="toc-n">8 <span class="toc-hot">2!</span></span></a>
+  <a href="#cat-4" class="toc-btn">🛠️ Developer Tools <span class="toc-n">7 <span class="toc-hot">2!</span></span></a>
+  <a href="#cat-5" class="toc-btn">🔒 Security <span class="toc-n">5 <span class="toc-hot">1!</span></span></a>
+  <a href="#cat-6" class="toc-btn">📱 Big Tech <span class="toc-n">5 <span class="toc-hot">2!</span></span></a>
+</nav>
+
+<!-- TOP STORY -->
+<aside class="top-story" aria-label="Top story">
+  <p><strong><a href="https://www.theverge.com/tech/917225/sam-altman-elon-musk-openai-lawsuit" target="_blank" rel="noopener noreferrer">Musk v. Altman: The Trial That Could Reshape OpenAI</a></strong> — Elon Musk testified over two days in a San Francisco federal courtroom, calling himself a "fool" for funding OpenAI and seeking $180 billion in damages plus reversal of its for-profit restructuring. In the week's most ironic twist, Musk acknowledged under cross-examination that his own AI company xAI used OpenAI's models for distillation training to build Grok — the very practice at the center of his lawsuit. Early emails and founding-era corporate documents surfaced as exhibits, forcing both sides to relitigate whether OpenAI abandoned its nonprofit mission.</p>
+</aside>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- ⚖️ Legal & Policy -->
+  <section class="category" id="cat-1">
+    <div class="cat-header">
+      <h2>⚖️ Legal &amp; Policy</h2>
+      <span class="cat-count">6 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://www.theverge.com/tech/917225/sam-altman-elon-musk-openai-lawsuit" target="_blank" rel="noopener noreferrer">Musk v. Altman Trial: Live Coverage</a>
+        <span class="src">The Verge</span>
+      </div>
+      <p class="card-summary">Elon Musk testified over two days in a federal trial seeking $180 billion in damages and the unwinding of OpenAI's for-profit conversion. Founding-era emails and corporate documents surfaced as exhibits, painting a picture of a mission critics say was quietly abandoned as the company became a $800 billion business. Altman's team countered that Musk's suit is motivated by competitive interest from his own AI venture, xAI.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://www.theverge.com/ai-artificial-intelligence/921546/elon-musk-xai-openai-trial-model-distillation" target="_blank" rel="noopener noreferrer">Elon Musk Confirms xAI Used OpenAI Models to Train Grok</a>
+        <span class="src">The Verge</span>
+      </div>
+      <p class="card-summary">In the trial's most ironic moment, Musk acknowledged that xAI employed model distillation — training Grok on OpenAI's outputs — the same practice at the center of his own lawsuit. The admission complicates Musk's legal standing as "distillation" becomes a fiercely contested battleground among frontier labs attempting to prevent smaller rivals from copying their capabilities.</p>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.wsj.com/tech/ai/white-house-opposes-anthropics-plan-to-expand-access-to-mythos-model-dc281ab5" target="_blank" rel="noopener noreferrer">White House Opposes Anthropic Expanding Access to Mythos Model</a>
+          <span class="src">WSJ</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">US officials raised national security concerns and argued Anthropic may lack sufficient computing resources to serve broader customers without hampering the government's ability to use its AI services effectively.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://asanify.com/blog/news/regulated-vertical-ai-april-30-2026/" target="_blank" rel="noopener noreferrer">EU AI Act August Deadline Unchanged After Trilogue Collapse</a>
+          <span class="src">Reuters / Asanify</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">A 12-hour Strasbourg trilogue on the AI Act Omnibus collapsed without agreement, with the European Commission, Council, and Parliament walking away. The August 2, 2026 compliance deadline for high-risk AI hiring tools remains unchanged, leaving companies with mounting uncertainty.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.implicator.ai/openai-posts-five-principle-framework-for-agi-altman-concedes-bigger-role-2/" target="_blank" rel="noopener noreferrer">OpenAI Publishes Five-Principle AGI Framework</a>
+          <span class="src">Implicator AI</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">OpenAI's most prominent statement of intent since its 2018 Charter pledges to resist AI consolidating power in the hands of the few, arriving as US and European regulators tighten oversight of frontier AI labs.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://techcrunch.com/2026/04/30/after-dissing-anthropic-for-limiting-mythos-openai-restricts-access-to-cyber-too/" target="_blank" rel="noopener noreferrer">OpenAI Restricts GPT-5.5 Cyber Tool to Critical Defenders Only</a>
+          <span class="src">TechCrunch</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">OpenAI will roll out its cybersecurity testing tool only "to critical cyber defenders" at first — echoing the same restricted access policy it criticized Anthropic for applying to Mythos.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 💰 Capital & Deals -->
+  <section class="category" id="cat-2">
+    <div class="cat-header">
+      <h2>💰 Capital &amp; Deals</h2>
+      <span class="cat-count">7 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://techcrunch.com/2026/04/29/sources-anthropic-could-raise-a-new-50b-round-at-a-valuation-of-900b/" target="_blank" rel="noopener noreferrer">Anthropic Eyes $50B Raise at ~$900B Valuation, Set to Surpass OpenAI</a>
+        <span class="src">TechCrunch</span>
+      </div>
+      <p class="card-summary">Anthropic has received multiple preemptive offers to raise roughly $50 billion at an $850–900 billion valuation, with investors given a 48-hour allocation deadline. At that figure, Anthropic would surpass OpenAI's $852 billion post-money valuation and more than double its own $380 billion valuation from just February — a dramatic signal of surging enterprise demand for Claude in the post-GPT-5.5 competitive landscape.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://arstechnica.com/ai/2026/04/google-will-invest-as-much-as-40-billion-in-anthropic/" target="_blank" rel="noopener noreferrer">Google Will Invest Up to $40 Billion in Anthropic</a>
+        <span class="src">Ars Technica</span>
+      </div>
+      <p class="card-summary">Alphabet announced an investment of $10–40 billion in Anthropic contingent on performance targets, adding to Amazon's $5 billion stake. Both investments had valued Anthropic at $350 billion — a figure now rapidly overtaken by the imminent $900 billion round. The funds are intended to close the gap between demand and compute supply for AI training and inference.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://www.wsj.com/tech/ai/openai-misses-key-revenue-user-targets-in-high-stakes-sprint-toward-ipo-94a95273" target="_blank" rel="noopener noreferrer">OpenAI Misses Key Revenue and User Targets, IPO Path in Doubt</a>
+        <span class="src">The Wall Street Journal</span>
+      </div>
+      <p class="card-summary">OpenAI's CFO disclosed the company missed its own growth targets for users and revenue, raising alarm about whether massive infrastructure commitments can be funded. Board directors have questioned Sam Altman's push to acquire even more computing power during a business slowdown, and analysts now consider a Q4 2026 IPO timeline unlikely given the compressed runway and governance questions raised by the simultaneous Musk trial.</p>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.theverge.com/tech/921210/microsoft-openai-partnership-divorce-notepad" target="_blank" rel="noopener noreferrer">OpenAI–Microsoft Partnership Restructured — Azure Exclusivity Ends</a>
+          <span class="src">The Verge</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">The companies removed Azure exclusivity, capped revenue-sharing through 2030, and eliminated the AGI-threshold clause. The same week, OpenAI announced its models will arrive on AWS through Amazon Bedrock Managed Agents, marking a significant shift to multi-cloud distribution.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://tomtunguz.com/2026-04-29-the-112-billion-quarter-hyperscalers-bet-the-farm-on-ai/" target="_blank" rel="noopener noreferrer">Hyperscalers Commit $112B Combined in Q1 Capex — Google Now Outspends Microsoft</a>
+          <span class="src">Tom Tunguz</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Google, Amazon, and Microsoft combined for $112 billion in Q1 capital expenditure. Meta separately raised its 2026 capex forecast to as high as $145 billion. Azure grew 40% year-over-year with AI annual run rate crossing $37 billion; Bank of America forecasts hyperscaler debt issuance will hit $175 billion for the full year.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.cnbc.com/2026/04/28/openai-brings-models-to-aws-after-ending-exclusivity-with-microsoft.html" target="_blank" rel="noopener noreferrer">OpenAI Models Now Available on AWS via Bedrock Managed Agents</a>
+          <span class="src">CNBC</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Following the Microsoft exclusivity revision, OpenAI's models — including Codex — will reach AWS customers through Amazon Bedrock in the coming weeks, with persistent-memory agent capabilities for building sophisticated custom agents.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.cnbc.com/2026/04/27/deepmind-ineffable-intelligence-record-seed-funding-nvidia-google.html" target="_blank" rel="noopener noreferrer">Ineffable Intelligence Raises Record $1.1B Seed Round</a>
+          <span class="src">CNBC</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">The superintelligence startup founded by David Silver — UCL professor and former lead of DeepMind's reinforcement learning team — set a new record for seed funding, backed by Nvidia and Google.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔥 Frontier Models -->
+  <section class="category" id="cat-3">
+    <div class="cat-header">
+      <h2>🔥 Frontier Models</h2>
+      <span class="cat-count">8 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://thezvi.wordpress.com/2026/04/27/gpt-5-5-the-system-card/" target="_blank" rel="noopener noreferrer">GPT-5.5 System Card: Competitive with Claude Opus, Cyber Version Restricted</a>
+        <span class="src">Zvi Mowshowitz</span>
+      </div>
+      <p class="card-summary">GPT-5.5 is competitive with Claude Opus, outperforming on factual queries and well-specified requests while lagging on open-ended tasks. The system card shows alignment similar to prior models with no significant new risks. A dedicated cybersecurity variant (GPT-5.5 Cyber) was simultaneously restricted to vetted critical infrastructure defenders only, sparking debate given OpenAI's public criticism of Anthropic for a similar access restriction on Mythos.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://thenextweb.com/news/deepseek-v4-pro-price-cut-75-percent" target="_blank" rel="noopener noreferrer">DeepSeek Cuts V4-Pro Prices by 75% Amid US AI Race</a>
+        <span class="src">The Next Web</span>
+      </div>
+      <p class="card-summary">DeepSeek slashed pricing on its V4-Pro model by 75% and reduced input cache hit pricing by 90%, dramatically undercutting US AI labs in a move that renewed debate about Chinese AI competitiveness. The cuts arrive against a tense geopolitical backdrop as US GPU spot prices simultaneously surged 114% in six weeks due to demand from models including GPT-5.5.</p>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5" target="_blank" rel="noopener noreferrer">Mistral Medium 3.5 Powers Vibe Remote Coding Agents</a>
+          <span class="src">Mistral AI</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">The 128B dense model runs efficiently on four GPUs and powers Le Chat's new Work mode for long asynchronous coding tasks — completing multi-step software engineering runs in the cloud, triggered from the CLI without blocking the developer.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.cnbc.com/2026/04/28/meta-muse-spark-has-promise-wall-street-wants-zuckerberg-ai-strategy.html" target="_blank" rel="noopener noreferrer">Meta Muse Spark Shifts Strategy from Open-Source to Paid Access</a>
+          <span class="src">CNBC</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Meta's new Muse Spark model signals a pivot away from the company's signature open-source AI approach toward paid access, aimed at boosting its ad business and competing in the growing enterprise AI market — though analysts say it still trails Anthropic's Claude.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://poolside.ai/blog/laguna-a-deeper-dive" target="_blank" rel="noopener noreferrer">Poolside Releases Laguna XS.2 and M.1 Agentic Coding Models</a>
+          <span class="src">Poolside AI</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Both models target long-horizon coding work. Laguna XS.2 is released under Apache 2.0 and is free to use on Poolside's API and OpenRouter; Laguna M.1 serves as the family foundation for more capable deployments.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://mimo.xiaomi.com/mimo-v2-5-pro" target="_blank" rel="noopener noreferrer">Xiaomi Open-Sources MiMo-V2.5-Pro (1.02T MoE)</a>
+          <span class="src">Xiaomi</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">The open mixture-of-experts model shows significant advances in agentic tasks, software engineering, and long-horizon coherence — continuing the trend of non-US labs releasing competitive open-weight models.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://huggingface.co/blog/nvidia/nemotron-3-nano-omni-multimodal-intelligence" target="_blank" rel="noopener noreferrer">NVIDIA Nemotron 3 Nano Omni: Hybrid Mamba-Transformer Multimodal Model</a>
+          <span class="src">HuggingFace / NVIDIA</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Achieves best-in-class accuracy on MMlongbench-Doc and VoiceBench, using a hybrid Mamba-Transformer architecture with specialized encoders for vision and audio — targeting document analysis, ASR, and long-context multimodal agents.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://huggingface.co/blog/ibm-granite/granite-4-1" target="_blank" rel="noopener noreferrer">IBM Granite 4.1: 8B Model Trained on 15T Tokens Matches Prior 32B MoE</a>
+          <span class="src">HuggingFace / IBM</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">IBM's Granite 4.1 8B model matches the performance of the previous 32B Mixture-of-Experts model through a multi-stage reinforcement learning pipeline and five-phase pre-training approach, making enterprise-grade AI more efficient.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🛠️ Developer Tools & Agents -->
+  <section class="category" id="cat-4">
+    <div class="cat-header">
+      <h2>🛠️ Developer Tools &amp; Agents</h2>
+      <span class="cat-count">7 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://cursor.com/blog/typescript-sdk" target="_blank" rel="noopener noreferrer">Cursor SDK Launches in Public Beta — Build Agents on Cursor's Runtime</a>
+        <span class="src">Cursor</span>
+      </div>
+      <p class="card-summary">The TypeScript SDK opens the same runtime, harness, and frontier models that power Cursor's desktop app and CLI to external developers. Agents can run locally or on Cursor's cloud with dedicated VMs, enabling fully programmatic automation at the same capability level as Cursor's built-in AI coding agents — a significant step toward developer tooling becoming a platform.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://techcrunch.com/2026/04/30/stripe-link-digital-wallet-ai-agents-shopping/" target="_blank" rel="noopener noreferrer">Stripe Link Extends Digital Wallet to Autonomous AI Agents</a>
+        <span class="src">TechCrunch</span>
+      </div>
+      <p class="card-summary">Stripe's updated Link lets AI agents complete purchases without storing real card details, issuing Fernet-encrypted one-time credentials per transaction. Every purchase can require a push-notification approval gate, keeping humans in the loop while enabling agent-driven commerce at scale — a foundational piece of the agentic economy's payment infrastructure.</p>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.anthropic.com/news/claude-for-creative-work" target="_blank" rel="noopener noreferrer">Anthropic Claude Connectors for Adobe, Blender, and Autodesk</a>
+          <span class="src">Anthropic</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">New native integrations let Claude drive natural-language workflows and cross-tool automation pipelines across major creative software for design, 3D modeling, and audio production without switching between applications.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://blog.cloudflare.com/agents-stripe-projects/" target="_blank" rel="noopener noreferrer">Cloudflare Agents Can Now Create Accounts, Buy Domains, and Deploy</a>
+          <span class="src">Cloudflare</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Cloudflare and Stripe partnered to enable fully autonomous end-to-end deployment pipelines — agents set up accounts, purchase domains, and ship live services with a human approval gate but no other required human steps.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://openai.com/index/open-source-codex-orchestration-symphony/" target="_blank" rel="noopener noreferrer">OpenAI Open-Sources Symphony Agent Orchestration Spec</a>
+          <span class="src">OpenAI</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Symphony turns issue trackers into control planes for coding agents, providing Proof-of-Work outputs that let engineers operate at a higher abstraction level. Teams using Symphony report up to 5× pull request throughput improvement.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://code.claude.com/docs/en/changelog#2-1-126" target="_blank" rel="noopener noreferrer">Claude Code 2.1.120–2.1.126: Project Purge, Ultrareview CLI, Windows PowerShell</a>
+          <span class="src">Anthropic</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Key additions: <code>claude project purge</code> clears all project state; <code>claude ultrareview</code> runs non-interactively in CI pipelines; Windows PowerShell serves as shell fallback when Git Bash is absent; <code>ANTHROPIC_BEDROCK_SERVICE_TIER</code> selects Bedrock service tier.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.theverge.com/ai-artificial-intelligence/921181/openai-codex-goblins" target="_blank" rel="noopener noreferrer">OpenAI Codex Had System-Level Instruction: "Never Talk About Goblins"</a>
+          <span class="src">The Verge</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">OpenAI published an explanation for a leaked system prompt instructing Codex to never discuss goblins, gremlins, raccoons, trolls, ogres, or pigeons — calling the creatures a "strange habit" its models developed in completely unrelated conversations.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔒 Security & Infrastructure -->
+  <section class="category" id="cat-5">
+    <div class="cat-header">
+      <h2>🔒 Security &amp; Infrastructure</h2>
+      <span class="cat-count">5 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://github.blog/news-insights/company-news/an-update-on-github-availability/" target="_blank" rel="noopener noreferrer">GitHub Availability Crisis: AI-Driven Demand Pushed Platform Past Scaling Limits</a>
+        <span class="src">GitHub</span>
+      </div>
+      <p class="card-summary">GitHub acknowledged a week of degraded availability caused by the rapid growth in AI-driven development workflows — particularly Copilot-powered automation flooding the platform beyond its current capacity. The company is expanding infrastructure and isolating critical systems, but prominent open-source projects including Ghostty have already begun migrating to self-hosted alternatives, citing the reliability decline.</p>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://nesbitt.io/2026/04/28/github-actions-is-the-weakest-link.html" target="_blank" rel="noopener noreferrer">GitHub Actions Is the Weakest Link in Open-Source Supply Chains</a>
+          <span class="src">nesbitt.io</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Almost every open-source supply chain incident of the past 18 months involves GitHub Actions behaving exactly as documented — no lockfile enforcement, no integrity hashes, and no transitive dependency visibility. GitHub plans fixes but says changing defaults will break existing workflows.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.devopsdigest.com/the-autonomy-problem-why-ai-agents-demand-a-new-security-playbook" target="_blank" rel="noopener noreferrer">AI Agents Demand a New Security Playbook — NIST Flags Novel Attack Vectors</a>
+          <span class="src">DevOps Digest</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Agentic AI expands the attack surface with prompt injection, privilege escalation, and cascading failures that traditional frameworks weren't designed to handle. Effective mitigation requires layered controls spanning model design, system permissions, and mandatory human oversight checkpoints.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://claude.com/blog/claude-security-public-beta" target="_blank" rel="noopener noreferrer">Claude Security Public Beta Now Available to All Users</a>
+          <span class="src">Anthropic</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">The new security-focused Claude product launches in public beta, targeting enterprise security workflows and code vulnerability analysis for teams integrating AI into their security operations.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.darkreading.com/application-security/reverse-engineering-ai-unearths-high-severity-github-bug" target="_blank" rel="noopener noreferrer">AI-Assisted Reverse Engineering Surfaces High-Severity GitHub RCE (CVE-2026-3854)</a>
+          <span class="src">Dark Reading</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">GitHub disclosed a high-severity vulnerability affecting GitHub Enterprise Server and other products, allowing remote code execution through manipulated git push options — discovered through AI-assisted reverse engineering.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📱 Big Tech & Products -->
+  <section class="category" id="cat-6">
+    <div class="cat-header">
+      <h2>📱 Big Tech &amp; Products</h2>
+      <span class="cat-count">5 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://techcrunch.com/video/tim-cook-is-stepping-down-what-happens-to-apple-now/" target="_blank" rel="noopener noreferrer">Tim Cook Steps Down Sept. 1 — John Ternus Becomes Apple CEO, Foldable iPhone Follows Days Later</a>
+        <span class="src">TechCrunch</span>
+      </div>
+      <p class="card-summary">Apple confirmed Tim Cook will hand the CEO role to hardware chief John Ternus on September 1. Ternus oversaw the engineering of Apple's first foldable iPhone — the company's biggest new product in a decade — set to launch less than two weeks after he takes the helm. Cook's transition leaves Ternus with a durable but pressured business amid App Store regulatory battles and intensifying AI competition from Google and OpenAI.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://www.teslarati.com/tesla-confirms-cybercab-with-no-steering-wheel-enters-production/" target="_blank" rel="noopener noreferrer">Tesla Cybercab Enters Production at Giga Texas — No Steering Wheel</a>
+        <span class="src">Teslarati</span>
+      </div>
+      <p class="card-summary">Tesla's fully autonomous Cybercab has begun production at Gigafactory Texas, running entirely on the company's vision-only Full Self-Driving system with no steering wheel or pedals. Production start signals Tesla's confidence in FSD maturity and marks the most concrete step yet toward robotaxi commercialization — though analysts note the irony of this milestone arriving amid Musk's extended courtroom appearance across the country.</p>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://9to5mac.com/2026/04/27/openai-is-making-its-own-phone-to-compete-with-the-iphone-report/" target="_blank" rel="noopener noreferrer">OpenAI Exploring AI Smartphone for 2028 With MediaTek and Qualcomm</a>
+          <span class="src">9to5Mac</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">OpenAI is developing smartphone silicon with MediaTek and Qualcomm, targeting mass production in 2028. The device is expected to replace the app-centric interface paradigm with AI agents as the primary interaction model — a direct challenge to Apple and Android.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.theverge.com/tech/921117/google-gemini-ai-assistant-cars-upgrade" target="_blank" rel="noopener noreferrer">Gemini Rolls Out to Millions of Vehicles with Google Built-In</a>
+          <span class="src">The Verge</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Google is replacing the existing Google Assistant in cars with Gemini, promising richer natural conversation, vehicle-specific information retrieval, and settings adjustments — bringing advanced AI to millions of drivers without a hardware upgrade.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.macrumors.com/2026/04/29/apple-vision-pro-m5-flop/" target="_blank" rel="noopener noreferrer">Apple Abandons Vision Pro After M5 Refresh Flopped</a>
+          <span class="src">MacRumors</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Apple has reportedly halted all work on the Vision Pro and redistributed its team to other product lines, quietly ending the spatial computing device after its M5 refresh failed to revive consumer interest.</p></details>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  RSS Digest &bull; claude-sonnet-4-6 &bull; 2026-05-01T12:00:00Z
+</footer>
+
+</body>
+</html>
