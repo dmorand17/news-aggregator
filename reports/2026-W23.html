@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AI IPO Season Ignites as Anthropic Files S-1 with $47B ARR — Weekly AI digest for May 30 – Jun 5, 2026">
+<title>AI IPO Season Ignites — Weekly Digest 2026-W23</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── Design tokens ─────────────────────────────────────────── */
+:root {
+  --bg:           #0d0f14;
+  --surface:      #141720;
+  --surface2:     #1b1f2e;
+  --border:       #252a3a;
+  --border-light: #1e2332;
+  --text:         #e8e6df;
+  --text-sub:     #9a97a0;
+  --text-muted:   #555c70;
+  --amber:        #e8a020;
+  --amber-dim:    rgba(232,160,32,0.12);
+  --amber-glow:   rgba(232,160,32,0.06);
+  --red:          #e05050;
+  --red-dim:      rgba(224,80,80,0.10);
+  --orange:       #d97c30;
+  --serif:        'Playfair Display', Georgia, serif;
+  --sans:         'IBM Plex Sans', system-ui, sans-serif;
+  --mono:         'IBM Plex Mono', 'Courier New', monospace;
+  --rule:         1px solid var(--border);
+  --max-w:        820px;
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ── Hero ──────────────────────────────────────────────────── */
+.hero {
+  padding: 3.5rem 2.5rem 2.5rem;
+  border-bottom: var(--rule);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      var(--border-light) 39px,
+      var(--border-light) 40px
+    );
+  opacity: 0.5;
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--amber);
+}
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1rem;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+  max-width: 680px;
+  position: relative;
+}
+.hero-meta {
+  font-size: 0.9rem;
+  color: var(--text-sub);
+  line-height: 1.65;
+  max-width: 600px;
+  position: relative;
+}
+
+/* ── Ticker bar ────────────────────────────────────────────── */
+.ticker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  background: var(--surface);
+  border-bottom: var(--rule);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border-right: var(--rule);
+  color: var(--text-sub);
+  white-space: nowrap;
+}
+.ticker-item:last-child { border-right: none; }
+.ticker-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.ticker-dot.total  { background: var(--text-muted); }
+.ticker-dot.high   { background: var(--red); }
+.ticker-dot.med    { background: var(--orange); }
+.ticker-num {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ── TOC ───────────────────────────────────────────────────── */
+.toc {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg);
+  border-bottom: var(--rule);
+  padding: 0.7rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.toc::before {
+  content: 'SECTIONS';
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  align-self: center;
+  margin-right: 0.5rem;
+}
+.toc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.75rem;
+  border-radius: 2px;
+  border: var(--rule);
+  background: transparent;
+  color: var(--text-sub);
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.toc-btn:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+  background: var(--amber-glow);
+}
+.toc-n {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+.toc-hot {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--red);
+  font-weight: 500;
+}
+
+/* ── Top story ─────────────────────────────────────────────── */
+.top-story {
+  margin: 2rem 2.5rem;
+  padding: 1.5rem 1.75rem;
+  background: var(--amber-dim);
+  border: 1px solid rgba(232,160,32,0.25);
+  border-radius: 2px;
+  position: relative;
+}
+.top-story::before {
+  content: '★ TOP STORY';
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  color: var(--amber);
+  margin-bottom: 0.75rem;
+}
+.top-story p {
+  font-size: 0.92rem;
+  color: var(--text-sub);
+  line-height: 1.7;
+}
+.top-story strong a {
+  font-weight: 600;
+  color: var(--text);
+}
+.top-story strong a:hover {
+  color: var(--amber);
+}
+
+/* ── Content ───────────────────────────────────────────────── */
+.content {
+  padding: 0.5rem 2.5rem 3rem;
+}
+
+/* ── Category sections ─────────────────────────────────────── */
+.category {
+  margin-top: 2.75rem;
+}
+.cat-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--border);
+  position: relative;
+}
+.cat-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--amber);
+}
+.cat-header h2 {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+}
+.cat-count {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+/* ── High-relevance cards ──────────────────────────────────── */
+.card-high {
+  border-left: 2px solid var(--red);
+  background: var(--red-dim);
+  border-radius: 0 2px 2px 0;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.card-high .card-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+.card-high a {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.35;
+  transition: color 0.12s;
+}
+.card-high a:hover { color: var(--red); }
+.card-summary {
+  font-size: 0.84rem;
+  color: var(--text-sub);
+  line-height: 1.6;
+}
+
+/* ── Source badge ──────────────────────────────────────────── */
+.src {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  padding: 0.1rem 0.45rem;
+  border-radius: 2px;
+  background: var(--surface2);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.card-high .src {
+  background: rgba(224,80,80,0.08);
+  border-color: rgba(224,80,80,0.2);
+  color: var(--red);
+}
+
+/* ── Medium / Low rows ─────────────────────────────────────── */
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.55rem 0.25rem;
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.1s;
+  border-radius: 2px;
+}
+.row:last-child { border-bottom: none; }
+.row:hover { background: var(--surface); }
+
+.row-mark {
+  margin-top: 0.52rem;
+  flex-shrink: 0;
+}
+.rel-medium .row-mark {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 0 4px 6px;
+  border-color: transparent transparent transparent var(--orange);
+  margin-top: 0.58rem;
+}
+.rel-low .row-mark {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--border);
+  margin-top: 0.62rem;
+}
+
+.row-body { flex: 1; min-width: 0; }
+.row-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  line-height: 1.4;
+}
+.row a {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  transition: color 0.12s;
+}
+.rel-medium .row a:hover { color: var(--orange); }
+.rel-low    .row a:hover { color: var(--text-sub); }
+
+details { margin-top: 0.25rem; }
+summary.expand-btn {
+  list-style: none;
+  font-size: 0.7rem;
+  font-family: var(--mono);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.12s;
+  display: inline;
+}
+summary.expand-btn::-webkit-details-marker { display: none; }
+summary.expand-btn::marker { content: ''; }
+summary.expand-btn:hover { color: var(--amber); }
+.row-summary {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  line-height: 1.55;
+  margin-top: 0.3rem;
+  padding-top: 0.2rem;
+  border-top: 1px solid var(--border-light);
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+footer {
+  margin-top: 2rem;
+  padding: 1.25rem 2.5rem;
+  border-top: var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+footer::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--amber);
+  flex-shrink: 0;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .hero        { padding: 2rem 1rem 1.75rem; }
+  .hero h1     { font-size: 1.6rem; }
+  .content     { padding: 0.25rem 1rem 2rem; }
+  .top-story   { margin: 1rem; padding: 1.1rem 1.1rem; }
+  .ticker      { display: none; }
+  .toc         { padding: 0.5rem 0.75rem; gap: 0.35rem; }
+  .toc::before { display: none; }
+  .toc-btn     { padding: 0.4rem 0.7rem; font-size: 0.78rem; min-height: 36px; }
+  .card-high   { padding: 0.85rem 1rem; }
+  .card-high a { font-size: 0.95rem; }
+  .row         { padding: 0.6rem 0.1rem; gap: 0.6rem; }
+  .row a       { font-size: 0.86rem; }
+  .src         { display: none; }
+  .cat-count   { display: none; }
+}
+
+/* ── Print ─────────────────────────────────────────────────── */
+@media print {
+  body { background: #fff; color: #111; max-width: 100%; }
+  .toc, .ticker { display: none; }
+  .hero { padding: 1rem 0; border-bottom: 2px solid #111; }
+  .hero::before, .hero::after { display: none; }
+  .hero h1 { color: #111; font-size: 1.6rem; }
+  .hero-eyebrow, .hero-meta { color: #444; }
+  .top-story { background: none; border: 1px solid #ccc; margin: 1rem 0; }
+  .top-story::before { color: #111; }
+  .card-high { background: none; border-left: 2px solid #111; }
+  .card-high a, .row a { color: #111; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.65rem; color: #666; word-break: break-all; }
+  .src::after { content: none; }
+  details { display: block; }
+  details summary { display: none; }
+  .row-summary { display: block !important; }
+  .cat-header::after { display: none; }
+  footer { color: #666; border-top: 1px solid #ccc; }
+  footer::before { background: #111; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-eyebrow">Weekly Digest &bull; May 30 – Jun 5, 2026</div>
+  <h1>AI IPO Season Ignites as Anthropic Files S-1 with $47B ARR</h1>
+  <p class="hero-meta">A watershed week for the industry as Anthropic confidentially filed its S-1 with the SEC, disclosing a $47 billion annualized revenue run-rate — up roughly 5× from end-2025 — while SpaceX priced the largest IPO in history at $1.77 trillion and Alphabet raised $85 billion for its AI buildout. On the model frontier, Claude Opus 4.8 tripled GPT-5.5's score on ARC-AGI-3, NVIDIA launched Nemotron 3 Ultra as the most capable US open-weight model to date, and Microsoft debuted seven MAI models at Build 2026. Congress escalated AI regulation with a sweeping 269-page federal bill that would preempt all state AI laws for three years.</p>
+</header>
+
+<div class="ticker">
+  <div class="ticker-item">
+    <span class="ticker-dot total"></span>
+    <span class="ticker-num">38</span> stories
+  </div>
+  <div class="ticker-item">
+    <span class="ticker-dot high"></span>
+    <span class="ticker-num">15</span> important
+  </div>
+  <div class="ticker-item">
+    <span class="ticker-dot med"></span>
+    <span class="ticker-num">14</span> notable
+  </div>
+  <div class="ticker-item">
+    <span class="ticker-num">6</span> topics
+  </div>
+</div>
+
+<nav class="toc">
+  <a href="#cat-1" class="toc-btn">🧠 Frontier Models <span class="toc-n">8 <span class="toc-hot">3!</span></span></a>
+  <a href="#cat-2" class="toc-btn">🤖 AI Agents <span class="toc-n">7 <span class="toc-hot">3!</span></span></a>
+  <a href="#cat-3" class="toc-btn">📈 Capital &amp; Markets <span class="toc-n">6 <span class="toc-hot">3!</span></span></a>
+  <a href="#cat-4" class="toc-btn">⚖️ Policy &amp; Safety <span class="toc-n">7 <span class="toc-hot">3!</span></span></a>
+  <a href="#cat-5" class="toc-btn">🔧 Developer Tools <span class="toc-n">5 <span class="toc-hot">1!</span></span></a>
+  <a href="#cat-6" class="toc-btn">🔬 Open Source &amp; Research <span class="toc-n">5 <span class="toc-hot">2!</span></span></a>
+</nav>
+
+<aside class="top-story" aria-label="Top story">
+  <p><strong><a href="https://www.wsj.com/tech/anthropic-ipo-paperwork-9a48c35e" target="_blank" rel="noopener noreferrer">Anthropic Files to Go Public in Blockbuster Year for IPOs</a></strong> — Anthropic confidentially submitted a draft S-1 to the SEC on June 1, targeting a potential fall IPO in the same week SpaceX set a $1.77 trillion price tag and the AI industry's capital markets hit a fever pitch. Revenue crossed $47 billion annualized in May — up from $9 billion at year-end 2025 — and the company has expanded its enterprise partner network and Project Glasswing security program to bolster commercial credibility before going public. The key risk heading into the offering: corporate customers are beginning to scrutinize AI spending, with 40% reporting cost savings below 10%.</p>
+</aside>
+
+<div class="content">
+
+  <!-- ══ FRONTIER MODELS ══ -->
+  <section class="category" id="cat-1">
+    <div class="cat-header">
+      <h2>🧠 Frontier Models</h2>
+      <span class="cat-count">8 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://threadreaderapp.com/thread/2061513383287882111.html" target="_blank" rel="noopener noreferrer">Opus 4.8 Tripled GPT-5.5 on ARC-AGI-3</a>
+        <span class="src">TLDR AI</span>
+      </div>
+      <p class="card-summary">Anthropic's Claude Opus 4.8 posted a score that tripled GPT-5.5's result on ARC-AGI-3, the hardest general reasoning benchmark currently in wide use. The result significantly widens the gap between the top frontier labs, arriving in the same week Anthropic published a 42-minute deep-dive into Opus 4.8's model welfare findings — generating extensive discussion about the limits of AI self-reporting.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://threadreaderapp.com/thread/2061304911565144230.html" target="_blank" rel="noopener noreferrer">NVIDIA Launches Nemotron 3 Ultra: 550B Parameters, Best US Open Model</a>
+        <span class="src">NVIDIA</span>
+      </div>
+      <p class="card-summary">Nemotron 3 Ultra packs 550 billion parameters (55B active via MoE) and scores 48 on the Artificial Analysis Intelligence Index — well ahead of the next strongest open model. Available in NVFP4 quantization for high-throughput inference and already serving over 300 tokens/second on pre-release endpoints, it's NVIDIA's strongest statement yet that US-built open models can compete at the frontier.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://microsoft.ai/news/building-a-hillclimbing-machine-launching-seven-new-mai-models/" target="_blank" rel="noopener noreferrer">Building a Hill-Climbing Machine: Microsoft Launches Seven New MAI Models</a>
+        <span class="src">Microsoft</span>
+      </div>
+      <p class="card-summary">At Build 2026, Microsoft released seven MAI models with Frontier Tuning — a reinforcement-learning-based adaptation system that lets developers tune model weights to specific workflows. The launch includes MAI-Code-1-Flash and MAI-Thinking-1 alongside a Mayo Clinic healthcare collaboration, signaling Microsoft's intent to reduce OpenAI dependence and build vertical domain models across medicine, coding, and reasoning.</p>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.implicator.ai/minimax-promises-m3-weights-after-1m-context-model-launch/" target="_blank" rel="noopener noreferrer">MiniMax M3: 1M-Context Open-Weight Frontier Model</a>
+          <span class="src">Implicator AI</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">MiniMax's M3 is the first open-weight model combining frontier coding, native multimodality, and a 1M-token context window; model weights and a technical report are promised within ten days. API pricing starts at $0.60/M input tokens up to 512K context.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://arstechnica.com/google/2026/06/googles-new-gemma-4-open-ai-model-is-sized-for-your-laptop/" target="_blank" rel="noopener noreferrer">Google Gemma 4 12B: Frontier-Class Performance on Consumer Laptops</a>
+          <span class="src">Ars Technica</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Google's Gemma 4 12B runs on any 16GB-RAM laptop with nearly the capability of Gemma 4 26B MoE, thanks to a new approach to multimodality — available on Kaggle and Hugging Face.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://openai.com/index/codex-for-every-role-tool-workflow/" target="_blank" rel="noopener noreferrer">OpenAI Rolls Out Dreaming V3 Memory Architecture to ChatGPT</a>
+          <span class="src">OpenAI</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">The Dreaming V3 architecture replaces the old explicit-save memory system with a background synthesis process that automatically consolidates preferences, projects, and time-sensitive context after each conversation — OpenAI's biggest memory overhaul since launch, now reaching Plus and Pro users in the US.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://qwen.ai/blog?id=qwen3.7-plus" target="_blank" rel="noopener noreferrer">Qwen3.7-Plus: Multimodal Agent Intelligence from Alibaba Cloud</a>
+          <span class="src">Alibaba Cloud</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Unifies vision and language into a hybrid GUI/CLI agent loop, available via Model Studio.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.wsj.com/tech/ai/meta-keeps-delaying-the-release-of-its-new-ai-model-to-developers-f8569c8c" target="_blank" rel="noopener noreferrer">Meta Muse Spark API Launch Slips Again with No Planned Date</a>
+          <span class="src">WSJ</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Meta has no planned API release date for Muse Spark despite partner testing; the delay raises questions about Meta's ability to monetize its massive AI investments on a competitive timeline.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ AI AGENTS ══ -->
+  <section class="category" id="cat-2">
+    <div class="cat-header">
+      <h2>🤖 AI Agents</h2>
+      <span class="cat-count">7 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://techcrunch.com/2026/06/03/as-ai-gets-better-it-reveals-an-empty-promise/" target="_blank" rel="noopener noreferrer">Google Gemini Spark Expands: A 24/7 Personal AI Agent That Acts While You Sleep</a>
+        <span class="src">The Verge / TechCrunch</span>
+      </div>
+      <p class="card-summary">Gemini Spark — Google's always-on personal AI agent announced at I/O in May — is expanding toward general availability for Google AI Ultra subscribers this week. Spark runs continuously on Google Cloud VMs, executing multi-step tasks across Gmail, Calendar, Drive, and third-party apps via MCP even when your device is off. Hands-on reviewers noted it surfaced personal details (dogs' names, family information) without being prompted, raising both privacy concerns and genuine awe at its effectiveness.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://about.fb.com/news/2026/06/meta-business-agent/" target="_blank" rel="noopener noreferrer">Meta Business Agent Goes Global on WhatsApp, Instagram, and Messenger</a>
+        <span class="src">Meta</span>
+      </div>
+      <p class="card-summary">Meta's AI agent for businesses is now available worldwide, letting companies answer questions, book appointments, and close sales autonomously across its three major messaging platforms. Zuckerberg is explicit about the long-term goal: a subscription-tier agent that can eventually run whole businesses — free for now to drive adoption, with token-based charges to follow.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://www.geekwire.com/2026/inside-microsofts-project-solara-a-new-platform-for-devices-that-run-ai-agents-instead-of-apps/" target="_blank" rel="noopener noreferrer">Microsoft Project Solara: Devices That Run Agents Instead of Apps</a>
+        <span class="src">GeekWire</span>
+      </div>
+      <p class="card-summary">Microsoft's Build centrepiece is a reference hardware platform consisting of a voice-activated desktop hub and a wearable badge with a fingerprint-press to summon an agent. Built on Windows Agent Framework 1.0 and Azure Agent Mesh, with NVIDIA RTX Spark chips for local inference, the model envisions OEM partners shipping agent-native devices in 2027 — a fundamental reimagining of the PC as an always-on agentic assistant rather than an app launcher.</p>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.bloomberg.com/news/articles/2026-06-02/microsoft-launches-ai-that-works-like-an-executive-assistant" target="_blank" rel="noopener noreferrer">Microsoft Scout: Always-On AI Executive Assistant</a>
+          <span class="src">Bloomberg</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Scout autonomously handles scheduling conflicts, email triage, and calendar coordination across Microsoft 365, priced on usage rather than a flat subscription. Access requires a GitHub Copilot subscription.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.cnbc.com/2026/06/03/ai-agents-morgan-stanley-wealth-management-funnel.html" target="_blank" rel="noopener noreferrer">Morgan Stanley Opens Trillion-Dollar Wealth Platform to AI Agents</a>
+          <span class="src">CNBC</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Morgan Stanley will allow AI agents from thousands of corporations to connect to ShareWorks and Equity Edge, opening its wealth management pipeline to agentic automation for the first time.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.theverge.com/ai-artificial-intelligence/942884/amazon-next-generation-warehouse-robot-proteus" target="_blank" rel="noopener noreferrer">Amazon Proteus Warehouse Robot Now Understands Natural Language</a>
+          <span class="src">The Verge</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Amazon's next-generation Proteus robot can be assigned tasks through spoken language instead of code, as part of Amazon's accelerating pivot from human warehouse workers to autonomous systems.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://openai.com/index/codex-for-every-role-tool-workflow/" target="_blank" rel="noopener noreferrer">OpenAI Codex Gets Six Role-Specific Plug-ins</a>
+          <span class="src">OpenAI</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">New plug-ins cover data analytics, creative production, sales, product design, equity investing, and investment banking — expanding Codex beyond coding tasks into cross-functional enterprise workflows.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CAPITAL & MARKETS ══ -->
+  <section class="category" id="cat-3">
+    <div class="cat-header">
+      <h2>📈 Capital &amp; Markets</h2>
+      <span class="cat-count">6 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://www.wsj.com/tech/anthropic-ipo-paperwork-9a48c35e" target="_blank" rel="noopener noreferrer">Anthropic Files Confidential S-1 for IPO at $47B Annualized Revenue</a>
+        <span class="src">Wall Street Journal</span>
+      </div>
+      <p class="card-summary">Anthropic's confidential S-1 filing represents one of the most consequential AI company IPOs since Google, with annualized revenue of $47 billion in May (up from $9B at end-2025) and an expanded enterprise partner network designed to demonstrate commercial scale to public markets. The company surpassed OpenAI in enterprise clients and is now explicitly in the IPO race — with research showing first-mover IPOs in a cluster absorb disproportionate available capital.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://www.nytimes.com/2026/06/03/technology/spacex-ipo-pricing.html" target="_blank" rel="noopener noreferrer">SpaceX Prices at $135/Share, $1.77T Valuation — Largest IPO in History</a>
+        <span class="src">New York Times</span>
+      </div>
+      <p class="card-summary">SpaceX set a $135 share price to raise $74.4 billion, making its offering the largest IPO ever by amount raised. The company plans to use the capital for orbital AI data centers, a lunar factory, and Mars missions. Trading under the ticker SPCX on NASDAQ is expected next week; up to 5% of shares are reserved for staff and friends with no lock-up restriction.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://techcrunch.com/2026/06/03/alphabets-record-breaking-85b-raise-for-googles-ai-business-is-a-helluva-good-signal/" target="_blank" rel="noopener noreferrer">Alphabet Raises $85B to Fund AI Infrastructure Buildout</a>
+        <span class="src">TechCrunch</span>
+      </div>
+      <p class="card-summary">Google's parent sold $80–85 billion in stock — including $10B from Berkshire Hathaway — to fund AI compute infrastructure amid "unprecedented customer demand." The raise signals that even the most cash-rich tech companies view AI capital requirements as too large for retained earnings alone, and is being widely read as a bullish signal for AI public offerings in the second half of 2026.</p>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.axios.com/2026/06/02/anthropic-ipo-ai-sticker-shock-spending-usage" target="_blank" rel="noopener noreferrer">Anthropic Faces AI Spending Backlash as IPO Looms</a>
+          <span class="src">Axios</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Corporate customers are reevaluating AI spend, with 40% reporting cost savings below 10%; Uber capped employee AI spending after burning through its annual budget in four months, and businesses are increasingly experimenting with cheaper open-source alternatives.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.theverge.com/tech/943066/tsmc-ai-demand-struggles" target="_blank" rel="noopener noreferrer">TSMC CEO: "We Can Only Support So Much" Amid AI Demand Surge</a>
+          <span class="src">The Verge</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">TSMC cannot keep pace with US customer demand even with its ongoing US factory buildout, introducing supply constraints that could cap AI infrastructure growth through 2027.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://techcrunch.com/2026/05/29/after-nvidias-20b-not-acqui-hire-ai-chip-startup-groq-reportedly-raising-650m/" target="_blank" rel="noopener noreferrer">Groq Reportedly Raising $650M After Nvidia's $20B Strategic Deal</a>
+          <span class="src">TechCrunch</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">The inference chip startup is pivoting from hardware toward AI inference services as it seeks fresh capital following Nvidia's strategic investment.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ POLICY & SAFETY ══ -->
+  <section class="category" id="cat-4">
+    <div class="cat-header">
+      <h2>⚖️ Policy &amp; Safety</h2>
+      <span class="cat-count">7 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://rollcall.com/2026/06/04/bipartisan-ai-draft-proposes-three-year-preemption-of-state-laws/" target="_blank" rel="noopener noreferrer">Congress Drops 269-Page AI Bill to Preempt All State Laws for Three Years</a>
+        <span class="src">Roll Call</span>
+      </div>
+      <p class="card-summary">The bipartisan Great American Artificial Intelligence Act, introduced by Reps. Obernolte and Trahan, would freeze all state AI laws for three years and impose federal standards on frontier model developers — requiring safety plans, incident reporting, and third-party audits. Critics argue it converts hard-won state-level progress into a federal ceiling at exactly the moment AI harms are accelerating; supporters say national uniformity is needed to prevent a 50-state compliance patchwork.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://www.theverge.com/ai-artificial-intelligence/942956/ai-biological-weapons-open-letter-congress" target="_blank" rel="noopener noreferrer">AI Leaders Call for Tougher Bioweapon Protections in Joint Open Letter to Congress</a>
+        <span class="src">The Verge</span>
+      </div>
+      <p class="card-summary">Executives from rival AI labs signed a rare joint letter urging Congress to close what they describe as an alarming biosecurity gap — the ease with which AI systems can assist in designing biological weapons. The letter calls for mandatory biosecurity screening of frontier model training data and output filters, placing AI companies on record supporting government intervention in this domain for the first time.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://socket.dev/blog/checkmarx-supply-chain-compromise" target="_blank" rel="noopener noreferrer">Checkmarx Supply Chain Attack: Docker Images and VS Code Extensions Trojanized</a>
+        <span class="src">Socket</span>
+      </div>
+      <p class="card-summary">Attackers replaced Checkmarx KICS Docker image tags and VS Code extension binaries with trojanized versions that exfiltrated cloud credentials, GitHub tokens, and developer secrets via GitHub Actions workflows and npm republishing. The multi-stage attack targets developer tooling at the supply chain layer, following a pattern consistent with TeamPCP's escalating campaign against open source infrastructure.</p>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.wsj.com/tech/ai/trump-signs-ai-executive-order-to-increase-government-oversight-e78fb21f" target="_blank" rel="noopener noreferrer">Trump Signs AI Executive Order Cutting Voluntary Review Period to 30 Days</a>
+          <span class="src">WSJ</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">The executive order reduces the window for voluntary government review of powerful AI models from 90 days to 30 days, increasing federal oversight of frontier lab releases in tandem with NIST's expanded AI Risk Management Framework.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://thenextweb.com/news/us-nvidia-amd-china-subsidiary-chip-curbs" target="_blank" rel="noopener noreferrer">US Closes Chip Export Loophole for Chinese Subsidiaries</a>
+          <span class="src">The Next Web</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">New Commerce Department guidance extends export license requirements to any entity headquartered in China regardless of where it physically operates, closing the route that allowed Chinese companies to acquire Nvidia chips through offshore subsidiaries.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://techcrunch.com/2026/06/03/publishers-will-be-able-to-opt-out-of-ai-search-thanks-to-new-regulation/" target="_blank" rel="noopener noreferrer">UK Regulators Require Google Offer AI Search Opt-Out for Publishers</a>
+          <span class="src">TechCrunch</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">UK regulators are requiring Google to offer a tool allowing website publishers to opt out of generative AI search features; the option will be tested in the UK before global rollout.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://www.nytimes.com/2026/05/30/us/politics/anthropic-openai-super-pacs-midterms.html" target="_blank" rel="noopener noreferrer">Anthropic and OpenAI Super PACs Spend Millions on Midterm Races</a>
+          <span class="src">New York Times</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Both companies are spending heavily to influence Congressional races, each betting the outcome will shape AI regulation for the next decade.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ DEVELOPER TOOLS ══ -->
+  <section class="category" id="cat-5">
+    <div class="cat-header">
+      <h2>🔧 Developer Tools</h2>
+      <span class="cat-count">5 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener noreferrer">Claude Code Releases 2.1.157–2.1.163: Plugins, Version Gates, Parallel Tools</a>
+        <span class="src">Anthropic</span>
+      </div>
+      <p class="card-summary">Seven Claude Code releases this week added automatic plugin loading from <code>.claude/skills</code> directories (no marketplace required), managed version enforcement so organizations can pin Claude Code to approved builds, improved <code>claude agents</code> visibility showing done/total counts and what waiting sessions are blocked on, and safety prompts before writing to shell startup files and build-tool configs. The cadence — roughly one substantive release per day — reflects Anthropic's increasingly rapid shipping pace ahead of IPO.</p>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://openai.com/index/openai-frontier-models-and-codex-are-now-available-on-aws/" target="_blank" rel="noopener noreferrer">OpenAI Codex and Frontier Models Now GA on Amazon Bedrock</a>
+          <span class="src">OpenAI</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">OpenAI's models and Codex are now generally available on Amazon Bedrock with pay-per-token pricing and no seat licenses, integrating with AWS security, governance, and billing workflows.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://cursor.com/blog/teams-pricing-june-2026" target="_blank" rel="noopener noreferrer">Cursor Teams: Higher Limits, Premium Seats, Admin Spending Controls</a>
+          <span class="src">Cursor</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Cursor's Teams plan now supports heavier agent workloads with a new Premium seat tier and administrator-level spending guardrails, responding to enterprises whose usage has outpaced existing quotas.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://kiro.dev/changelog/ide/0-12#patch-0-12-292" target="_blank" rel="noopener noreferrer">Kiro IDE 0.12.292: Parallel Task Execution and Quick Plan Mode</a>
+          <span class="src">Kiro</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Adds adaptive thinking effort controls, bulk MCP server management, and automatic terminal recovery from shell-quote hangs.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://blog.cloudflare.com/optimizing-core-unit-boot-time/" target="_blank" rel="noopener noreferrer">Cloudflare Cuts Server Boot Time from 4 Hours to 3 Minutes</a>
+          <span class="src">Cloudflare</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">A firmware investigation revealed all ~2,000 core servers were probing failed network interfaces at startup; reprogramming the boot sequence cut boot time by 98% across the fleet — a practical ops win buried in the week's bigger news.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ OPEN SOURCE & RESEARCH ══ -->
+  <section class="category" id="cat-6">
+    <div class="cat-header">
+      <h2>🔬 Open Source &amp; Research</h2>
+      <span class="cat-count">5 items</span>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://nvidianews.nvidia.com/news/nvidia-launches-cosmos-3-the-open-frontier-foundation-model-for-physical-ai" target="_blank" rel="noopener noreferrer">NVIDIA Cosmos 3: Open Frontier Foundation Model for Physical AI</a>
+        <span class="src">NVIDIA</span>
+      </div>
+      <p class="card-summary">Cosmos 3 is a fully open omnimodel with native vision reasoning and multimodal generation spanning text, image, video, ambient sound, and action — built on a mixture-of-transformer architecture that pairs a reasoning transformer with an expert generation transformer. NVIDIA positions it as the pretrained foundation for robotics and physical AI, letting developers build with far less data and lower training costs than starting from scratch.</p>
+    </div>
+
+    <div class="card-high">
+      <div class="card-title">
+        <a href="https://github.com/ideogram-oss/ideogram4" target="_blank" rel="noopener noreferrer">Ideogram 4: Open-Weight Text-to-Image with Bounding-Box Layout Control</a>
+        <span class="src">Ideogram</span>
+      </div>
+      <p class="card-summary">Ideogram 4 is an open-weight image model trained from scratch — not a fine-tune — featuring a structured JSON prompting interface, best-in-class multilingual text rendering, explicit bounding-box layout controls, color-palette controls, and native 2K resolution output. The release represents a significant step toward open frontier-class image generation outside closed proprietary labs.</p>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://research.perplexity.ai/articles/rethinking-search-as-code-generation" target="_blank" rel="noopener noreferrer">Perplexity Search as Code: AI Controls Its Own Retrieval Pipeline</a>
+          <span class="src">Perplexity</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">SaC exposes search stack primitives as an SDK, letting AI models compose custom retrieval pipelines on demand — outperforming traditional monolithic search architectures on complex agentic tasks.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-medium">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://arxiv.org/abs/2605.31268" target="_blank" rel="noopener noreferrer">JetBrains Mellum 2: 12B MoE Model for Agentic Code Workflows</a>
+          <span class="src">JetBrains</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">A 12-billion-parameter mixture-of-experts model optimized for coding, reasoning, tool use, and agentic workflows — with a full technical paper covering architecture and benchmark results.</p></details>
+      </div>
+    </div>
+
+    <div class="row rel-low">
+      <span class="row-mark"></span>
+      <div class="row-body">
+        <div class="row-title">
+          <a href="https://arxiv.org/abs/2606.03979" target="_blank" rel="noopener noreferrer">Sleep for Continual Learning: Google's Distillation + RL Approach</a>
+          <span class="src">Google Research</span>
+        </div>
+        <details><summary class="expand-btn">expand</summary><p class="row-summary">Google researchers propose a "Sleep" paradigm where models consolidate in-context knowledge into parameters via distillation and replay, followed by a "Dreaming" stage using RL to generate synthetic training curricula — addressing persistent knowledge and catastrophic forgetting.</p></details>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  RSS Digest &bull; claude-sonnet-4-6 &bull; 2026-06-05T00:00:00Z
+</footer>
+
+</body>
+</html>
