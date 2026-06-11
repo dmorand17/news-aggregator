@@ -1,0 +1,33 @@
+{{- /* Render GitHub-style alerts (> [!NOTE], > [!WARNING], …) as styled
+       callout boxes; fall back to a plain blockquote otherwise. */ -}}
+{{- if eq .Type "alert" -}}
+{{- $icons := dict
+    "note" "ℹ️" "tip" "💡" "important" "❗" "warning" "⚠️" "caution" "🛑" -}}
+{{- $type := .AlertType -}}
+<blockquote class="callout callout-{{ $type }}">
+  <p class="callout-title">{{ index $icons $type | default "ℹ️" }} {{ with .AlertTitle }}{{ . }}{{ else }}{{ $type | title }}{{ end }}</p>
+  {{ .Text }}
+</blockquote>
+{{- else -}}
+<blockquote>{{ .Text }}</blockquote>
+{{- end -}}
+
+<style>
+  .callout {
+    border-left: 4px solid var(--secondary);
+    background: var(--entry);
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+    margin: 1.25rem 0;
+  }
+  .callout .callout-title {
+    font-weight: 700;
+    margin: 0 0 0.4rem;
+  }
+  .callout > :last-child { margin-bottom: 0; }
+  .callout-note { border-left-color: #4493f8; }
+  .callout-tip { border-left-color: #3fb950; }
+  .callout-important { border-left-color: #ab7df8; }
+  .callout-warning { border-left-color: #d29922; }
+  .callout-caution { border-left-color: #f85149; }
+</style>

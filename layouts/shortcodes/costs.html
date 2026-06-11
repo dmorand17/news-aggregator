@@ -19,7 +19,7 @@ first daily digest is generated.</em></p>
   <div class="cost-stat"><span class="cost-num">${{ printf "%.2f" $totalCost }}</span><span class="cost-label">Total to date</span></div>
   <div class="cost-stat"><span class="cost-num">${{ printf "%.4f" $avgCost }}</span><span class="cost-label">Avg / run</span></div>
   <div class="cost-stat"><span class="cost-num">{{ $n }}</span><span class="cost-label">Runs</span></div>
-  <div class="cost-stat"><span class="cost-num">{{ lang.NumFmt 0 (add $totalIn $totalOut) }}</span><span class="cost-label">Total tokens</span></div>
+  <div class="cost-stat"><span class="cost-num">{{ lang.FormatNumber 0 (add $totalIn $totalOut) }}</span><span class="cost-label">Total tokens</span></div>
 </div>
 
 <table>
@@ -29,8 +29,8 @@ first daily digest is generated.</em></p>
 <tr>
   <td>{{ .date }}</td>
   <td>{{ with .cost_usd }}${{ printf "%.4f" . }}{{ else }}—{{ end }}</td>
-  <td>{{ with .input_tokens }}{{ lang.NumFmt 0 . }}{{ else }}—{{ end }}</td>
-  <td>{{ with .output_tokens }}{{ lang.NumFmt 0 . }}{{ else }}—{{ end }}</td>
+  <td>{{ with .input_tokens }}{{ lang.FormatNumber 0 . }}{{ else }}—{{ end }}</td>
+  <td>{{ with .output_tokens }}{{ lang.FormatNumber 0 . }}{{ else }}—{{ end }}</td>
   <td>{{ with .num_turns }}{{ . }}{{ else }}—{{ end }}</td>
 </tr>
 {{- end }}
