@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-"""Fetch RSS/Atom feeds from configured sources, filter to last 7 days, de-dupe."""
+"""Fetch RSS/Atom feeds from configured sources, filter to last 24 hours, de-dupe."""
 
 from __future__ import annotations
 
@@ -15,7 +14,8 @@ from dateutil import parser as dateparser
 
 log = logging.getLogger(__name__)
 
-REPO_ROOT = Path(__file__).resolve().parent
+# src/news_aggregator/aggregate.py -> repo root is three levels up.
+REPO_ROOT = Path(__file__).resolve().parents[2]
 REPORTS_DIR = REPO_ROOT / "reports"
 SEEN_FILE = REPORTS_DIR / "seen.json"
 FEEDS_CONFIG = REPO_ROOT / "config" / "feeds.yaml"
@@ -119,9 +119,8 @@ def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
     REPORTS_DIR.mkdir(exist_ok=True)
     now = datetime.now(timezone.utc)
-    iso_year, iso_week, _ = now.isocalendar()
-    week_label = f"{iso_year}-W{iso_week:02d}"
-    cutoff = now - timedelta(days=7)
+    day_label = now.strftime("%Y-%m-%d")
+    cutoff = now - timedelta(days=1)
 
     feeds = load_feeds()
     log.info(
@@ -135,7 +134,7 @@ def main() -> None:
     entries = fetch_feeds(cutoff, seen, feeds)
     save_seen(seen)
 
-    out_file = REPORTS_DIR / f"raw-{week_label}.json"
+    out_file = REPORTS_DIR / f"raw-{day_label}.json"
     out_file.write_text(json.dumps(entries, indent=2))
     log.info("Collected %d new entries -> %s", len(entries), out_file)
 

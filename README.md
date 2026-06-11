@@ -1,20 +1,25 @@
 # News Aggregator
 
-Automated weekly news reports powered by RSS feeds + Claude Code.
+Automated daily news digests powered by RSS feeds + Claude Code, published with Hugo to GitHub Pages.
+
+📰 **Live site:** https://dmorand17.github.io/news-aggregator/
 
 ## How It Works
 
 ```
-  GitHub Actions (weekly cron Friday 5 AM EST)
+  GitHub Actions (daily cron 5 AM EST)
   │
   ├─[1: Python RSS Aggregator]──────────────────────────────────────────┐
-  │  feeds.yaml → fetch feeds → filter 7d → dedupe → raw-YYYY-WNN.json
+  │  feeds.yaml → fetch feeds → filter 24h → dedupe → raw-YYYY-MM-DD.json
   │
   ├─[2: Claude Code]────────────────────────────────────────────────────┐
-  │  raw JSON + WebSearch → synthesize → YYYY-WNN.{md,html}
+  │  raw JSON + WebSearch → synthesize → content/posts/YYYY-MM-DD.md
   │
-  └─[3: git-auto-commit]────────────────────────────────────────────────┐
-     commit report + seen.json → main
+  ├─[3: git-auto-commit]────────────────────────────────────────────────┐
+  │  commit post + seen.json → main
+  │
+  └─[4: Hugo build → deploy-pages]──────────────────────────────────────┐
+     build static site → publish to GitHub Pages
 ```
 
 ## Configuring Feeds
@@ -56,9 +61,13 @@ uv run python .claude/hooks/sync_feeds_readme.py
 ## Setup
 
 ### Prerequisites
-- GitHub repo with Actions enabled
+- GitHub repo with Actions enabled, Pages source set to **GitHub Actions**
 - Claude Code OAuth token
 - Python 3.13+ and [uv](https://docs.astral.sh/uv/)
+- [Hugo extended](https://gohugo.io/installation/) (for local site preview)
+
+> **Repo setup:** clone with `--recurse-submodules` (the PaperMod theme lives in
+> `themes/PaperMod`). If you already cloned, run `git submodule update --init`.
 
 ### Adding the Claude Code OAuth Token
 
@@ -73,67 +82,69 @@ uv run python .claude/hooks/sync_feeds_readme.py
 #### Step 1 — Fetch RSS feeds
 
 ```bash
-# Run the aggregator (writes reports/raw-YYYY-WNN.json)
-uv run python aggregate_news.py
+# Run the aggregator (writes reports/raw-YYYY-MM-DD.json)
+uv run news-aggregator
 
 # Inspect the output
-WEEK=$(python3 -c "from datetime import datetime; d=datetime.now(); print(f'{d.isocalendar()[0]}-W{d.isocalendar()[1]:02d}')")
-cat reports/raw-${WEEK}.json | python -m json.tool | head -50
+DAY=$(date +%F)
+cat reports/raw-${DAY}.json | python -m json.tool | head -50
 ```
 
-#### Step 2 — Generate the report with Claude Code
+#### Step 2 — Generate the digest with Claude Code
 
 Make sure `CLAUDE_CODE_OAUTH_TOKEN` is set in your environment, then run Claude Code directly against the raw JSON:
 
 ```bash
 export CLAUDE_CODE_OAUTH_TOKEN=...
-WEEK=$(python3 -c "from datetime import datetime; d=datetime.now(); print(f'{d.isocalendar()[0]}-W{d.isocalendar()[1]:02d}')")
+DAY=$(date +%F)
 
 claude --model claude-sonnet-4-6 \
   --max-turns 30 \
   --allowedTools "Read,Write,Glob,Grep,WebFetch,WebSearch,Bash(date *),Bash(ls *)" \
   --print \
-  "Read the raw feed data from reports/raw-${WEEK}.json. \
-   Follow the instructions in CLAUDE.md to generate a polished weekly news report. \
-   Save a markdown report to reports/${WEEK}.md and an HTML digest to \
-   reports/${WEEK}.html. Use templates/digest-template.html as the HTML template. \
+  "Read the raw feed data from reports/raw-${DAY}.json. \
+   Follow the instructions in CLAUDE.md to generate a polished daily news digest. \
+   Save a markdown post to content/posts/${DAY}.md including the required Hugo \
+   front matter. \
    Use WebSearch to find any breaking news that RSS feeds may have missed."
 ```
 
-#### Step 3 — View the output
+#### Step 3 — Preview the site
 
 ```bash
-# Open the HTML digest in your browser
-open reports/${WEEK}.html
+# Serve the Hugo site locally with live reload
+hugo server
 
-# Or read the markdown report
-cat reports/${WEEK}.md
+# Then open http://localhost:1313/news-aggregator/
 ```
 
 > **Note:** The aggregator tracks seen URLs in `reports/seen.json` to avoid duplicates across runs. Delete or reset this file if you want to reprocess all items.
 
 ### Manual Trigger (GitHub Actions)
 
-Go to **Actions** > **Weekly News Report** > **Run workflow**.
+Go to **Actions** > **Daily News Digest** > **Run workflow**.
 
 ## Report Format
 
-Each weekly report includes:
+Each daily digest is a Hugo post (`content/posts/YYYY-MM-DD.md`) with front matter
+(title, date, summary) and a body containing:
 
 1. **Top Story** — single most significant item with 2-3 sentence summary
-2. **Dynamic categories** (4-7 sections based on the week's content)
+2. **Dynamic categories** (3-5 sections based on the day's content)
    - High-relevance: major launches, breaking news
    - Medium-relevance: notable updates, ecosystem moves
    - Low-relevance: minor items, niche updates
+
+Posts older than 60 days are pruned automatically.
 
 ## Cost
 
 | Component | Cost |
 |-----------|------|
 | RSS feeds | Free |
-| Claude Code API (~10 turns/week, sonnet) | ~$0.10-0.25/week |
-| GitHub Actions (<2 min/run) | Free tier |
-| **Total** | **~$0.50-1/month** |
+| Claude Code API (~10 turns/day, sonnet) | ~$0.10-0.25/day |
+| GitHub Actions + Pages (<3 min/run) | Free tier |
+| **Total** | **~$2-5/month** |
 
 ## Feeds
 

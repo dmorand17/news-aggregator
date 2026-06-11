@@ -1,0 +1,107 @@
+name: Daily News Digest
+
+on:
+  schedule:
+    - cron: "0 10 * * *" # 10:00 UTC (5 AM EST) every day
+  workflow_dispatch: # manual trigger
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment; don't cancel an in-progress run.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true # PaperMod theme
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.13"
+
+      - name: Fetch RSS feeds
+        run: uv run news-aggregator
+
+      - name: Generate digest with Claude Code
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: |
+            Read the raw feed data from reports/raw-*.json (today's file).
+            Follow the instructions in CLAUDE.md to generate a polished daily
+            news digest. Save a single markdown post to
+            content/posts/YYYY-MM-DD.md using today's date (e.g. 2026-06-11.md),
+            including the required Hugo front matter. Use WebSearch to find any
+            breaking news that RSS feeds may have missed.
+          show_full_output: "true"
+          claude_args: >-
+            --model claude-sonnet-4-6
+            --max-turns 30
+            --allowedTools "Read,Write,Glob,Grep,WebFetch,WebSearch,Bash(date *),Bash(ls *)"
+
+      - name: Prune posts older than 60 days
+        run: |
+          cutoff=$(date -d "60 days ago" +%Y-%m-%d)
+          for f in content/posts/[0-9]*.md; do
+            [ -f "$f" ] || continue
+            fname=$(basename "${f%.*}")
+            if [ "$fname" \< "$cutoff" ]; then
+              rm "$f"
+            fi
+          done
+
+      - name: Commit digest
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: daily news digest"
+          file_pattern: "content/posts/*.md reports/seen.json"
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.163.0"
+          extended: true
+
+      - name: Build site
+        run: hugo --minify
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Notify Slack
+        if: always()
+        uses: slackapi/slack-github-action@v2
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: incoming-webhook
+          payload: |
+            {
+              "text": "Daily news digest: ${{ job.status == 'success' && '✅ Done' || '❌ Failed' }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Daily News Digest* — ${{ job.status == 'success' && '✅ Completed' || '❌ Failed' }}\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>"
+                  }
+                }
+              ]
+            }

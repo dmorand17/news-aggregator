@@ -1,0 +1,26 @@
+{{- /* Render config/feeds.yaml as a single grouped table. Single source of truth. */ -}}
+{{- $res := resources.Get "feeds.yaml" -}}
+{{- $data := $res | transform.Unmarshal -}}
+{{- $feeds := index $data "feeds" -}}
+{{- $total := 0 -}}
+{{- range $feeds -}}{{- $total = add $total (len .) -}}{{- end -}}
+<p><em>{{ $total }} feeds across {{ len $feeds }} categories.</em></p>
+<table>
+<thead><tr><th>Category</th><th>Source</th><th>Filter</th></tr></thead>
+<tbody>
+{{- range $category, $sources := $feeds }}
+{{- $first := true }}
+{{- range $name, $value := $sources }}
+{{- $url := "" -}}{{- $filter := "" -}}
+{{- if reflect.IsMap $value -}}
+  {{- $url = index $value "url" -}}
+  {{- $filter = index $value "category_filter" | default "" -}}
+{{- else -}}
+  {{- $url = $value -}}
+{{- end -}}
+<tr>{{ if $first }}<td rowspan="{{ len $sources }}"><strong>{{ $category }}</strong></td>{{ end }}<td><a href="{{ $url }}" target="_blank" rel="noopener">{{ $name }}</a></td><td>{{ with $filter }}<code>{{ . }}</code>{{ else }}—{{ end }}</td></tr>
+{{- $first = false }}
+{{- end }}
+{{- end }}
+</tbody>
+</table>
