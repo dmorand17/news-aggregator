@@ -13,7 +13,8 @@ automatically after every run for visibility into where the money goes.
 
 {{< costs >}}
 
-> **Note:** costs are **client-side estimates** reported by Claude Code, not
+> [!WARNING]
+> Costs are **client-side estimates** reported by Claude Code, not
 > authoritative billing figures. They're great for spotting trends but won't match
 > your invoice to the penny. Token counts include the model's reasoning, tool use,
 > and the full prompt context (which is re-sent each run, since daily runs are too
