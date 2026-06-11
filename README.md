@@ -22,6 +22,20 @@ Automated daily news digests powered by RSS feeds + Claude Code, published with 
      build static site → publish to GitHub Pages
 ```
 
+## Theme
+
+The site uses [**PaperMod**](https://github.com/adityatelange/hugo-PaperMod), a fast, clean Hugo theme, vendored as a git submodule at `themes/PaperMod` and selected via `theme = "PaperMod"` in `hugo.toml`. Clone with `--recurse-submodules` (or run `git submodule update --init`) so the theme is present locally.
+
+Site-level customizations live outside the submodule so theme updates don't clobber them:
+- `layouts/` — custom shortcodes (e.g. `costs`, `feeds`) and render hooks that override or extend the theme.
+- `hugo.toml` — theme params, menu, and site config.
+
+To update the theme:
+
+```bash
+git submodule update --remote themes/PaperMod
+```
+
 ## Configuring Feeds
 
 All RSS feeds are defined in **`config/feeds.yaml`** — no code changes needed.
