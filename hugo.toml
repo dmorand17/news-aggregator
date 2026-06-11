@@ -84,6 +84,12 @@ Each issue surfaces the day's most significant stories, grouped by theme and ran
   url = "/about/"
   weight = 40
 
+[[menu.main]]
+  identifier = "costs"
+  name = "Costs"
+  url = "/costs/"
+  weight = 50
+
 [outputs]
   home = ["HTML", "RSS"]
 

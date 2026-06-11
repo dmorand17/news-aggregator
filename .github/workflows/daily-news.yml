@@ -34,6 +34,7 @@ jobs:
         run: uv run news-aggregator
 
       - name: Generate digest with Claude Code
+        id: claude
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -51,6 +52,11 @@ jobs:
             --max-turns 30
             --allowedTools "Read,Write,Glob,Grep,WebFetch,WebSearch,Bash(date *),Bash(ls *)"
 
+      - name: Record run cost
+        id: cost
+        if: always()
+        run: uv run python scripts/record_cost.py "${{ steps.claude.outputs.execution_file }}"
+
       - name: Prune posts older than 60 days
         run: |
           cutoff=$(date -d "60 days ago" +%Y-%m-%d)
@@ -66,7 +72,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "docs: daily news digest"
-          file_pattern: "content/posts/*.md reports/seen.json"
+          file_pattern: "content/posts/*.md reports/seen.json data/costs.json"
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -100,7 +106,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Daily News Digest* — ${{ job.status == 'success' && '✅ Completed' || '❌ Failed' }}\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>"
+                    "text": "*Daily News Digest* — ${{ job.status == 'success' && '✅ Completed' || '❌ Failed' }}\n${{ steps.cost.outputs.cost_line }}\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>"
                   }
                 }
               ]

@@ -1,0 +1,49 @@
+{{- /* Render data/costs.json: summary stats + per-run table. */ -}}
+{{- $runs := site.Data.costs -}}
+{{- if not $runs }}
+<p><em>No runs recorded yet. Cost and token usage will appear here after the
+first daily digest is generated.</em></p>
+{{- else }}
+{{- $totalCost := 0.0 -}}
+{{- $totalIn := 0 -}}
+{{- $totalOut := 0 -}}
+{{- $n := len $runs -}}
+{{- range $runs -}}
+  {{- with .cost_usd }}{{ $totalCost = add $totalCost . }}{{ end -}}
+  {{- with .input_tokens }}{{ $totalIn = add $totalIn . }}{{ end -}}
+  {{- with .output_tokens }}{{ $totalOut = add $totalOut . }}{{ end -}}
+{{- end -}}
+{{- $avgCost := cond (gt $n 0) (div $totalCost $n) 0.0 -}}
+
+<div class="cost-stats">
+  <div class="cost-stat"><span class="cost-num">${{ printf "%.2f" $totalCost }}</span><span class="cost-label">Total to date</span></div>
+  <div class="cost-stat"><span class="cost-num">${{ printf "%.4f" $avgCost }}</span><span class="cost-label">Avg / run</span></div>
+  <div class="cost-stat"><span class="cost-num">{{ $n }}</span><span class="cost-label">Runs</span></div>
+  <div class="cost-stat"><span class="cost-num">{{ lang.NumFmt 0 (add $totalIn $totalOut) }}</span><span class="cost-label">Total tokens</span></div>
+</div>
+
+<table>
+<thead><tr><th>Date</th><th>Cost</th><th>Input</th><th>Output</th><th>Turns</th></tr></thead>
+<tbody>
+{{- range (sort $runs "date" "desc") }}
+<tr>
+  <td>{{ .date }}</td>
+  <td>{{ with .cost_usd }}${{ printf "%.4f" . }}{{ else }}—{{ end }}</td>
+  <td>{{ with .input_tokens }}{{ lang.NumFmt 0 . }}{{ else }}—{{ end }}</td>
+  <td>{{ with .output_tokens }}{{ lang.NumFmt 0 . }}{{ else }}—{{ end }}</td>
+  <td>{{ with .num_turns }}{{ . }}{{ else }}—{{ end }}</td>
+</tr>
+{{- end }}
+</tbody>
+</table>
+{{- end }}
+
+<style>
+  .cost-stats { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0; }
+  .cost-stat {
+    flex: 1 1 120px; text-align: center; padding: 1rem;
+    background: var(--entry); border-radius: var(--radius);
+  }
+  .cost-num { display: block; font-size: 1.6rem; font-weight: 700; color: var(--primary); }
+  .cost-label { display: block; font-size: 0.8rem; color: var(--secondary); margin-top: 0.25rem; }
+</style>
