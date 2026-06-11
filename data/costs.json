@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "date": "2026-06-11",
+    "timestamp": "2026-06-11T20:51:01.084567+00:00",
+    "cost_usd": 0.46942200000000006,
+    "input_tokens": 12,
+    "output_tokens": 8818,
+    "cache_read_tokens": 320530,
+    "cache_creation_tokens": 31696,
+    "num_turns": 11
+  }
+]
