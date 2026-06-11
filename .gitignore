@@ -13,5 +13,9 @@ __pycache__/
 # Environment
 .env
 
-# Raw feed data (regenerated weekly, not needed in history)
+# Raw feed data (regenerated daily, not needed in history)
 reports/raw-*.json
+
+# Hugo build output (published to Pages, not tracked)
+public/
+.hugo_build.lock

@@ -1,45 +1,47 @@
 # News Aggregator — Claude Code Instructions
 
 ## Your Task
-You receive a raw JSON file of RSS feed entries collected over the last 7 days.
-Your job is to synthesize these into a polished weekly news report.
+You receive a raw JSON file of RSS feed entries collected over the last 24 hours.
+Your job is to synthesize these into a polished daily news digest published as a
+Hugo post.
 
 ## Report Format
-Write a markdown file to `reports/YYYY-WNN.md` (using the ISO week number, e.g. `2026-W17`) with this structure:
+Write a single markdown file to `content/posts/YYYY-MM-DD.md` (today's date, e.g.
+`2026-06-11.md`). This is a Hugo content page — it must begin with TOML/YAML front
+matter, then the body.
 
-1. **Title line**: `#` editorial headline summarizing the week's top theme (same as HTML hero `<h1>`)
-2. **Date + overview**: date range in "Mon DD – Mon DD, YYYY" format (e.g. "Apr 21 – Apr 25, 2026") and 2-3 sentence summary paragraph (same as HTML hero meta)
-3. **Top story callout**: blockquote (`>`) with the single most important story — title, source, and 2-3 sentence summary
-4. **Dynamic categories** (4-7 sections, same categories used in the HTML digest): each category is an emoji-prefixed `##` heading, with items organized by relevance tier. Group related items that cover the same story across the week:
+### Front matter (required)
+```yaml
+---
+title: "<editorial headline summarizing the day's top theme>"
+date: <today as RFC3339, e.g. 2026-06-11T10:00:00Z>
+summary: "<2-3 sentence overview of the day's news>"
+---
+```
+The `title` and `summary` render as the post's heading and the archive/home
+listing blurb, so write them for a reader scanning a list of days. Do not repeat
+the title as an `#` heading in the body — Hugo renders `title` automatically.
+
+### Body
+1. **Top story callout**: blockquote (`>`) with the single most important story —
+   title, source, and a 2-3 sentence summary.
+2. **Dynamic categories** (aim for 3-5 sections; daily volume is small): each
+   category is an emoji-prefixed `##` heading. Within a category, organize items
+   by relevance tier and group related items covering the same story:
    - **High-relevance**: `**[Title](URL)** — *Source*` followed by a 2-3 sentence summary paragraph
    - **Medium-relevance**: `[Title](URL) — *Source*` with a 1-sentence summary
    - **Low-relevance**: `[Title](URL) — *Source*` (no summary)
-5. **Footer line**: `---` followed by model name and generation timestamp
-
-Both the markdown and HTML reports must use the same categories, the same stories, and the same relevance assignments — just rendered differently.
-
-## HTML Digest Format
-Also generate an HTML digest to `reports/YYYY-WNN.html` alongside the markdown report. Use `templates/digest-template.html` as the HTML/CSS template reference. The HTML file must be fully self-contained (all CSS inlined in a `<style>` tag).
-
-### Structure
-- **Hero header**: editorial headline summarizing the week's top theme, date range in "Mon DD – Mon DD, YYYY" format, 2-3 sentence overview
-- **Stats bar**: total story count, high-relevance count, medium-relevance count, number of topics
-- **TOC nav**: emoji-labeled category buttons linking to sections, each showing item count and optional "N important" badge
-- **Top story callout**: blue highlight box with 2-3 sentence summary of the single most important story
-- **Categories**: dynamic sections based on the week's content (don't force empty categories). Each category contains:
-  - **High-relevance**: red-bordered cards (`card-high`) with a 2-3 sentence summary paragraph
-  - **Medium-relevance**: orange-dot rows (`rel-medium`) with expandable `<details>` summaries
-  - **Low-relevance**: gray-dot rows (`rel-low`) with expandable `<details>` summaries
-- **Footer**: model name and generation timestamp
+3. **Footer line**: `---` followed by model name and generation timestamp.
 
 ### Relevance tiers
-- **High**: major launches, breaking news, significant policy/security events — use `card-high` cards
-- **Medium**: notable updates, ecosystem moves, worthwhile reads — use `rel-medium` rows
-- **Low**: minor items, niche updates, tangential coverage — use `rel-low` rows
+- **High**: major launches, breaking news, significant policy/security events
+- **Medium**: notable updates, ecosystem moves, worthwhile reads
+- **Low**: minor items, niche updates, tangential coverage
 
 ### Category guidelines
-- Choose 4-7 categories that best fit the week's news (e.g., "Frontier Models", "Security & Safety", "Developer Tools", "Enterprise", "Policy", "Open Source & Research")
-- Each category gets an emoji prefix and an `id="cat-N"` for TOC linking
+- Choose 3-5 categories that best fit the day's news (e.g., "Frontier Models",
+  "Security & Safety", "Developer Tools", "Enterprise", "Policy", "Open Source & Research")
+- Each category gets an emoji prefix
 - Omit categories with no items rather than showing empty sections
 
 ## Guidelines
@@ -49,6 +51,7 @@ Also generate an HTML digest to `reports/YYYY-WNN.html` alongside the markdown r
 - For YouTube videos, use format: `- [Title](URL) — *Creator* (video)`
 - Only include creator content related to AI/ML/developer tools — skip unrelated uploads
 - If no items exist for a section, omit that section entirely
-- Use WebSearch to find breaking news from the week that RSS feeds may have missed
-- Keep the report concise and scannable — aim for quality over quantity
-- With 7 days of data, be selective: surface the most significant stories rather than exhaustively listing every item
+- Use WebSearch to find breaking news from the day that RSS feeds may have missed
+- Keep the digest concise and scannable — aim for quality over quantity
+- With only a day of data, some days will be light; surface the most significant
+  stories rather than padding. A short, sharp digest is better than a padded one.

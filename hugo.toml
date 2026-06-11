@@ -1,0 +1,102 @@
+baseURL = "https://dmorand17.github.io/news-aggregator/"
+title = "Daily News Digest"
+theme = "PaperMod"
+copyright = "Daily News Digest — automated with RSS + Claude Code"
+
+# Generated daily by the aggregator; not tracked in git.
+publishDir = "public"
+
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+enableEmoji = true
+
+[permalinks]
+  posts = "/:year/:month/:day/"
+
+[params]
+  description = "An automated daily digest of AI, cloud, and developer-tools news — curated from RSS feeds and synthesized by Claude Code."
+  keywords = ["AI", "machine learning", "cloud", "developer tools", "news", "digest", "RSS"]
+  author = "Claude Code"
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = false
+  ShowWordCount = true
+  ShowToc = true
+  TocOpen = false
+  ShowRssButtonInSectionTermList = true
+  ShowAllPagesInArchive = true
+  ShowPageNums = true
+  DateFormat = "January 2, 2006"
+
+  [params.homeInfoParams]
+    Title = "📰 Daily News Digest"
+    Content = """
+Your morning briefing on AI, cloud, and developer tools — automatically curated from a hand-picked set of RSS feeds and synthesized into a single readable digest by Claude Code, every day at 5 AM EST.
+
+Each issue surfaces the day's most significant stories, grouped by theme and ranked by relevance. Browse the latest below, or dig through the [archive](archives/).
+"""
+
+  [[params.socialIcons]]
+    name = "github"
+    title = "View source on GitHub"
+    url = "https://github.com/dmorand17/news-aggregator"
+
+  [[params.socialIcons]]
+    name = "rss"
+    title = "Subscribe via RSS"
+    url = "index.xml"
+
+  [params.assets]
+    disableHLJS = true
+    favicon = "/favicon.svg"
+    favicon16x16 = "/favicon.svg"
+    favicon32x32 = "/favicon.svg"
+    apple_touch_icon = "/favicon.svg"
+
+[params.profileMode]
+  enabled = false
+
+[[menu.main]]
+  identifier = "archive"
+  name = "Archive"
+  url = "/archives/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "sources"
+  name = "Sources"
+  url = "/sources/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "how-it-works"
+  name = "How It Works"
+  url = "/how-it-works/"
+  weight = 30
+
+[[menu.main]]
+  identifier = "about"
+  name = "About"
+  url = "/about/"
+  weight = 40
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+# Expose config/feeds.yaml as a resource so the feeds shortcode can read it
+# (single source of truth, shared with the Python aggregator). Re-declare the
+# default assets mount since adding any mount under a root suppresses its default.
+[[module.mounts]]
+  source = "assets"
+  target = "assets"
+
+[[module.mounts]]
+  source = "config/feeds.yaml"
+  target = "assets/feeds.yaml"
