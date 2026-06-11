@@ -7,7 +7,7 @@ Automated daily news digests powered by RSS feeds + Claude Code, published with 
 ## How It Works
 
 ```
-  GitHub Actions (daily cron 5 AM EST)
+  GitHub Actions (daily cron 1 PM EST)
   │
   ├─[1: Python RSS Aggregator]──────────────────────────────────────────┐
   │  feeds.yaml → fetch feeds → filter 24h → dedupe → raw-YYYY-MM-DD.json
