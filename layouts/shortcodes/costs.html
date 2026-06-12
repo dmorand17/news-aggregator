@@ -45,6 +45,7 @@ first daily digest is generated.</em></p>
 {{- end -}}
 {{- $rows := sort $days.Values "date" "desc" -}}
 
+<h3 class="cost-section">Last 7 days</h3>
 <table>
 <thead><tr><th>Date</th><th>Cost</th><th>Input</th><th>Output</th><th>Runs</th></tr></thead>
 <tbody>
@@ -62,6 +63,38 @@ first daily digest is generated.</em></p>
 {{- end }}
 </tbody>
 </table>
+
+{{- /* Last 6 months (incl. current), summed cost per calendar month. */ -}}
+{{- $months := newScratch -}}
+{{- $start := (now.AddDate 0 -5 0).Format "2006-01" -}}
+{{- range $runs -}}
+  {{- $m := substr .date 0 7 -}}
+  {{- if ge $m $start -}}
+    {{- $months.Add $m (.cost_usd | default 0.0) -}}
+  {{- end -}}
+{{- end -}}
+{{- /* Build a row for each of the 6 months so empty months still show. */ -}}
+{{- $bars := slice -}}
+{{- $maxCost := 0.0 -}}
+{{- range $i := seq 5 -1 0 -}}
+  {{- $key := (now.AddDate 0 (mul $i -1) 0).Format "2006-01" -}}
+  {{- $label := (now.AddDate 0 (mul $i -1) 0).Format "Jan 2006" -}}
+  {{- $c := $months.Get $key | default 0.0 -}}
+  {{- if gt $c $maxCost }}{{ $maxCost = $c }}{{ end -}}
+  {{- $bars = $bars | append (dict "label" $label "cost" $c) -}}
+{{- end -}}
+
+<h3 class="cost-section">Last 6 months</h3>
+<div class="cost-bars">
+{{- range $bars }}
+  {{- $pct := cond (gt $maxCost 0.0) (mul (div .cost $maxCost) 100.0) 0.0 -}}
+  <div class="cost-bar-row">
+    <span class="cost-bar-label">{{ .label }}</span>
+    <span class="cost-bar-track"><span class="cost-bar-fill" style="width: {{ printf "%.1f" $pct }}%"></span></span>
+    <span class="cost-bar-val">${{ printf "%.2f" .cost }}</span>
+  </div>
+{{- end }}
+</div>
 {{- end }}
 
 <style>
@@ -72,4 +105,11 @@ first daily digest is generated.</em></p>
   }
   .cost-num { display: block; font-size: 1.6rem; font-weight: 700; color: var(--primary); }
   .cost-label { display: block; font-size: 0.8rem; color: var(--secondary); margin-top: 0.25rem; }
+  .cost-section { margin: 2rem 0 0.75rem; }
+  .cost-bars { display: flex; flex-direction: column; gap: 0.5rem; margin: 1rem 0; }
+  .cost-bar-row { display: flex; align-items: center; gap: 0.75rem; }
+  .cost-bar-label { flex: 0 0 5.5rem; font-size: 0.85rem; color: var(--secondary); }
+  .cost-bar-track { flex: 1 1 auto; background: var(--entry); border-radius: var(--radius); height: 1.25rem; overflow: hidden; }
+  .cost-bar-fill { display: block; height: 100%; min-width: 2px; background: var(--primary); border-radius: var(--radius); }
+  .cost-bar-val { flex: 0 0 4rem; text-align: right; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
 </style>
