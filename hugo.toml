@@ -1,4 +1,4 @@
-baseURL = "https://dmorand17.github.io/news-aggregator/"
+baseURL = "https://news.dougie-mo.cc/"
 title = "Daily News Digest"
 theme = "PaperMod"
 copyright = "Daily News Digest — automated with RSS + Claude Code"
