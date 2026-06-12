@@ -9,7 +9,9 @@ ShowToc: false
 This site is cheap to run, but not free — each daily digest makes a series of
 [Claude Code](https://www.claude.com/product/claude-code) API calls (reading the
 feeds, searching the web, writing the post). The numbers below are recorded
-automatically after every run for visibility into where the money goes.
+automatically after every run for visibility into where the money goes — the
+headline figures cover the **current month**, and the table breaks down the
+**last 7 days**, one row per day.
 
 {{< costs >}}
 
