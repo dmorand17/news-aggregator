@@ -1,37 +1,63 @@
-{{- /* Render data/costs.json: summary stats + per-run table. */ -}}
+{{- /* Render data/costs.json: this-month stats + last-7-days per-day table. */ -}}
 {{- $runs := site.Data.costs -}}
 {{- if not $runs }}
 <p><em>No runs recorded yet. Cost and token usage will appear here after the
 first daily digest is generated.</em></p>
 {{- else }}
-{{- $totalCost := 0.0 -}}
-{{- $totalIn := 0 -}}
-{{- $totalOut := 0 -}}
-{{- $n := len $runs -}}
-{{- range $runs -}}
-  {{- with .cost_usd }}{{ $totalCost = add $totalCost . }}{{ end -}}
-  {{- with .input_tokens }}{{ $totalIn = add $totalIn . }}{{ end -}}
-  {{- with .output_tokens }}{{ $totalOut = add $totalOut . }}{{ end -}}
+{{- /* Current calendar month totals (resets on the 1st). */ -}}
+{{- $month := now.Format "2006-01" -}}
+{{- $monthRuns := where $runs "date" "ge" (printf "%s-01" $month) -}}
+{{- $monthCost := 0.0 -}}
+{{- $monthIn := 0 -}}
+{{- $monthOut := 0 -}}
+{{- $monthN := len $monthRuns -}}
+{{- range $monthRuns -}}
+  {{- with .cost_usd }}{{ $monthCost = add $monthCost . }}{{ end -}}
+  {{- with .input_tokens }}{{ $monthIn = add $monthIn . }}{{ end -}}
+  {{- with .output_tokens }}{{ $monthOut = add $monthOut . }}{{ end -}}
 {{- end -}}
-{{- $avgCost := cond (gt $n 0) (div $totalCost $n) 0.0 -}}
+{{- $avgCost := cond (gt $monthN 0) (div $monthCost $monthN) 0.0 -}}
 
 <div class="cost-stats">
-  <div class="cost-stat"><span class="cost-num">${{ printf "%.2f" $totalCost }}</span><span class="cost-label">Total to date</span></div>
+  <div class="cost-stat"><span class="cost-num">${{ printf "%.2f" $monthCost }}</span><span class="cost-label">This month</span></div>
   <div class="cost-stat"><span class="cost-num">${{ printf "%.4f" $avgCost }}</span><span class="cost-label">Avg / run</span></div>
-  <div class="cost-stat"><span class="cost-num">{{ $n }}</span><span class="cost-label">Runs</span></div>
-  <div class="cost-stat"><span class="cost-num">{{ lang.FormatNumber 0 (add $totalIn $totalOut) }}</span><span class="cost-label">Total tokens</span></div>
+  <div class="cost-stat"><span class="cost-num">{{ $monthN }}</span><span class="cost-label">Runs this month</span></div>
+  <div class="cost-stat"><span class="cost-num">{{ lang.FormatNumber 0 (add $monthIn $monthOut) }}</span><span class="cost-label">Tokens this month</span></div>
 </div>
 
+{{- /* Last 7 days (incl. today), aggregated to one row per day. */ -}}
+{{- $cutoff := (now.AddDate 0 0 -6).Format "2006-01-02" -}}
+{{- $recent := where $runs "date" "ge" $cutoff -}}
+{{- $days := newScratch -}}
+{{- range $recent -}}
+  {{- $d := .date -}}
+  {{- $agg := $days.Get $d -}}
+  {{- if not $agg -}}
+    {{- $agg = dict "date" $d "cost" 0.0 "in" 0 "out" 0 "runs" 0 -}}
+  {{- end -}}
+  {{- $agg = merge $agg (dict
+      "cost" (add $agg.cost (.cost_usd | default 0.0))
+      "in"   (add $agg.in   (.input_tokens | default 0))
+      "out"  (add $agg.out  (.output_tokens | default 0))
+      "runs" (add $agg.runs 1)
+    ) -}}
+  {{- $days.Set $d $agg -}}
+{{- end -}}
+{{- $rows := sort $days.Values "date" "desc" -}}
+
 <table>
-<thead><tr><th>Date</th><th>Cost</th><th>Input</th><th>Output</th><th>Turns</th></tr></thead>
+<thead><tr><th>Date</th><th>Cost</th><th>Input</th><th>Output</th><th>Runs</th></tr></thead>
 <tbody>
-{{- range (sort $runs "date" "desc") }}
+{{- if not $rows }}
+<tr><td colspan="5"><em>No runs in the last 7 days.</em></td></tr>
+{{- end }}
+{{- range $rows }}
 <tr>
   <td>{{ .date }}</td>
-  <td>{{ with .cost_usd }}${{ printf "%.4f" . }}{{ else }}—{{ end }}</td>
-  <td>{{ with .input_tokens }}{{ lang.FormatNumber 0 . }}{{ else }}—{{ end }}</td>
-  <td>{{ with .output_tokens }}{{ lang.FormatNumber 0 . }}{{ else }}—{{ end }}</td>
-  <td>{{ with .num_turns }}{{ . }}{{ else }}—{{ end }}</td>
+  <td>${{ printf "%.4f" .cost }}</td>
+  <td>{{ lang.FormatNumber 0 .in }}</td>
+  <td>{{ lang.FormatNumber 0 .out }}</td>
+  <td>{{ .runs }}</td>
 </tr>
 {{- end }}
 </tbody>
