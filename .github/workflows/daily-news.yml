@@ -92,22 +92,20 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Notify Slack
+      - name: Notify ntfy
         if: always()
-        uses: slackapi/slack-github-action@v2
-        with:
-          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
-          webhook-type: incoming-webhook
-          payload: |
-            {
-              "text": "Daily news digest: ${{ job.status == 'success' && '✅ Done' || '❌ Failed' }}",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*Daily News Digest* — ${{ job.status == 'success' && '✅ Completed' || '❌ Failed' }}\n${{ steps.cost.outputs.cost_line }}\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>"
-                  }
-                }
-              ]
-            }
+        env:
+          NTFY_URL: ${{ secrets.NTFY_URL }}
+          NTFY_TOKEN: ${{ secrets.NTFY_TOKEN }}
+          TITLE: "Daily News Digest — ${{ job.status == 'success' && 'Completed' || 'Failed' }}"
+          TAGS: ${{ job.status == 'success' && 'white_check_mark' || 'x' }}
+          CLICK: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          BODY: ${{ steps.cost.outputs.cost_line }}
+        run: |
+          curl \
+            -H "Authorization: Bearer $NTFY_TOKEN" \
+            -H "Title: $TITLE" \
+            -H "Tags: $TAGS" \
+            -H "Click: $CLICK" \
+            -d "$BODY" \
+            "$NTFY_URL"
