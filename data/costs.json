@@ -118,5 +118,15 @@
     "cache_read_tokens": 317094,
     "cache_creation_tokens": 49644,
     "num_turns": 14
+  },
+  {
+    "date": "2026-06-21",
+    "timestamp": "2026-06-21T19:10:50.717915+00:00",
+    "cost_usd": 0.4174929,
+    "input_tokens": 1980,
+    "output_tokens": 6695,
+    "cache_read_tokens": 161653,
+    "cache_creation_tokens": 20291,
+    "num_turns": 10
   }
 ]
