@@ -1,15 +1,4 @@
 {
-  "https://www.theverge.com/ai-artificial-intelligence/942119/vibecoding-backyard-app-gardening-organizing": "2026-06-13T13:00:00+00:00",
-  "https://www.theverge.com/ai-artificial-intelligence/949553/anthropic-fable-5-mythos-5-government-national-security": "2026-06-13T12:55:49+00:00",
-  "https://www.theverge.com/tech/949360/apple-ai-photo-edit-reframe-extend-clean-up-hands-on": "2026-06-13T12:00:00+00:00",
-  "https://www.theverge.com/ai-artificial-intelligence/948425/tribeca-2026-dear-upstairs-neighbors-google-deepmind-openai": "2026-06-13T11:00:00+00:00",
-  "https://techcrunch.com/2026/06/13/openai-faces-investigation-from-state-attorneys-general/": "2026-06-13T16:47:18+00:00",
-  "https://techcrunch.com/2026/06/12/andrew-yang-thinks-the-next-big-startup-opportunity-is-lowering-the-cost-of-living/": "2026-06-13T04:14:19+00:00",
-  "https://techcrunch.com/2026/06/12/anthropics-safety-warnings-may-have-just-backfired-the-government-has-pulled-the-plug-on-its-most-powerful-ai/": "2026-06-13T02:26:30+00:00",
-  "https://techcrunch.com/2026/06/12/metas-months-old-ai-unit-is-a-soul-crushing-gulag-say-the-engineers-stuck-inside-it/": "2026-06-12T23:00:54+00:00",
-  "https://techcrunch.com/2026/06/12/chinese-cybercrime-operation-that-used-ai-to-scam-hundreds-of-thousands-of-victims-sued-by-google/": "2026-06-12T20:38:09+00:00",
-  "https://kiro.dev/changelog/cli/2-7": "2026-06-12T20:00:00+00:00",
-  "https://code.claude.com/docs/en/changelog#2-1-176": "2026-06-13T00:52:35+00:00",
   "https://www.theverge.com/ai-artificial-intelligence/949644/china-white-house-anthropic-mythos": "2026-06-14T18:27:55+00:00",
   "https://www.theverge.com/ai-artificial-intelligence/949601/amazon-anthropic-fablemythos-government-ban": "2026-06-13T21:39:26+00:00",
   "https://techcrunch.com/2026/06/14/as-ai-companies-race-to-go-public-who-else-is-along-for-the-ride/": "2026-06-14T16:38:09+00:00",
@@ -597,5 +586,14 @@
   "https://techcrunch.com/2026/06/25/patronus-ai-lands-50m-to-build-digital-worlds-that-stress-test-ai-agents/": "2026-06-25T20:19:25+00:00",
   "https://kiro.dev/changelog/cli/2-10": "2026-06-26T01:00:00+00:00",
   "https://code.claude.com/docs/en/changelog#2-1-193": "2026-06-26T00:33:59+00:00",
-  "https://techcrunch.com/2026/06/26/novak-djokovic-has-a-new-job-advisor-to-private-equity-firm-general-atlantic/": "2026-06-26T19:13:40+00:00"
+  "https://techcrunch.com/2026/06/26/novak-djokovic-has-a-new-job-advisor-to-private-equity-firm-general-atlantic/": "2026-06-26T19:13:40+00:00",
+  "https://www.theverge.com/ai-artificial-intelligence/958715/margaret-atwood-ai-problem-garbage-in-garbage-out": "2026-06-27T18:39:32+00:00",
+  "https://www.theverge.com/report/958678/apple-consumer-price-increase-ai-big-tech": "2026-06-27T13:30:00+00:00",
+  "https://www.theverge.com/ai-artificial-intelligence/958458/anthropic-mythos-5-is-back-trump-negotiations": "2026-06-27T00:33:44+00:00",
+  "https://techcrunch.com/2026/06/27/apple-vision-pro-exec-is-reportedly-leaving-for-openai/": "2026-06-27T16:45:09+00:00",
+  "https://techcrunch.com/2026/06/27/the-fittest-founder-in-the-room-got-cancer-heres-how-he-used-ai-to-fight-back/": "2026-06-27T14:00:00+00:00",
+  "https://techcrunch.com/2026/06/27/asian-ai-startups-launch-mythos-like-models-as-anthropics-export-ban-drags-on/": "2026-06-27T12:00:00+00:00",
+  "https://techcrunch.com/2026/06/26/trump-admin-releases-anthropic-mythos-to-be-used-by-more-than-100-us-companies-agencies/": "2026-06-27T01:01:37+00:00",
+  "https://magazine.sebastianraschka.com/p/using-local-coding-agents": "2026-06-27T11:21:58+00:00",
+  "https://code.claude.com/docs/en/changelog#2-1-195": "2026-06-27T00:32:40+00:00"
 }
