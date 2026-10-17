@@ -1,17 +1,4 @@
 {
-  "https://www.theverge.com/tech/1004330/meta-muse-ai-gadgets-home-link": "2026-10-02T21:08:37+00:00",
-  "https://www.theverge.com/tech/1004295/apple-limit-mac-disk-access-ai-agents": "2026-10-02T20:08:40+00:00",
-  "https://techcrunch.com/2026/10/02/sean-parker-is-rebuilding-stability-ai-around-music/": "2026-10-02T21:09:14+00:00",
-  "https://code.claude.com/docs/en/changelog#2-1-288": "2026-10-02T20:34:13+00:00",
-  "https://www.theverge.com/games/1004418/capcom-ai-game-development": "2026-10-03T16:49:10+00:00",
-  "https://www.theverge.com/entertainment/1004162/splice-ceo-kakul-srivastava-ai-interview": "2026-10-03T15:00:00+00:00",
-  "https://www.theverge.com/ai-artificial-intelligence/1004408/openai-safety-quits-sounding-the-alarm": "2026-10-03T14:31:56+00:00",
-  "https://techcrunch.com/2026/10/03/amazon-responds-to-data-center-backlash-says-it-no-longer-uses-ndas/": "2026-10-03T18:43:57+00:00",
-  "https://techcrunch.com/2026/10/03/openai-safety-employee-resigns-claiming-the-companys-culture-is-broken/": "2026-10-03T16:30:01+00:00",
-  "https://techcrunch.com/2026/10/03/all-the-ai-agents-that-can-live-in-your-text-messages/": "2026-10-03T14:00:00+00:00",
-  "https://techcrunch.com/2026/10/02/meta-wants-you-to-build-your-own-muse-gadget/": "2026-10-03T00:45:39+00:00",
-  "https://lastweekin.ai/p/lwiai-podcast-258-opus-55-sol-and": "2026-10-03T07:32:03+00:00",
-  "https://techcrunch.com/2026/10/03/spotify-billionaires-body-scan-startup-has-come-to-america/": "2026-10-03T14:00:00+00:00",
   "https://www.theverge.com/ai-artificial-intelligence/1004549/well-if-ai-said-it-it-must-be-true": "2026-10-04T16:16:04+00:00",
   "https://www.theverge.com/ai-artificial-intelligence/1004543/openai-gpt-cheat-starcraft": "2026-10-04T15:21:59+00:00",
   "https://techcrunch.com/2026/10/04/can-super-intelligence-and-a-non-binding-safety-pact-solve-ais-image-problem/": "2026-10-04T20:08:34+00:00",
@@ -662,5 +649,9 @@
   "https://ollama.com/blog/reflection-beam": "2026-10-16T00:00:00+00:00",
   "https://claude.dev/blog/solving-code-review-at-anthropic/": "2026-10-16T00:00:00+00:00",
   "https://claude.com/resources/articles/how-an-anthropic-japan-business-development-representative-runs-his-day": "2026-10-16T00:00:00+00:00",
-  "https://techcrunch.com/2026/10/15/even-benchmark-thinks-ai-is-eroding-the-venture-pact-against-backing-rivals/": "2026-10-16T05:16:46+00:00"
+  "https://techcrunch.com/2026/10/15/even-benchmark-thinks-ai-is-eroding-the-venture-pact-against-backing-rivals/": "2026-10-16T05:16:46+00:00",
+  "https://www.theverge.com/tech/1013409/meta-removes-language-that-may-have-allowed-it-to-scrape-news-sites": "2026-10-17T15:04:36+00:00",
+  "https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web": "2026-10-17T13:00:00+00:00",
+  "https://techcrunch.com/2026/10/17/replit-is-no-longer-working-with-anthropic-ceo-says/": "2026-10-17T18:48:08+00:00",
+  "https://code.claude.com/docs/en/changelog#2-1-302": "2026-10-16T21:03:05+00:00"
 }
