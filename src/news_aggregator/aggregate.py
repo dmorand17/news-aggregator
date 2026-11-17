@@ -1,4 +1,9 @@
-"""Fetch RSS/Atom feeds from configured sources, filter to last 24 hours, de-dupe."""
+"""Fetch RSS/Atom feeds, filter to last 7 days, de-dupe, and append to the weekly buffer.
+
+Run daily: some feeds only retain a few hours of items, so a single weekly fetch
+would miss most of the week. New entries accumulate in reports/pending.json until
+the weekly digest consumes and clears it.
+"""
 
 from __future__ import annotations
 
@@ -18,6 +23,7 @@ log = logging.getLogger(__name__)
 REPO_ROOT = Path(__file__).resolve().parents[2]
 REPORTS_DIR = REPO_ROOT / "reports"
 SEEN_FILE = REPORTS_DIR / "seen.json"
+PENDING_FILE = REPORTS_DIR / "pending.json"
 FEEDS_CONFIG = REPO_ROOT / "config" / "feeds.yaml"
 
 
@@ -119,8 +125,7 @@ def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
     REPORTS_DIR.mkdir(exist_ok=True)
     now = datetime.now(timezone.utc)
-    day_label = now.strftime("%Y-%m-%d")
-    cutoff = now - timedelta(days=1)
+    cutoff = now - timedelta(days=7)
 
     feeds = load_feeds()
     log.info(
@@ -134,9 +139,10 @@ def main() -> None:
     entries = fetch_feeds(cutoff, seen, feeds)
     save_seen(seen)
 
-    out_file = REPORTS_DIR / f"raw-{day_label}.json"
-    out_file.write_text(json.dumps(entries, indent=2))
-    log.info("Collected %d new entries -> %s", len(entries), out_file)
+    pending = json.loads(PENDING_FILE.read_text()) if PENDING_FILE.exists() else []
+    pending.extend(entries)
+    PENDING_FILE.write_text(json.dumps(pending, indent=2) + "\n")
+    log.info("Collected %d new entries (%d pending) -> %s", len(entries), len(pending), PENDING_FILE)
 
 
 if __name__ == "__main__":

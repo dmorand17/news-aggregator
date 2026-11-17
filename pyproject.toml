@@ -10,6 +10,7 @@ dependencies = [
 
 [project.scripts]
 news-aggregator = "news_aggregator:main"
+news-digest = "news_aggregator.digest:main"
 
 [build-system]
 requires = ["hatchling"]

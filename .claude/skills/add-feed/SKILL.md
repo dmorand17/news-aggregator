@@ -1,6 +1,6 @@
 ---
 name: add-feed
-description: Add a new RSS/Atom feed to the news-aggregator's config/feeds.yaml. Use when user says "add a feed", "add an RSS feed", "subscribe to a feed", or wants to register a new source for the daily digest.
+description: Add a new RSS/Atom feed to the news-aggregator's config/feeds.yaml. Use when user says "add a feed", "add an RSS feed", "subscribe to a feed", or wants to register a new source for the weekly digest.
 ---
 
 # Add Feed

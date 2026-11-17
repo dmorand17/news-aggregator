@@ -6,7 +6,7 @@ ShowReadingTime: false
 ShowToc: true
 ---
 
-Every digest is assembled from the feeds below, pulled fresh every morning and
+Every digest is assembled from the feeds below, pulled fresh every week and
 grouped by category. A few high-volume feeds use a **filter** so only items tagged
 with a specific series (e.g. AWS *Week in Review*) are included; the rest pull in
 everything.
@@ -29,7 +29,7 @@ else from that feed is ignored before it ever reaches the digest. For example, t
 announcements is narrowed down to just the weekly roundup posts.
 
 Feeds with no filter (shown as **—** in the table above) contribute all of their
-recent items, subject to the usual 24-hour window and de-duplication.
+recent items, subject to the usual 7-day window and de-duplication.
 
 ## Adding a source
 
