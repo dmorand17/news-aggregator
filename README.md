@@ -1,22 +1,27 @@
 # News Aggregator
 
-Automated daily news digests powered by RSS feeds + Claude Code, published with Hugo to GitHub Pages.
+Automated weekly news digests powered by RSS feeds + an LLM via [OpenRouter](https://openrouter.ai), published with Hugo to GitHub Pages.
 
 📰 **Live site:** https://dmorand17.github.io/news-aggregator/
 
 ## How It Works
 
 ```
-  GitHub Actions (daily cron 1 PM EST)
+  daily-fetch.yml (every day, 12:00 UTC)
+  │  feeds.yaml → fetch feeds → filter 7d → dedupe → append to reports/pending.json
+  │  commit pending.json + seen.json → main
+  │
+  weekly-news.yml (Fridays 1 PM EST)
   │
   ├─[1: Python RSS Aggregator]──────────────────────────────────────────┐
-  │  feeds.yaml → fetch feeds → filter 24h → dedupe → raw-YYYY-MM-DD.json
+  │  one last fetch to top up reports/pending.json
   │
-  ├─[2: Claude Code]────────────────────────────────────────────────────┐
-  │  raw JSON + WebSearch → synthesize → content/posts/YYYY-MM-DD.md
+  ├─[2: OpenRouter LLM]─────────────────────────────────────────────────┐
+  │  pending.json + prompts/digest.md + web search → content/posts/YYYY-MM-DD.md
+  │  then clear pending.json
   │
   ├─[3: git-auto-commit]────────────────────────────────────────────────┐
-  │  commit post + seen.json → main
+  │  commit post + seen.json + pending.json + costs.json → main
   │
   └─[4: Hugo build → deploy-pages]──────────────────────────────────────┐
      build static site → publish to GitHub Pages
@@ -76,52 +81,46 @@ uv run python .claude/hooks/sync_feeds_readme.py
 
 ### Prerequisites
 - GitHub repo with Actions enabled, Pages source set to **GitHub Actions**
-- Claude Code OAuth token
+- [OpenRouter](https://openrouter.ai) API key
 - Python 3.13+ and [uv](https://docs.astral.sh/uv/)
 - [Hugo extended](https://gohugo.io/installation/) (for local site preview)
 
 > **Repo setup:** clone with `--recurse-submodules` (the PaperMod theme lives in
 > `themes/PaperMod`). If you already cloned, run `git submodule update --init`.
 
-### Adding the Claude Code OAuth Token
+### Adding the OpenRouter API key
 
-1. Get your OAuth token from [claude.ai/settings](https://claude.ai/settings) under **Claude Code**
+1. Create a key at [openrouter.ai/settings/keys](https://openrouter.ai/settings/keys)
 2. In your GitHub repo, go to **Settings** > **Secrets and variables** > **Actions**
-3. Click **New repository secret**
-4. Name: `CLAUDE_CODE_OAUTH_TOKEN`, Value: paste your token
-5. Click **Add secret**
+3. Add a repository secret named `OPENROUTER_API_KEY` with the key as its value
+4. *(Optional)* Under **Variables**, add `OPENROUTER_MODEL` to override the default
+   model (`deepseek/deepseek-v4.1-flash-1017`, set in `src/news_aggregator/digest.py`)
+
+The model must support tool calling — the digest uses OpenRouter's
+`openrouter:web_search` server tool to catch news the feeds missed.
 
 ### Local Development
 
 #### Step 1 — Fetch RSS feeds
 
 ```bash
-# Run the aggregator (writes reports/raw-YYYY-MM-DD.json)
+# Run the aggregator (appends new entries to reports/pending.json)
 uv run news-aggregator
 
-# Inspect the output
-DAY=$(date +%F)
-cat reports/raw-${DAY}.json | python -m json.tool | head -50
+# Inspect the buffer
+python -m json.tool reports/pending.json | head -50
 ```
 
-#### Step 2 — Generate the digest with Claude Code
-
-Make sure `CLAUDE_CODE_OAUTH_TOKEN` is set in your environment, then run Claude Code directly against the raw JSON:
+#### Step 2 — Generate the digest
 
 ```bash
-export CLAUDE_CODE_OAUTH_TOKEN=...
-DAY=$(date +%F)
-
-claude --model claude-sonnet-4-6 \
-  --max-turns 30 \
-  --allowedTools "Read,Write,Glob,Grep,WebFetch,WebSearch,Bash(date *),Bash(ls *)" \
-  --print \
-  "Read the raw feed data from reports/raw-${DAY}.json. \
-   Follow the instructions in CLAUDE.md to generate a polished daily news digest. \
-   Save a markdown post to content/posts/${DAY}.md including the required Hugo \
-   front matter. \
-   Use WebSearch to find any breaking news that RSS feeds may have missed."
+export OPENROUTER_API_KEY=...
+# export OPENROUTER_MODEL=google/gemini-3.8-flash  # optional override
+uv run news-digest   # writes content/posts/YYYY-MM-DD.md and appends to data/costs.json
 ```
+
+The editorial instructions (format, relevance tiers, categories) live in
+[`prompts/digest.md`](prompts/digest.md).
 
 #### Step 3 — Preview the site
 
@@ -136,29 +135,31 @@ hugo server
 
 ### Manual Trigger (GitHub Actions)
 
-Go to **Actions** > **Daily News Digest** > **Run workflow**.
+Go to **Actions** > **Weekly News Digest** > **Run workflow**.
 
 ## Report Format
 
-Each daily digest is a Hugo post (`content/posts/YYYY-MM-DD.md`) with front matter
+Each weekly digest is a Hugo post (`content/posts/YYYY-MM-DD.md`) with front matter
 (title, date, summary) and a body containing:
 
 1. **Top Story** — single most significant item with 2-3 sentence summary
-2. **Dynamic categories** (3-5 sections based on the day's content)
+2. **Dynamic categories** (4-6 sections based on the week's content)
    - High-relevance: major launches, breaking news
    - Medium-relevance: notable updates, ecosystem moves
    - Low-relevance: minor items, niche updates
 
-Posts older than 60 days are pruned automatically.
+Posts older than 90 days are pruned automatically.
 
 ## Cost
 
 | Component | Cost |
 |-----------|------|
 | RSS feeds | Free |
-| Claude Code API (~10 turns/day, sonnet) | ~$0.10-0.25/day |
+| OpenRouter (1 run/week, DeepSeek V4.1 Flash + web search) | ~$0.05-0.20/run |
 | GitHub Actions + Pages (<3 min/run) | Free tier |
-| **Total** | **~$2-5/month** |
+| **Total** | **< $1/month** |
+
+Actual per-run cost is recorded in `data/costs.json` and shown on the site's Costs page.
 
 ## Feeds
 
@@ -167,18 +168,15 @@ Posts older than 60 days are pruned automatically.
 | Category | Source | Filter |
 | --- | --- | --- |
 | TLDR | [AI](https://bullrich.dev/tldr-rss/ai.rss) |  |
-| TLDR | [Tech](https://bullrich.dev/tldr-rss/tech.rss) |  |
 | TLDR | [DevOps](https://bullrich.dev/tldr-rss/devops.rss) |  |
 | News Sites | [The Verge AI](https://www.theverge.com/rss/ai-artificial-intelligence/index.xml) |  |
 | News Sites | [TechCrunch AI](https://techcrunch.com/category/artificial-intelligence/feed/) |  |
 | Cloud | [AWS News](https://aws.amazon.com/blogs/aws/feed/) | `Week in Review` |
 | Developer Platforms | [Ollama Blog](https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_ollama.xml) |  |
-| Developer Platforms | [Claude Blog](https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml) |  |
+| Developer Platforms | [Claude Blog](https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml) | `Product updates` |
+| Developer Platforms | [OpenRouter Blog](https://openrouter.ai/blog/feed.xml) |  |
 | AI | [Ahead of AI](https://magazine.sebastianraschka.com/feed) |  |
 | AI | [Last Week in AI](https://lastweekin.ai/feed) |  |
-| ChangeLogs | [Obsidian](https://obsidian.md/changelog.xml) |  |
-| ChangeLogs | [Kiro](https://kiro.dev/changelog/feed.rss) |  |
 | ChangeLogs | [Claude Code](https://code.claude.com/docs/en/changelog/rss.xml) |  |
-| Investing | [TechCrunch Venture](https://techcrunch.com/category/venture/feed/) |  |
 
 <!-- feeds-end -->

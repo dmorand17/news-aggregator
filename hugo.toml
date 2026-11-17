@@ -1,9 +1,9 @@
 baseURL = "https://news.dougie-mo.cc/"
-title = "Daily News Digest"
+title = "Weekly News Digest"
 theme = "PaperMod"
-copyright = "Daily News Digest — automated with RSS + Claude Code"
+copyright = "Weekly News Digest — automated with RSS + OpenRouter"
 
-# Generated daily by the aggregator; not tracked in git.
+# Generated weekly by the aggregator; not tracked in git.
 publishDir = "public"
 
 enableRobotsTXT = true
@@ -15,9 +15,9 @@ enableEmoji = true
   posts = "/:year/:month/:day/"
 
 [params]
-  description = "An automated daily digest of AI, cloud, and developer-tools news — curated from RSS feeds and synthesized by Claude Code."
+  description = "An automated weekly digest of AI, cloud, and developer-tools news — curated from RSS feeds and synthesized by an LLM via OpenRouter."
   keywords = ["AI", "machine learning", "cloud", "developer tools", "news", "digest", "RSS"]
-  author = "Claude Code"
+  author = "News Aggregator"
   defaultTheme = "auto"
   ShowReadingTime = true
   ShowShareButtons = false
@@ -33,11 +33,11 @@ enableEmoji = true
   DateFormat = "January 2, 2006"
 
   [params.homeInfoParams]
-    Title = "📰 Daily News Digest"
+    Title = "📰 Weekly News Digest"
     Content = """
-Your morning briefing on AI, cloud, and developer tools — automatically curated from a hand-picked set of RSS feeds and synthesized into a single readable digest by Claude Code, every day at 5 AM EST.
+Your weekly briefing on AI, cloud, and developer tools — automatically curated from a hand-picked set of RSS feeds and synthesized into a single readable digest by an LLM via OpenRouter, every Friday at 1 PM EST.
 
-Each issue surfaces the day's most significant stories, grouped by theme and ranked by relevance. Browse the latest below, or dig through the [archive](archives/).
+Each issue surfaces the week's most significant stories, grouped by theme and ranked by relevance. Browse the latest below, or dig through the [archive](archives/).
 """
 
   [[params.socialIcons]]

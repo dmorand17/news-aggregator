@@ -4,12 +4,14 @@ version = "0.1.0"
 requires-python = ">=3.13"
 dependencies = [
     "feedparser>=6.0",
+    "httpx>=0.28",
     "python-dateutil>=2.9",
     "pyyaml>=6.0",
 ]
 
 [project.scripts]
 news-aggregator = "news_aggregator:main"
+news-digest = "news_aggregator.digest:main"
 
 [build-system]
 requires = ["hatchling"]

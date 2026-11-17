@@ -1,8 +1,8 @@
-name: Daily News Digest
+name: Weekly News Digest
 
 on:
   schedule:
-    - cron: "0 18 * * *" # 18:00 UTC (1 PM EST) every day
+    - cron: "0 18 * * 5" # 18:00 UTC (1 PM EST) every Friday
   workflow_dispatch: # manual trigger
 
 permissions:
@@ -30,36 +30,19 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: Fetch RSS feeds
+      - name: Fetch RSS feeds (top up the daily buffer)
         run: uv run news-aggregator
 
-      - name: Generate digest with Claude Code
-        id: claude
-        uses: anthropics/claude-code-action@v1
-        with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          prompt: |
-            Read the raw feed data from reports/raw-*.json (today's file).
-            Follow the instructions in CLAUDE.md to generate a polished daily
-            news digest. Save a single markdown post to
-            content/posts/YYYY-MM-DD.md using today's date (e.g. 2026-06-11.md),
-            including the required Hugo front matter. Use WebSearch to find any
-            breaking news that RSS feeds may have missed.
-          show_full_output: "true"
-          claude_args: >-
-            --model claude-sonnet-4-6
-            --max-turns 30
-            --allowedTools "Read,Write,Glob,Grep,WebFetch,WebSearch,Bash(date *),Bash(ls *)"
+      - name: Generate digest with OpenRouter
+        id: digest
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_MODEL: ${{ vars.OPENROUTER_MODEL }} # optional repo variable; defaults in digest.py
+        run: uv run news-digest
 
-      - name: Record run cost
-        id: cost
-        if: always()
-        run: uv run python scripts/record_cost.py "${{ steps.claude.outputs.execution_file }}"
-
-      - name: Prune posts older than 60 days
+      - name: Prune posts older than 90 days
         run: |
-          cutoff=$(date -d "60 days ago" +%Y-%m-%d)
+          cutoff=$(date -d "90 days ago" +%Y-%m-%d)
           for f in content/posts/[0-9]*.md; do
             [ -f "$f" ] || continue
             fname=$(basename "${f%.*}")
@@ -71,8 +54,8 @@ jobs:
       - name: Commit digest
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "docs: daily news digest"
-          file_pattern: "content/posts/*.md reports/seen.json data/costs.json"
+          commit_message: "docs: weekly news digest"
+          file_pattern: "content/posts/*.md reports/seen.json reports/pending.json data/costs.json"
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -97,10 +80,10 @@ jobs:
         env:
           NTFY_URL: ${{ secrets.NTFY_URL }}
           NTFY_TOKEN: ${{ secrets.NTFY_TOKEN }}
-          TITLE: "Daily News Digest — ${{ job.status == 'success' && 'Completed' || 'Failed' }}"
+          TITLE: "Weekly News Digest — ${{ job.status == 'success' && 'Completed' || 'Failed' }}"
           TAGS: ${{ job.status == 'success' && 'white_check_mark' || 'x' }}
           CLICK: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          BODY: ${{ steps.cost.outputs.cost_line }}
+          BODY: ${{ steps.digest.outputs.cost_line }}
         run: |
           curl \
             -H "Authorization: Bearer $NTFY_TOKEN" \

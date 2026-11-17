@@ -1,0 +1,30 @@
+name: Daily Feed Fetch
+
+# Some feeds only retain a few hours of items, so fetch daily into
+# reports/pending.json; the weekly digest workflow consumes and clears it.
+on:
+  schedule:
+    - cron: "0 12 * * *" # 12:00 UTC daily (well clear of the Friday 18:00 digest)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.13"
+
+      - name: Fetch RSS feeds
+        run: uv run news-aggregator
+
+      - name: Commit buffer
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: daily feed fetch"
+          file_pattern: "reports/pending.json reports/seen.json"
