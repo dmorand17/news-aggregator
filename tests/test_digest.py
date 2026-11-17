@@ -66,3 +66,27 @@ def test_build_request_enables_web_search():
     req = build_request("x/model", [{"title": "a"}], NOW)
     assert req["tools"][0]["type"] == "openrouter:web_search"
     assert "2026-11-20T18:00:00Z" in req["input"][1]["content"][0]["text"]
+
+
+def _fake_post(status, body):
+    import httpx
+
+    def post(url, **kwargs):
+        return httpx.Response(status, json=body, request=httpx.Request("POST", url))
+
+    return post
+
+
+def test_call_openrouter_returns_json(monkeypatch):
+    from news_aggregator import digest
+
+    monkeypatch.setattr(digest.httpx, "post", _fake_post(200, RESPONSE))
+    assert digest.call_openrouter({}, "key") == RESPONSE
+
+
+def test_call_openrouter_exits_with_error_body(monkeypatch):
+    from news_aggregator import digest
+
+    monkeypatch.setattr(digest.httpx, "post", _fake_post(400, {"error": {"message": "bad model"}}))
+    with pytest.raises(SystemExit, match="400.*bad model"):
+        digest.call_openrouter({}, "key")

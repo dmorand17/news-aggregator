@@ -17,9 +17,10 @@ import logging
 import os
 import re
 import sys
-import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
+
+import httpx
 
 from news_aggregator.aggregate import PENDING_FILE
 
@@ -52,17 +53,20 @@ def build_request(model: str, entries: list[dict], now: datetime) -> dict:
 
 
 def call_openrouter(payload: dict, api_key: str) -> dict:
-    req = urllib.request.Request(
+    resp = httpx.post(
         API_URL,
-        data=json.dumps(payload).encode(),
-        headers={
-            "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json",
-            "X-Title": "news-aggregator",
-        },
+        json=payload,
+        headers={"Authorization": f"Bearer {api_key}", "X-Title": "news-aggregator"},
+        timeout=600,
     )
-    with urllib.request.urlopen(req, timeout=600) as resp:
-        return json.load(resp)
+    if resp.is_error:
+        # Print only the message: the body also carries the account's user_id, and CI logs are public.
+        try:
+            message = resp.json()["error"]["message"]
+        except (ValueError, KeyError, TypeError):
+            message = resp.text[:500]
+        sys.exit(f"OpenRouter returned {resp.status_code}: {message}")
+    return resp.json()
 
 
 def extract_text(response: dict) -> str:
