@@ -1246,5 +1246,397 @@
     "category": "ChangeLogs",
     "published": "2026-11-17T23:22:59+00:00",
     "summary": "<p><strong>Added</strong></p>\n<ul>\n<li>Added a confirmation before <code>/install-github-app</code> changes a repository</li>\n<li>Added <code>claude mcp add-json &#x3c;name> -</code> to read the server's JSON from stdin, so tokens can stay off the command line; not available inside a Claude Code session</li>\n<li>Added a line when a resumed session's earlier messages can't be loaded</li>\n<li>Added a list in <code>/status</code> of broken agent, skill, command and output style files, keybinding er"
+  },
+  {
+    "title": "Wispr Flow Notetaker is now on iPhone. Capture the conversations that happen away from your desk (Sponsor)",
+    "url": "https://ref.wisprflow.ai/tldr-nov19-ai-primary-headline?sp=emSyAlq16PoccIRFrTLfUwAq",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "The best conversations about what you're building rarely happen on a call. They happen over coffee with a user, in the hallway after standup, or on a walk while you think out loud.Wispr Flow Notetaker now runs on iPhone. Hit record and stay in the conversation. Afterward you get a clean summary and a full transcript.It keeps recording when your phone is locked or you switch apps, and it captures conversations even without Wi-Fi. Use it for a 1:1, a user interview or a solo brain dump.Capture on "
+  },
+  {
+    "title": "Gemini 4 Neon (12 minute read)",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "Google introduced Gemini 4 Neon, a fast, frontier-level model for complex coding, knowledge work, and science tasks. It scored 61 on the Artificial Analysis Intelligence Index and is priced at $3 per million input tokens and $15 per million output tokens."
+  },
+  {
+    "title": "Genie 4 (7 minute read)",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/genie-4-now-available-project-genie/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "Google opened Genie 4, its model for generating interactive worlds, to eligible Google AI Ultra subscribers in Project Genie. Users can edit a world by typing prompts while exploring it."
+  },
+  {
+    "title": "Why is Gemini 4 Carbon taking so long? (4 minute read)",
+    "url": "https://kernel.dev/blog/why-is-gemini-4-carbon-taking-so-long/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "In a private benchmark, Gemini 4 Carbon spent close to an hour on bug fixes that Claude Opus 5.5 and GPT-6 Astra finished in minutes. Carbon took about seven times as many steps as Astra, and half were unnecessary."
+  },
+  {
+    "title": "Why Antigravity Eats Weekly Quota Fast - and What I Measured (17 minute read)",
+    "url": "https://asubedi.com.np/blog/why-antigravity-eats-weekly-quota-fast/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "Google Antigravity wipes users' prompt caches if there is a 5-minute pause. Refreshing the cache just before expiry works, but only for 3 pings. Even a 5-word prompt starts with 13,800 to 16,800+ tokens of system instructions, MCP schemas, and skills. Disabling unused MCP servers and plugins shrinks cold turns and cache misses."
+  },
+  {
+    "title": "Switching LLMs mid-conversation is a ski-rental problem (30 minute read)",
+    "url": "https://www.edgee.ai/blog/posts/switching-llms-mid-conversation-is-a-ski-rental-problem?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "Most work on routing between language models is centered on making sure the right model handles the right request. A classifier scores the request, then the request is routed to a cheap model if it is easy, and a frontier model if it is hard. For coding agents, this is only half of the problem. The second half of the problem is knowing when a running session should change model. This problem, which this post discusses, has a classic form: the ski-rental problem."
+  },
+  {
+    "title": "Advancing chip design with OpenAI models (8 minute read)",
+    "url": "https://openai.com/index/advancing-chip-design-with-our-models/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "Design changes proposed by OpenAI's models cut the circuit area of key parts of its Jalape\u00f1o AI chip by an estimated 10% to 13%. With AMD, the same approach delivered up to 14% improvements on AMD's flagship GPU designs."
+  },
+  {
+    "title": "Keyboard: 45 wpm. Your voice: 220 wpm. Give Cursor the context it needs (Sponsor)",
+    "url": "https://ref.wisprflow.ai/tldr-nov19-ai-secondary-headline?sp=xsAkQqdku1z5cUNwyxtrDZj4",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "You can explain a bug out loud in seconds. Typing it out takes long enough that you cut the context, and the answer gets worse. Wispr Flow lets you just talk. It types clean, formatted text into Cursor, Claude or ChatGPT, with the filler words gone. Mac, Windows, iPhone and Android. Try Wispr Flow free"
+  },
+  {
+    "title": "An update on the state of research acceleration at OpenAI (20 minute read)",
+    "url": "https://openai.com/index/research-acceleration-jagged-frontier/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "OpenAI's agents now complete nearly half of two-to-four-hour research tasks on their own. However, humans are still central to AI development. Agent use is surging, and the heaviest users are pulling further ahead. Researchers are devoting increasing human effort to Safety and alignment."
+  },
+  {
+    "title": "Context API extracts full context from any web page (6 minute read)",
+    "url": "https://www.perplexity.ai/hub/blog/context-api-extracts-full-context-from-any-web-page?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "The Perplexity Context API can extract the full context from any webpage and return clean Markdown, links, and relevant passages. It can read up to 10 URLs at once. Agents can specify the freshness of each request and validate the source of each result. Every successful result also includes metadata for the page such as the title, description, language, author, and date of publication."
+  },
+  {
+    "title": "Introducing Model Factory (8 minute read)",
+    "url": "https://www.primeintellect.ai/blog/introducing-model-factory?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "Model Factory is a training loop that lets any company train, deploy, and continuously improve models in production. It brings reinforcement learning, supervised fine-tuning, pre-training, and inference together into one control plane. It also offers health checks, automatic node replacement, and recovery from the latest checkpoint for long-running experiments. Model Factory has already been deployed for teams working on finance automation, computer use, scientific discovery, chip design, and ot"
+  },
+  {
+    "title": "Quickly, There's No Time (38 minute read)",
+    "url": "https://thezvi.substack.com/p/quickly-theres-no-time?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "Many things point to the substantial possibility of superintelligence arriving next year. Any plan to prepare for this has to be ready for the full automation of AI R&amp;D, which will result in the rapid advancement of AI abilities beyond human levels. It will need to include mechanisms to slow down the resulting growth in capabilities."
+  },
+  {
+    "title": "The Silent Consensus (15 minute read)",
+    "url": "https://www.hyperdimensional.co/p/the-silent-consensus?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "The most common vision for the future that AI brings isn't totally positive. It is often left unsaid, discernible only by implication, a silent consensus. The decisions humans make will likely lead to a world in which people have forfeited effective authority over much of our civilization. Even if we make extraordinary progress on AI safety and alignment, we could still find ourselves having submitted to a machine entity."
+  },
+  {
+    "title": "Most voice apps rent their speech model. Wispr Flow trained its own (Sponsor)",
+    "url": "https://ref.wisprflow.ai/tldr-nov19-ai-quicklinks-headline?sp=rd9VFBzy1-YQhsiehe2WNZxJ",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "Canto, the model behind Wispr Flow, had the lowest word error rate of every model tested on real dictations from more than 2,300 speakers. 4x faster than typing. Try Wispr Flow free"
+  },
+  {
+    "title": "Flying blind? 78.5% of AI operators have no metric for factual accuracy (Sponsor)",
+    "url": "https://go.parloa.com/cx-observability-2026?utm_campaign=2026-q4-paid-awareness-cxobservability&amp;utm_source=tldr&amp;utm_medium=newsletter-quicklink-11-16",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "Parloa and Metric Sherpa surveyed 700+ CX operators and executives for the 2026 CX Observability Study. Key finding: teams are scaling AI agents faster than anyone can verify them. See what's missing"
+  },
+  {
+    "title": "Inside the Codex sandbox (28 minute read)",
+    "url": "https://openai.com/index/inside-the-codex-sandbox/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "The Codex sandbox lets OpenAI's coding agent run commands on a user's own machine within file and network limits the user controls."
+  },
+  {
+    "title": "How Meta Uses AI Agents to Scale ML Innovations Across Ads Ranking Models (12 minute read)",
+    "url": "https://engineering.fb.com/2026/11/18/ml-applications/ai-agents-to-scale-ml-innovations-across-ads-ranking-models/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "Meta uses AI agents to efficiently propagate ML technique improvements across diverse ads ranking models."
+  },
+  {
+    "title": "ResolveAI Introduces SRE-1, the Most Accurate Model for Production at Every Budget (1 minute read)",
+    "url": "https://resolve.ai/news/introduces-SRE-1-model-and-primary-on-call?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "SRE-1 offers unmatched accuracy for production across various budgets."
+  },
+  {
+    "title": "Anthropic's compute spending is increasing by 4x per year, outpacing OpenAI's 3x (6 minute read)",
+    "url": "https://epoch.ai/data-insights/anthropic-openai-compute-spend-growth?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "Anthropic spent nearly $10 billion on compute and infrastructure in the third quarter of 2026."
+  },
+  {
+    "title": "Introducing Stitch Loop: A new way to build and evolve products (1 minute read)",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-loop/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-19T00:00:00+00:00",
+    "summary": "Stitch Loop is a new tool from Google Labs designed to facilitate iterative product development."
+  },
+  {
+    "title": "Meta\u2019s Muse Charm might cost $300",
+    "url": "https://www.theverge.com/tech/1038087/meta-muse-charm-ai-price",
+    "source": "The Verge AI",
+    "category": "News Sites",
+    "published": "2026-11-19T20:22:17+00:00",
+    "summary": "Meta is planning to price the Muse Charm, a little gadget with a screen that lets you chat with your Muse AI agent, at $300, according to The Information. CEO Mark Zuckerberg revealed the gadget earlier this year and said the company expected to ship the Charm \"in time for the holidays in December,\" but [&#8230;]"
+  },
+  {
+    "title": "Google is putting AI chats right on the homepage",
+    "url": "https://www.theverge.com/tech/1038059/google-search-homepage-ai-chats",
+    "source": "The Verge AI",
+    "category": "News Sites",
+    "published": "2026-11-19T20:05:06+00:00",
+    "summary": "Google is updating its homepage to include AI searches. In a post on X, Google's vice president of product, Robby Stein, shows how you can now open a collapsible sidebar to view and continue your AI chats. Based on the GIF shared by Stein, it looks like you can open the sidebar by clicking the [&#8230;]"
+  },
+  {
+    "title": "Gemini on Mac can now use your computer",
+    "url": "https://www.theverge.com/tech/1037902/google-gemini-macos-ai-computer-use",
+    "source": "The Verge AI",
+    "category": "News Sites",
+    "published": "2026-11-19T18:21:13+00:00",
+    "summary": "Google's Gemini app for macOS now has computer use, meaning it can help you \"get multi-step tasks done across your local files, desktop apps, and the web,\" the company says. Google suggests the feature might be useful for things like speeding up workflows, filling in forms, making presentations, and listing items for sale. Users will [&#8230;]"
+  },
+  {
+    "title": "Anthropic starts trading on Wall Street",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1035384/anthropic-ipo-trading-nasdaq",
+    "source": "The Verge AI",
+    "category": "News Sites",
+    "published": "2026-11-19T16:52:01+00:00",
+    "summary": "Anthropic has officially gone public. It began trading on the Nasdaq under the ticker symbol \"ANT\" at $111.50 per share, up from its initial $83 per share price that put company's value at around $1.5 trillion. The listing comes nearly a month after Anthropic revealed its plans to go public. In its lengthy S-1 filing, [&#8230;]"
+  },
+  {
+    "title": "ChatGPT can transcribe as you speak now with Live Dictation",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1037634/openai-chatgpt-live-dictation",
+    "source": "The Verge AI",
+    "category": "News Sites",
+    "published": "2026-11-19T15:16:45+00:00",
+    "summary": "ChatGPT can receive audio prompts from your microphone faster now with a Live Dictation feature that transcribes as you speak, rather than waiting until you finish recording. It's rolling out now globally on all ChatGPT plans on the web, desktop app, and iOS and Android apps. While using dictation in ChatGPT, you can tap or [&#8230;]"
+  },
+  {
+    "title": "With the biggest IPO of all time, Anthropic\u2019s \u2018good guy\u2019 reputation is on the line",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1037459/anthropic-ipo-safe-ai-reputation-power-structure",
+    "source": "The Verge AI",
+    "category": "News Sites",
+    "published": "2026-11-19T14:25:37+00:00",
+    "summary": "Today is a new beginning for Anthropic: a years-in-the-making IPO that beat out SpaceX for most valuable of all time, having raised $81.3 billion and set an important precedent for the other public AI lab debuts to come. But it's not simply a financial milestone. Anthropic was founded on the idea that it prioritized safety [&#8230;]"
+  },
+  {
+    "title": "I let Apple\u2019s always-listening AI summarize my life for two weeks",
+    "url": "https://www.theverge.com/tech/1037100/apple-siri-recap-audio-intelligence-hands-on",
+    "source": "The Verge AI",
+    "category": "News Sites",
+    "published": "2026-11-19T13:00:00+00:00",
+    "summary": "Was it worth it? I've been asking myself this quite a bit over the last month or so while testing both the Amazon Bee Frontier and Siri Recap on the Apple Watch Ultra 4. Both enable a wearable to ambiently listen to your conversations and, using AI, summarize them for you. Why? So you can [&#8230;]"
+  },
+  {
+    "title": "Canva adds an AI \u2018off\u2019 button",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1037126/canva-ai-features-off-button",
+    "source": "The Verge AI",
+    "category": "News Sites",
+    "published": "2026-11-19T12:30:00+00:00",
+    "summary": "Canva will now allow you to turn off its generative AI features. With this change, you can disable the graphic design platform's array of AI tools, such as its AI photo-extending Magic Expand feature, as well as turn off the ability to generate images with its Canva chatbot. This toggle doesn't turn off every AI-powered [&#8230;]"
+  },
+  {
+    "title": "The nation\u2019s largest school districts consider ditching Google Search",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1037151/school-districts-ditching-google",
+    "source": "The Verge AI",
+    "category": "News Sites",
+    "published": "2026-11-18T23:18:35+00:00",
+    "summary": "New York, Los Angeles, and Chicago schools are considering Google alternatives after the company said it will disable Search for schools that opt out of its AI features, according to The New York Times. Starting next year, schools will not have the option to disable Gemini-powered features without also disabling Search. Chris Phillips, Google's vice [&#8230;]"
+  },
+  {
+    "title": "The unfolding Jensen Huang scandal: a timeline",
+    "url": "https://techcrunch.com/2026/11/19/nvidia-ceo-jensen-huangs-affair-with-alleged-chinese-spy-a-timeline/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-19T20:18:49+00:00",
+    "summary": "Jensen Huang has resigned from Nvidia following an affair, which could have ramifications for national security as the U.S. and China race to develop the most advanced AI infrastructure."
+  },
+  {
+    "title": "Anthropic\u2019s IPO could deliver $156 billion to charity",
+    "url": "https://techcrunch.com/2026/11/19/anthropics-ipo-could-deliver-156-billion-to-charity/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-19T19:10:45+00:00",
+    "summary": "At a stock price of $95, the frontier lab's Public Benefit Foundation, its employee donations, and the company's match tot up to $156 billion."
+  },
+  {
+    "title": "Google gives Gemini the ability to use your Mac for you",
+    "url": "https://techcrunch.com/2026/11/19/google-gives-gemini-the-ability-to-use-your-mac-for-you/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-19T18:09:11+00:00",
+    "summary": "Google's latest update to Gemini brings an AI agent to the Mac that can organize files, fill out forms, and tackle multistep workflows."
+  },
+  {
+    "title": "Meta\u2019s AI agent Muse is mixing up conversations and could be exposing private data, report says",
+    "url": "https://techcrunch.com/2026/11/19/metas-ai-agent-muse-is-mixing-up-conversations-and-exposing-private-data-report-says/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-19T17:38:40+00:00",
+    "summary": "In some of these instances, employees said Muse surfaced messages about childcare requests they never made, career advice they never asked for, product orders they never placed, and bank account balances that didn't belong to them."
+  },
+  {
+    "title": "Former Alibaba exec\u2019s Everful raises $48.5M to connect retailers with Chinese factories",
+    "url": "https://techcrunch.com/2026/11/19/former-alibaba-execs-everful-raises-48-5m-to-connect-retailers-with-chinese-factories/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-19T17:00:00+00:00",
+    "summary": "Everful has raised $48.5 million to expand its factory-direct sourcing platform, helping retailers source products from overseas manufacturers."
+  },
+  {
+    "title": "Anthropic hits Nasdaq exchanges at $111, 33% above IPO price",
+    "url": "https://techcrunch.com/2026/11/19/anthropic-hits-nasdaq-exchanges-at-110-27-above-ipo-price/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-19T16:59:23+00:00",
+    "summary": "Anthropic's IPO price was set at $83, representing more than $80 billion in new capital raised."
+  },
+  {
+    "title": "At Nasdaq opening bell, Anthropic CEO recommits to pacing AI development",
+    "url": "https://techcrunch.com/2026/11/19/at-nasdaq-opening-bell-anthropic-ceo-recommits-to-pacing-ai-development/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-19T16:19:41+00:00",
+    "summary": "In his Nasdaq opening bell speech, Dario Amodei reiterated Anthropic's commitment to pacing AI development, regardless of business or political pressure."
+  },
+  {
+    "title": "Anthropic\u2019s IPO puts AI\u2019s circular financing boom to the test",
+    "url": "https://techcrunch.com/2026/11/19/anthropics-ipo-puts-ais-circular-financing-boom-to-the-test/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-19T14:54:39+00:00",
+    "summary": "Anthropic faces enormous compute commitments as it goes public, but its biggest infrastructure partners, including Amazon and Google, could continue profiting from AI even if Anthropic loses its lead."
+  },
+  {
+    "title": "Superhuman pushes its Go assistant everywhere",
+    "url": "https://techcrunch.com/2026/11/19/superhuman-pushes-its-go-assistant-everywhere/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-19T14:00:00+00:00",
+    "summary": "Superhuman is making Go its central agent and making it available in Docs and Mail."
+  },
+  {
+    "title": "Microsoft CEO Satya Nadella explains why he asked 60K employees to quit",
+    "url": "https://techcrunch.com/2026/11/18/microsoft-ceo-satya-nadella-explains-why-he-asked-60k-employees-to-quit/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-19T00:42:56+00:00",
+    "summary": "Microsoft CEO Satya Nadella explained why he offered buyouts to 60,000 of his employees in October, essentially urging them to voluntarily quit, rather than reducing the workforce via another massive layoff. The short answer is AI, but not in the way you might expect."
+  },
+  {
+    "title": "Amidst fears of AI cyberattacks, Satya Nadella says lots of critical infrastructure is \u2018unpatchable\u2019",
+    "url": "https://techcrunch.com/2026/11/18/amidst-fears-of-ai-cyberattacks-satya-nadella-says-lots-of-critical-infrastructure-is-unpatchable/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-18T23:45:00+00:00",
+    "summary": "The Microsoft CEO downplayed the recent Outlook outage while noting that AI was causing both opportunities and new challenges for securing much of the connected world."
+  },
+  {
+    "title": "Elon Musk says ousting Jensen Huang is like \u2018kicking Michael Jordan off your team\u2019",
+    "url": "https://techcrunch.com/2026/11/18/elon-musk-says-ousting-jensen-huang-is-like-kicking-michael-jordan-off-your-team/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-18T23:25:17+00:00",
+    "summary": "\u201cI don\u2019t think [Huang is] disloyal to the United States,\" Musk said."
+  },
+  {
+    "title": "Microsoft CEO Satya Nadella remains confident in Nvidia after Huang\u2019s exit",
+    "url": "https://techcrunch.com/2026/11/18/microsoft-ceo-satya-nadella-remains-confident-in-nvidia-after-huangs-exit/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-18T23:17:28+00:00",
+    "summary": "Microsoft CEO Satya Nadella expressed confidence in Jensen Huang's successor Colette Kress, who is serving as Nvidia's interim CEO."
+  },
+  {
+    "title": "Satya Nadella predicts AI agents will reshuffle the economics of the web",
+    "url": "https://techcrunch.com/2026/11/18/satya-nadella-predicts-ai-agents-will-reshuffle-the-economics-of-the-web/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-18T22:58:11+00:00",
+    "summary": "Microsoft's CEO says AI agents could disrupt advertising-driven business models, forcing companies like Amazon to rethink how they compete for customers."
+  },
+  {
+    "title": "Anthropic prices IPO at $83 a share, above projected range",
+    "url": "https://techcrunch.com/2026/11/18/anthropic-reportedly-prices-ipo-at-83-a-share-above-projected-range/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-18T22:11:15+00:00",
+    "summary": "The long-awaited IPO reportedly values the company at $1.5 trillion on a fully diluted basis."
+  },
+  {
+    "title": "Nvidia created a weird bit of intrigue by not filing a routine SEC report",
+    "url": "https://techcrunch.com/2026/11/18/nvidia-created-a-weird-bit-of-intrigue-by-not-filing-a-routine-sec-report/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-18T21:57:40+00:00",
+    "summary": "One Wall Street analyst got to the bottom of Nvidia's surprise announcement that it wouldn't be filing its formal quarterly results document, the 10-Q, for weeks."
+  },
+  {
+    "title": "Palmer Luckey warns AI-powered cyberattacks are outpacing defenses: \u2018It\u2019s time to start running\u2019",
+    "url": "https://techcrunch.com/2026/11/18/palmer-luckey-warns-ai-powered-cyberattacks-are-outpacing-defenses-its-time-to-start-running/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-18T21:34:13+00:00",
+    "summary": "The Anduril co-founder says outdated technology is leaving systems vulnerable to a new wave of AI-enabled attacks."
+  },
+  {
+    "title": "Palmer Luckey thinks China is \u2018thrilled to have Jensen out,\u2019 so he wants the ousted Nvidia CEO reinstated",
+    "url": "https://techcrunch.com/2026/11/18/palmer-luckey-thinks-china-is-thrilled-to-have-jensen-out-so-he-wants-the-ousted-nvidia-ceo-reinstated/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-18T21:31:21+00:00",
+    "summary": "\"It makes America weaker to knock him out,\" the Anduril CEO said about ousted Nvidia leader Jensen Huang."
+  },
+  {
+    "title": "Sam Altman says his life is so weird that he\u2019s unfazed by Andrew Garfield portraying him in upcoming movie",
+    "url": "https://techcrunch.com/2026/11/18/sam-altman-says-his-life-is-so-weird-that-hes-unfazed-by-andrew-garfield-portraying-him-in-upcoming-movie/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-18T20:07:01+00:00",
+    "summary": "\"It doesn't feel like it's in like the top 10 weirdest things about my life,\" Altman said."
+  },
+  {
+    "title": "2.1.328",
+    "url": "https://code.claude.com/docs/en/changelog#2-1-328",
+    "source": "Claude Code",
+    "category": "ChangeLogs",
+    "published": "2026-11-19T01:20:10+00:00",
+    "summary": "<p><strong>Added</strong></p>\n<ul>\n<li>Added auto mode for Claude Opus 4.6 and Sonnet 4.6 on Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry and Claude apps gateway; interactive sessions with no permission mode start in it</li>\n<li>Added <code>\"onFailure\": \"block\"</code> for <code>mcp_tool</code> hooks, as for command and HTTP hooks: a hook whose call fails blocks the action</li>\n<li>Added a warning when a message from a session that skips permission prompts may be held and drop"
   }
 ]
