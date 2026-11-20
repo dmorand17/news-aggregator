@@ -1608,5 +1608,15 @@
     "cache_read_tokens": 132734,
     "cache_creation_tokens": 25237,
     "num_turns": 8
+  },
+  {
+    "date": "2026-11-20",
+    "timestamp": "2026-11-20T23:28:44.218446+00:00",
+    "model": "deepseek/deepseek-v4.1-flash-1017",
+    "cost_usd": 0.078212896,
+    "input_tokens": 158628,
+    "output_tokens": 14773,
+    "cache_read_tokens": 99328,
+    "web_searches": 9
   }
 ]

@@ -1,13 +1,10 @@
 {
-  "https://www.theverge.com/ai-artificial-intelligence/902546/data-centers-ai-energy-power-grids-controversy": "2026-11-06T20:02:22+00:00",
   "https://www.theverge.com/tech/1029489/nyt-cooking-ai-assistant-review": "2026-11-07T15:50:00+00:00",
   "https://www.theverge.com/ai-artificial-intelligence/1029483/nvidia-ai-chips-china-blacklist-government": "2026-11-07T15:43:45+00:00",
   "https://www.theverge.com/podcast/1029038/ai-cybersecurity-hackers-data-breach-dark-age-alex-stamos": "2026-11-07T15:00:00+00:00",
   "https://www.theverge.com/ai-artificial-intelligence/1029126/anthropic-metr-report-accelerating-ai-development": "2026-11-07T12:30:00+00:00",
   "https://www.theverge.com/ai-artificial-intelligence/1029380/openai-1-25-trillion-investment-valuation": "2026-11-06T23:46:18+00:00",
-  "https://www.theverge.com/tech/1029338/nvidia-ceo-jensen-huang-china-spy": "2026-11-06T23:00:44+00:00",
   "https://techcrunch.com/2026/11/06/crusoe-sells-troubled-wyoming-data-center-project-to-google/": "2026-11-07T01:40:28+00:00",
-  "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/": "2026-11-06T22:53:46+00:00",
   "https://techcrunch.com/2026/11/06/sequoia-shutting-down-its-scouts-program-marks-the-end-of-an-era/": "2026-11-07T05:01:54+00:00",
   "https://www.theverge.com/ai-artificial-intelligence/1029562/nvidia-investigating-jensen-huang-relationship-chinese-spy": "2026-11-08T20:22:39+00:00",
   "https://www.theverge.com/ai-artificial-intelligence/1029552/apple-siri-ai-agentic": "2026-11-08T19:18:19+00:00",
@@ -554,5 +551,6 @@
   "https://techcrunch.com/2026/11/19/anthropics-7-founders-cashed-out-nearly-2b-in-record-breaking-ipo/": "2026-11-20T00:43:50+00:00",
   "https://techcrunch.com/2026/11/19/metas-new-muse-charm-device-may-cost-300/": "2026-11-19T21:58:06+00:00",
   "https://techcrunch.com/2026/11/19/these-tech-outages-are-giving-y2k-ai-agent-style/": "2026-11-19T21:42:31+00:00",
-  "https://code.claude.com/docs/en/changelog#2-1-329": "2026-11-19T22:20:41+00:00"
+  "https://code.claude.com/docs/en/changelog#2-1-329": "2026-11-19T22:20:41+00:00",
+  "https://code.claude.com/docs/en/changelog#2-1-330": "2026-11-20T22:38:51+00:00"
 }
