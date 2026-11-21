@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "title": "Can Anthropic afford to put safety first?",
+    "url": "https://www.theverge.com/podcast/1038701/anthropic-ipo-ai-safety-openai-nvidia-structure",
+    "source": "The Verge AI",
+    "category": "News Sites",
+    "published": "2026-11-21T15:00:00+00:00",
+    "summary": "Today, I\u2019m talking with Hayden Field, The Verge\u2019s senior AI reporter, about the Anthropic IPO for the third and final episode in our series about AI in real life. The AI lab behind Claude went public on the Nasdaq last Thursday. The numbers are gigantic, but not really that important for this conversation, except to [&#8230;]"
+  },
+  {
+    "title": "Chess.com\u2019s next move is a new hub for classic games, from mahjong to sudoku",
+    "url": "https://www.theverge.com/games/1038099/chess-classic-games-expansion-ai",
+    "source": "The Verge AI",
+    "category": "News Sites",
+    "published": "2026-11-21T14:00:00+00:00",
+    "summary": "Chess.com is ready to go a lot bigger than chess. After launching Gambit, a gambling-free poker site, earlier this year, the company is now adding 10 more games: backgammon, checkers, go, hearts, mahjong, shogi, sudoku, solitaire, xiangqi, and a Scrabble alternative called word. They're all part of Chess's new Classic Games platform, which is launching [&#8230;]"
+  },
+  {
+    "title": "Here are the top AI agents that can live in your text messages",
+    "url": "https://techcrunch.com/2026/11/21/all-the-ai-agents-that-can-live-in-your-text-messages/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-21T17:00:00+00:00",
+    "summary": "We created a list of the most notable AI agents that can live in your text messages, from general assistants to agents designed for families, travel, and work."
+  },
+  {
+    "title": "Is selling an AI version of your face to this microdrama startup the future of Hollywood?",
+    "url": "https://techcrunch.com/2026/11/21/is-selling-an-ai-version-of-your-face-to-this-microdrama-startup-the-future-of-hollywood/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-21T16:00:00+00:00",
+    "summary": "An actor has licensed his face to a microdrama startup \u2014 in a trend that's already popular in China. Experts question the long-term consequences if this becomes a trend in Hollywood, too."
+  },
+  {
+    "title": "Last Week in AI #348 - IPO->Correction, new GPTs and Geminis, Nvidia\u2019s Fate",
+    "url": "https://lastweekin.ai/p/last-week-in-ai-348-ipo-correction",
+    "source": "Last Week in AI",
+    "category": "AI",
+    "published": "2026-11-21T08:41:43+00:00",
+    "summary": "Anthropic's $81B IPO, AI stocks enter a correction, Huang resigns from Nvidia, Trump and Xi agree on military AI"
+  }
+]
