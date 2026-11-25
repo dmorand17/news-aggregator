@@ -870,5 +870,397 @@
     "category": "Developer Platforms",
     "published": "2026-11-23T00:00:00+00:00",
     "summary": "Open a pull request and get back to building. Claude can now review pull requests, fix them, and approve the ones that a team's policy allows."
+  },
+  {
+    "title": "Most orgs aren't on track for a successful human-robot workforce; here's how to fix that (Sponsor)",
+    "url": "https://www.intel.com/content/www/us/en/content-details/932012/the-robotics-readiness-blueprint.html?utm_source=tldr&amp;utm_medium=newsletter&amp;utm_campaign=ih-q4-ai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "When decisions are siloed or delayed, projects get stuck in redesign, rework, and unexpected costs.It's happening in robotics. Our recent research showed that only four in 10 organizations are structured to turn robotics into real-world advantage.We developed a blueprint and set of tools to help cross-functional teams change that. Address gaps in:Embedding robotics into the operating modelRedesigning the workforce around roboticsBuilding trust to unlock adoptionPrioritizing function over formBui"
+  },
+  {
+    "title": "Cognition's SWE-2.1 (3 minute read)",
+    "url": "https://cognition.com/blog/swe-2-1?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Cognition released SWE-2.1, an upgraded coding and agent model trained with reinforcement learning on top of Kimi K3. It roughly doubles SWE-2's score on the Terminal-Bench 4.1 coding benchmark to 50.0 and adds stronger security skills."
+  },
+  {
+    "title": "Introducing Ternary Bonsai 2.5 27B: Powering Agentic Coding and Private Knowledge Work (4 minute read)",
+    "url": "https://prismml.com/news/bonsai-2-5-27b?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Ternary Bonsai 2.5 27B has substantially stronger agentic coding, multi-turn tool use, and multi-step task execution abilities than its predecessor. It retains the previous release's 5.9 GB footprint while significantly improving the capabilities developers need to build agents that work with private files and tools on-device. It is by far the strongest AI model of its memory footprint for agentic workloads."
+  },
+  {
+    "title": "Claude Artifacts Become Mac and Windows Apps (3 minute read)",
+    "url": "https://claude.com/resources/articles/install-as-app?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Claude artifacts can now be installed as Mac and Windows apps, in beta on all plans. Each app gets its own icon and window, updates when the artifact changes, and can be shared."
+  },
+  {
+    "title": "Jensen Huang Reinstated As Nvidia CEO at Behest of President Trump (45 minute read)",
+    "url": "https://thezvi.substack.com/p/jensen-huang-reinstated-as-nvidia?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Jensen Huang's reinstatement as Nvidia's CEO is a sign of the state of US democracy, the country's free market economy and rule of law, and the integrity of its government. It will factor into every decision made and every trade on the stock market for years to come. Nvidia will likely go back to maximizing how many chips it can sell to China. The situation is still far from over as there are ongoing investigations."
+  },
+  {
+    "title": "Swarms do not yet raise the roof (46 minute read)",
+    "url": "https://www.paradigm3.org/research/swarms?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Swarm-based LLM configurations, coordinated groups of agents, deliver faster but less efficient results compared to single agents at equal token budgets. Adding more agents to a swarm introduces a performance penalty that grows with size, leading to quality degradation. Experiments reveal that previous \"swarm premiums\" result from single agents becoming stale over time. Given fresh context resets, single agents outperform swarms, suggesting that current swarm strategies primarily accelerate comp"
+  },
+  {
+    "title": "What VP \u2260 VNP Means (3 minute read)",
+    "url": "https://www.friedgil.com/vpvnp?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "The Anthropic proof that VP\u2260VNP means that there is no way to find the permanent of a matrix of 0s and 1s if we are limited to arithmetic circuits of size polynomial in the input-size. This means that for P to equal NP, there must be some trick to computing permanents using AND/OR/NOT on the bits of the input that is better than addition and multiplication. There are many problems where access to Boolean operators is helpful, but it isn't clear how they would help with the permanent. There is a "
+  },
+  {
+    "title": "72% of CX Executives Don't Monitor AI Accuracy (Sponsor)",
+    "url": "https://go.parloa.com/cx-observability-2026?utm_campaign=2026-q4-paid-awareness-cxobservabilityreport&amp;utm_source=tldr&amp;utm_medium=newsletter-secondary-11-25",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Parloa and Metric Sherpa's 2026 Observability survey of 700+ CX operators and executives found that 78.5% of teams don't track hallucinations and 41.2% of operators have never shared a CX insight outside of their team. Score your team with the CX Observability Index and learn why overconfidence in AI leads to underperformance. Read the report."
+  },
+  {
+    "title": "Announcing vLLM-GR: Efficient Inference for Generative Recommendation (14 minute read)",
+    "url": "https://vllm.ai/blog/2026-11-24-vllm-gr-announcement?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "vLLM-GR is an open-source framework enhancing vLLM to improve inference for generative recommendation models with efficient beam searches. It enables rapid candidate generation on NVIDIA GPUs and Ascend NPUs by reusing user history and optimizing cache use."
+  },
+  {
+    "title": "Become a founding member of TLDR\u2019s AI community (2 minute form)",
+    "url": "https://danni763618.typeform.com/to/H1tYViME",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "TLDR is launching a curated community for AI builders to discuss major news and launches. The best links and comments will be featured in TLDR AI. Apply here to join."
+  },
+  {
+    "title": "The matrix multiplication exponent is nine fourths (6 hour read)",
+    "url": "https://github.com/openai/math/blob/main/preprints/The-matrix-multiplication-exponent-is-nine-fourths-November-24-2026/paper.pdf?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "The exponent of square matrix multiplication is 9/4 over every field. A smaller exponent would compress tensor networks enough to violate a lower bound for testing whether the entries in each of several independent lists are distinct."
+  },
+  {
+    "title": "GPT-6 models demonstrate intrinsic protein-design capabilities (13 minute read)",
+    "url": "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "OpenAI said its GPT-6 models can design new proteins using reasoning and code alone, without calling specialized biology models. Lab tests with a research partner confirmed that some designs worked, though the work still relied on specialist tools to screen candidates."
+  },
+  {
+    "title": "Amazon says hackers' AI agents found and exploited 0-day with little human input (5 minute read)",
+    "url": "https://arstechnica.com/security/2026/11/amazon-says-hackers-ai-agents-found-and-exploited-0-day-with-little-human-input/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Amazon said AI agents running on Cairn, an open source penetration-testing framework, found and exploited a zero-day in a medical imaging AI app on a university server with no human oversight beyond a goal prompt. Palo Alto Networks separately tracked a Cairn campaign that ran 25 autonomous operations against at least 19 organizations in the semiconductor, defense, and civil society sectors, breaching at least 10. Amazon's warning: agentic offensive operations are already happening, and defender"
+  },
+  {
+    "title": "ML compiler eng, your job is NP-hard (4 minute read)",
+    "url": "https://ianbarber.blog/2026/11/24/ml-compiler-eng-your-job-is-np-hard/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Layout search is computationally hard. However, in reality, there are generally just a few places to put a conversion in a specific kernel. The tricky part is picking an option, as this requires relying on a potentially inaccurate model of how expensive those ops are given the subsequent software stack and the hardware itself."
+  },
+  {
+    "title": "Verda Inference: Kimi K3.1 Pro and DeepSeek V4.1 Flash, 75% off your next top-up (Sponsor)",
+    "url": "https://verda.com/inference?utm_source=tldr&amp;utm_medium=email&amp;utm_campaign=tldr_inference_q4_2026&amp;utm_content=quicklinks_20261125_headline",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Run both through one OpenAI-compatible API, with up to 10x faster time to first token on long-context work. Get every model at full quality and speed. Use code TLDR-75.Start building on Verda Inference \u2192"
+  },
+  {
+    "title": "Be the AI hero, not the bottleneck. (Sponsor)",
+    "url": "https://www.domo.com/solution/ai-hero?utm_source=tldr&amp;utm_medium=paid-email&amp;utm_campaign=2026-11-20_tldr_ai_quick_links_placement_2_progress&amp;utm_content=header_ai_hero_not&amp;utm_term=2026-11-25_ai_headline",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Let teams build with AI while you stay in control. See how Domo turns AI builds into secure, lasting, governed assets.See how with Domo"
+  },
+  {
+    "title": "OpenAI prepares dedicated email inboxes for ChatGPT Dots (2 minute read)",
+    "url": "https://www.testingcatalog.com/openai-prepares-dedicated-email-inboxes-for-chatgpt-dots/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "OpenAI is developing dedicated email addresses for Dots in ChatGPT, allowing them to send and receive emails independently."
+  },
+  {
+    "title": "Meta brings its Muse AI assistant directly into Instagram DMs (3 minute read)",
+    "url": "https://techcrunch.com/2026/11/24/meta-brings-its-muse-ai-assistant-directly-into-instagram-dms/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Meta now integrates its Muse AI assistant directly into Instagram DMs, allowing users to chat with Muse for context on posts, places, or products."
+  },
+  {
+    "title": "Pushing the US Open-Weight Frontier (21 minute read)",
+    "url": "https://www.harvey.ai/blog/applying-the-harvey-tenet-training-recipe-to-us-open-weight-models?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Post-training leads to substantial gains in both agentic legal reasoning and task completion."
+  },
+  {
+    "title": "Google Adds Task Checklists to Antigravity (2 minute read)",
+    "url": "https://www.testingcatalog.com/google-adds-task-checklists-to-antigravity-and-carbon-for-pro/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Google's Antigravity coding app now shows live checklists for long tasks and lets users pick separate planner and executor models."
+  },
+  {
+    "title": "OpenAI and Cisco introduce Shirudo (5 minute read)",
+    "url": "https://openai.com/index/introducing-shirudo?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Shirudo is an open-source runtime that protects running Linux systems without requiring patches or restarts. It uses eBPF to block vulnerable code paths, allowing services to continue operating while security teams apply temporary safeguards. OpenAI and Cisco released Shirudo under a BSD 2-Clause license."
+  },
+  {
+    "title": "Kubernetes v1.38 Sneak Peek (5 minute read)",
+    "url": "https://kubernetes.io/blog/2026/11/23/kubernetes-v1-38-sneak-peek/?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Kubernetes v1.38 is expected to change how kubelets obtain their cgroup driver, requiring container runtimes to report it through CRI by default. The release also removes kubectl's WebSocket opt-out environment variables and drops the deprecated name alias from stable kuberc credential-plugin allowlists. Operators should check runtime compatibility and continue migrating nodes to cgroup v2 ahead of its eventual requirement."
+  },
+  {
+    "title": "Holding the Door for Agents (8 minute read)",
+    "url": "https://fly.io/blog/holding-the-door-for-agents/?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Agents now perform at least 55% of deployments to Fly.io, and bots recently surpassed humans in web traffic for the first time. Fly.io now supports auth.md for agent signup and the Machine Payments Protocol, which lets agents top up accounts without human intervention."
+  },
+  {
+    "title": "Probing DNS at Cloudflare (9 minute read)",
+    "url": "https://blog.cloudflare.com/probing-dns-at-cloudflare/?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "A scheduling bug left DNS record changes unpublished for hours while Cloudflare's service health checks stayed green. Cloudflare extended its Flamingo testing framework to continuously update timestamped TXT records and query authoritative nameservers and 1.1.1.1 from every data center. These propagation measurements now inform release and rollback decisions."
+  },
+  {
+    "title": "Why you shouldn't do application-level sharding (19 minute read)",
+    "url": "https://planetscale.com/blog/why-you-shouldnt-do-app-level-sharding?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Application-level sharding embeds routing logic in application code, but creates operational burdens like difficult resharding and cross-shard queries. The article details how companies like Intercom, Etsy, and Slack faced complexities including manual data migrations, reliance on single lookup tables that risked outages, and underutilized infrastructure to avoid difficult splits."
+  },
+  {
+    "title": "Last30days-skill (GitHub Repo)",
+    "url": "https://github.com/mvanhorn/last30days-skill?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Last30days-skill is an AI agent that researches topics across Reddit, X, YouTube, and other platforms to synthesize a summary. It ranks results by social engagement metrics like upvotes and likes rather than SEO."
+  },
+  {
+    "title": "sofka (GitHub Repo)",
+    "url": "https://github.com/nklmilojevic/sofka?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "sofka is a Kubernetes terminal interface written in Rust with built-in Flux CD and Argo CD actions, custom resource browsing, and background port forwarding. Its evidence-based incident view explains unhealthy resources without an AI service, while read-only mode and configurable guardrails restrict destructive actions."
+  },
+  {
+    "title": "QCon San Francisco 2026: The Harness Is the New Operating System (5 minute read)",
+    "url": "https://www.infoq.com/news/2026/11/harness-new-operating-system/?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Mad Labs CEO Manju Rajashekhar told QCon San Francisco 2026 that the harness around a model, not the model itself, determines what an agent can do safely. He mapped harness components such as context, tools, and permissions onto operating system functions."
+  },
+  {
+    "title": "Govern Your Observability Spend So Your Teams Can Keep Building (3 minute read)",
+    "url": "https://newrelic.com/blog/observability/govern-observability-spend?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "New Relic argues that teams need visible, estimable, and controllable observability spend so cost does not discourage use. It proposes governing Data and Compute meters through a four-stage loop of Set Up, Control, Track, and Optimize."
+  },
+  {
+    "title": "Phantom velocity? 78% of teams report faster coding speeds... and more incidents (Sponsor)",
+    "url": "https://newrelic.com/resources/report/observability-forecast/2026?utm_campaign=amer_global-fy27-q3-2026-011y-report&amp;utm_source=tldr&amp;utm_medium=email&amp;utm_content=news",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "You're not moving 10x faster if you keep breaking things. New Relic's 2026 Observability Forecast reveals the true scale of the problem, and how teams are successfully monitoring autonomous agents. Read the report"
+  },
+  {
+    "title": "Jenkins CI Bottlenecks: How Harness Helps Teams Scale CI (9 minute read)",
+    "url": "https://www.harness.io/blog/is-your-jenkins-pipeline-ready-for-what-cursor-just-handed-you?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "AI coding tools like Cursor raise pull request volume enough to overload Jenkins build queues."
+  },
+  {
+    "title": "Engineering vitals in the age of AI (11 minute read)",
+    "url": "https://octopus.com/blog/engineering-vitals-in-the-age-of-ai?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Teams should measure delivery and quality vitals before business value."
+  },
+  {
+    "title": "Find the log line that matters faster with full-text search in Grafana Cloud Logs (5 minute read)",
+    "url": "https://grafana.com/blog/find-the-log-line-that-matters-faster-with-full-text-search-in-grafana-cloud-logs/?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-25T00:00:00+00:00",
+    "summary": "Grafana Labs made full-text search generally available in Grafana Cloud Logs, built on technology it acquired in April."
+  },
+  {
+    "title": "FCC signs off on SpaceX\u2019s plan to put up to 1 million data center satellites into space",
+    "url": "https://www.theverge.com/science/1042278/spacex-fcc-starmind-ai-space-data-centers",
+    "source": "The Verge AI",
+    "category": "News Sites",
+    "published": "2026-11-25T17:44:51+00:00",
+    "summary": "In an announcement on Wednesday, the FCC says it authorized SpaceX to deploy up to 1 million AI chip-equipped satellites as part of the Elon Musk-owned company's \"Starmind\" initiative. With several others also pursuing the idea of putting AI data centers in space, including Google and Blue Origin, this is the first approval the agency [&#8230;]"
+  },
+  {
+    "title": "Nothing offers a full look at its AI earbuds and charging case",
+    "url": "https://www.theverge.com/gadgets/1042162/nothing-ear-note-ai-earbuds-reveal",
+    "source": "The Verge AI",
+    "category": "News Sites",
+    "published": "2026-11-25T16:00:59+00:00",
+    "summary": "Nothing is showing off a much more detailed look at its upcoming AI earbuds ahead of their December 8th release. The Ear Note buds can record your calls, while their charging case can record, transcribe, and summarize your conversations. Like the Ear 3, the Ear Note's microphone-equipped case comes with a \"Talk\" button that you [&#8230;]"
+  },
+  {
+    "title": "Amazon is reportedly in talks to end Muse AI shopping block",
+    "url": "https://www.theverge.com/tech/1042071/meta-amazon-muse-ai-shopping-discussions",
+    "source": "The Verge AI",
+    "category": "News Sites",
+    "published": "2026-11-25T14:12:33+00:00",
+    "summary": "Amazon has held talks about letting Meta's Muse AI agent shop on its online marketplace, according to a report from Fortune. The discussions, which could end Amazon's block on Muse, reportedly center on the kinds of products the AI agent recommends and the potential impact on the ecommerce giant's advertising revenue. As reported by Fortune, [&#8230;]"
+  },
+  {
+    "title": "Has vibe coding made open source the new normal for synths?",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1040081/vibe-coding-open-source-music-firmware",
+    "source": "The Verge AI",
+    "category": "News Sites",
+    "published": "2026-11-25T13:00:00+00:00",
+    "summary": "The emergence of powerful vibe-coding agents and tools like Reverse Engineer Anything has caused chaos in the music gear world, leaving companies scrambling to figure out how to respond. While some, like Roland, have remained silent for now, others have embraced the modding community. In the last several weeks, as it's become clear that no [&#8230;]"
+  },
+  {
+    "title": "OpenAI says heavy ChatGPT users may hit limits sooner as it merges Chat and Work",
+    "url": "https://techcrunch.com/2026/11/25/openai-says-heavy-chatgpt-users-may-hit-limits-sooner-as-it-merges-chat-and-work/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-25T20:03:27+00:00",
+    "summary": "OpenAI will introduce a single usage meter across ChatGPT as it combines the Chat and Work experiences."
+  },
+  {
+    "title": "Jensen Huang broke Nvidia\u2019s code of conduct, and his employees may not forget it",
+    "url": "https://techcrunch.com/2026/11/25/jensen-huang-broke-nvidias-code-of-conduct-and-his-employees-may-not-forget-it/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-25T19:54:57+00:00",
+    "summary": "Most codes of conduct serve as a reflection of corporate culture. In Nvidia's case, that could have consequences."
+  },
+  {
+    "title": "Anthropic\u2019s Dario Amodei calls accusations of surrendering human control to AI \u2018absurd\u2019",
+    "url": "https://techcrunch.com/2026/11/25/anthropics-dario-amodei-calls-accusations-of-surrendering-human-control-to-ai-absurd/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-25T19:44:24+00:00",
+    "summary": "Anthropic CEO Dario Amodei pushes back against rivals\u2019 accusations that he favors surrendering human agency to AI, even as leading AI companies increasingly automate their own research and model development."
+  },
+  {
+    "title": "Want to buy your kid an AI toy this Christmas? Not in New York",
+    "url": "https://techcrunch.com/2026/11/25/want-to-buy-your-kid-an-ai-toy-this-christmas-not-in-new-york/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-25T18:11:46+00:00",
+    "summary": "New York has banned AI chatbot toys for five years as new research from Common Sense Media reveals troubling safety failures, including exposure to inappropriate content and risks to emotional development."
+  },
+  {
+    "title": "Character.AI\u2019s plan to auction off users\u2019 private chats challenged by state AGs",
+    "url": "https://techcrunch.com/2026/11/25/state-ags-fight-character-ais-plan-to-auction-off-users-private-chats/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-25T17:35:58+00:00",
+    "summary": "The proposed Character.ai bankruptcy sale includes sensitive personal data from more than 21 million U.S. accounts, including 2.1 million registered to minors, the state AGs said."
+  },
+  {
+    "title": "AI data centers are becoming harder to build, and neoclouds are feeling it",
+    "url": "https://techcrunch.com/podcast/ai-data-centers-are-becoming-harder-to-build-and-neoclouds-are-feeling-it/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-25T15:41:43+00:00",
+    "summary": "\u2060Nvidia has made clear\u2060 it won&#8217;t backstop an AI data center until it&#8217;s nearly ready to run, and that&#8217;s landing just as neoclouds report construction delays and more expensive debt. The message to developers is that land, power, and a finished building matter more than a pitch deck.\u00a0 \u2060Anita Verma-Lallian\u2060 has been selling exactly that. [&#8230;]"
+  },
+  {
+    "title": "Amazon and Meta reportedly in talks to lift blockade on AI agent Muse",
+    "url": "https://techcrunch.com/2026/11/25/amazon-and-meta-reportedly-in-talks-to-lift-blockade-on-ai-agent-muse/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-25T14:10:18+00:00",
+    "summary": "Amazon and Meta are discussing a potential deal that would end a two-month-long blockade of Muse."
+  },
+  {
+    "title": "The questions Jensen Huang and Nvidia will still have to answer about Megaspeed",
+    "url": "https://techcrunch.com/2026/11/25/the-questions-jensen-huang-and-nvidia-will-still-have-to-answer-about-megaspeed/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-25T13:00:00+00:00",
+    "summary": "The central question for investigators is what Nvidia knew about where those chips ended up and whether Huang's affair with a Megaspeed executive gave the company reason to doubt Megaspeed's assurances."
+  },
+  {
+    "title": "Yale\u2019s Sonnenfeld: Nvidia is a \u2018detriment\u2019 to US industrial might \u2014 not a champion",
+    "url": "https://techcrunch.com/2026/11/24/yales-sonnenfeld-nvidia-is-a-detriment-to-u-s-industrial-might-not-a-champion/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-25T00:12:02+00:00",
+    "summary": "Yale's Jeffrey Sonnenfeld warns that what the market cheered Monday, Jensen Huang's White House\u2013backed return as Nvidia's CEO and board member, could prove a giant mistake, exposing the directors to \"historic\" personal liability from a growing pile of lawsuits and raising the question of whether the country is celebrating a company that has helped put advanced chips in its adversaries' hands."
+  },
+  {
+    "title": "Jensen Huang still thinks a succession plan creates unnecessary hierarchy",
+    "url": "https://techcrunch.com/2026/11/24/jensen-huang-still-thinks-a-succession-plan-creates-unnecessary-hierarchy/",
+    "source": "TechCrunch AI",
+    "category": "News Sites",
+    "published": "2026-11-24T22:27:52+00:00",
+    "summary": "It's a remarkable stance for a company that spent the last two weeks finding out what happens without its founder."
+  },
+  {
+    "title": "Can Claude Generate Images? Yes, with a Connector",
+    "url": "https://openrouter.ai/blog/tutorials/can-claude-generate-images/",
+    "source": "OpenRouter Blog",
+    "category": "Developer Platforms",
+    "published": "2026-11-23T00:00:00+00:00",
+    "summary": "Claude has no image model of its own, so it draws with code or says it can't. A connector lets it call one: the image model draws, and Claude writes the prompt, shows it to you before you pay, and checks what comes back. We ran it in the Claude app and in Claude Code on four image models and measured what each image cost."
+  },
+  {
+    "title": "2.1.332",
+    "url": "https://code.claude.com/docs/en/changelog#2-1-332",
+    "source": "Claude Code",
+    "category": "ChangeLogs",
+    "published": "2026-11-25T01:37:45+00:00",
+    "summary": "<p><strong>Added</strong></p>\n<ul>\n<li>Added skills from MCP servers (beta). They show as <code>server:skill</code> in the <code>/</code> menu; other skills keep their names</li>\n<li>Added a <code>PreSkillShellCommand</code> hook event that can refuse a skill or command's inline shell commands as it loads; on 2.1.331 and older, a settings file naming it opens a dialog at start</li>\n<li>Added \"Always deliver\" to the prompt for held messages from other sessions</li>\n<li>Added a footer line that st"
   }
 ]
