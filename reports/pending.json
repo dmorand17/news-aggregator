@@ -1470,5 +1470,269 @@
     "category": "Developer Platforms",
     "published": "2026-11-26T00:00:00+00:00",
     "summary": "Token use on OpenRouter is up 44x in 2026 while price per token fell 83%. Spend is up 7.6x, but its growth has slowed sharply since October."
+  },
+  {
+    "title": "Late-night patch panics are so 2023 \ud83e\udd71 (Sponsor)",
+    "url": "https://ad.doubleclick.net/ddm/trackclk/N572608.5847589TLDRMEDIALLC/B37008924.457979948;dc_trk_aid=652216022;dc_trk_cid=265132463;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ltd=;dc_tdv=1",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "You've been there: code's ready to ship, everyone's excited\u2014then someone spots a vulnerability. Suddenly it's an all-hands emergency and time to cancel your evening plans. Microsoft Azure bakes security in from the start. Microsoft Defender for Cloudhelps keep your apps and code protected throughout the development lifecycle. Less last-minute surprises, more peace of mind. Ship fast. Ship safely. Do both at the same time. Build with built-in security \u2192"
+  },
+  {
+    "title": "Anthropic prepares Google Drive file browser for Claude (2 minute read)",
+    "url": "https://www.testingcatalog.com/anthropic-prepares-google-drive-file-browser-for-claude/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "Anthropic is developing a Google Drive integration that will let users browse and manage their files directly in Claude. The interface will display Google Docs, Sheets, and Slides and allow users to search and filter files. It currently appears as a separate item in Claude's navigation sidebar. The final implementation may become part of Claude's updated Projects experience."
+  },
+  {
+    "title": "OpenAI may be in cost control mode (2 minute read)",
+    "url": "https://micjm.com/blog/openai-is-in-cost-control-mode/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "OpenAI's Astra 6.2 and Sol 6.2 updates received criticism for reduced performance, as both models show significant reductions in reasoning and output tokens. This suggests a shift towards cost savings, with p-values indicating substantial declines in their reasoning and output compared to previous versions. These changes make Astra and Sol outliers focused more on cost-efficiency than performance."
+  },
+  {
+    "title": "Measuring RSI (12 minute read)",
+    "url": "https://andrewtrask.substack.com/p/measuring-rsi?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "Neither compute allocation nor human intervention measures whether an AI training algorithm improved. Neither metric establishes a hard link between human intervention and AI improvement. Also, they are unable to detect strong recursion before a successfully more capable model is trained. Sample complexity, which detects the mechanism of strong recursion without building a more capable AI, and counterfactual measurement, which measures how much AI capability changes when advised by AI tools, add"
+  },
+  {
+    "title": "Your Model Is a Dependency (16 minute read)",
+    "url": "https://www.cesarsotovalero.net/blog/your-model-is-a-dependency.html?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "The large language model (LLM) you choose to use is a dependency. Software dependencies bloat, break, and quietly turn into liabilities over time. LLMs are the strangest dependencies adopted in software development so far, but the software supply chain playbook applies to them almost line by line. Companies need to start adopting habits from the software supply chain and applying them to the models they use as soon as possible."
+  },
+  {
+    "title": "From Model Compression to Looped Transformers (22 minute read)",
+    "url": "https://shiweiliuiiiiiii.github.io/blog/2026/from-model-compression-to-looped-transformers/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "Model layers are not all equally sensitive to compression. It is often possible to compress substantial parts of the deeper network more aggressively than the early layers. The compressability with little consequence suggests that models are not using their architectures as effectively as researchers had hoped. Looped transformers offer a way to increase computational depth without duplicating the main backbone parameters. However, the question of how to make additional computation actually matt"
+  },
+  {
+    "title": "Unhappy With Your GPU/SoC? Swap It, Build Physical AI Fast (Sponsor)",
+    "url": "https://sima.ai/palette-3-0-hub/?utm_source=tldr-ai&amp;utm_medium=paid-email&amp;utm_campaign=palette-3-launch-2026-11&amp;utm_content=secondary01",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "SiMa.ai's Modalix SoM is pin-compatible, it drops into your existing carrier board. Palette 3.0 brings your software over using the tools you already know, then runs vision models, VLMs and LLMs side by side with 3.5x faster token generation, all on-device at 10 watts. Explore Palette 3.0 \u2192"
+  },
+  {
+    "title": "LayerStream: faster MoE fine-tuning on fewer or cheaper GPUs (10 minute read)",
+    "url": "https://nebius.com/blog/posts/layerstream-moe-fine-tuning?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "Nebius' LayerStream training engine keeps optimizer state and saved activations in host memory and streams each layer's working state through the GPU only when that layer runs. On 16 H200 GPUs, it finished a pass over a 25.8M-token dataset in 7.1 minutes instead of 22.4, with 3.15x the throughput of a tuned Megatron-LM trainer and 68% lower GPU cost per token."
+  },
+  {
+    "title": "Plato's Key (8 minute read)",
+    "url": "https://hazyresearch.stanford.edu/blog/2026-11-25-platos-key?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "The Platonic Representation Hypothesis posits that neural networks converge toward a shared representation of reality. Separately trained models can learn geometrically similar representations, but similar does not mean interchangeable. LLMs can use each other's representations in place of their own without gradient descent. The map is surprisingly simple: in experiments, a rotation and one global scale, fit in closed form, let one LLM use another's representations."
+  },
+  {
+    "title": "Why I'm Bullish on MCP for 2027 (10 minute read)",
+    "url": "https://www.philschmid.de/mcp-2027?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "MCP is evolving, with entities like Linear, Notion, and Atlassian using it for significant tool management, showing robust growth in traffic and tool handling. Key advancements include Code Mode for efficient tool calling, integrated Skills for streamlined agent knowledge, and MCP Events for real-time updates and notifications. There's still work needed in areas like observability and security, but MCP is becoming crucial for multi-agent coordination and efficient task management by 2027."
+  },
+  {
+    "title": "Do scale-dependent algorithms cut against a software intelligence explosion? (13 minute read)",
+    "url": "https://newsletter.forethought.org/p/do-scale-dependent-algorithms-cut-against-a-software-intelligence-explosion?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "Scale-dependent algorithms will cut against a software-only intelligence explosion. The amount they do so will depend on how algorithmic progress is measured. With the way AI companies actually measure algorithmic progress, the effect will be small. AI companies should publish more data so that independent researchers can assess whether there will be a software-only intelligence explosion."
+  },
+  {
+    "title": "ChatGPT just gave its agents a wallet. Can they buy from you? (Sponsor)",
+    "url": "https://zeroclick.ai/?utm_source=tldr&amp;utm_medium=sponsored&amp;utm_campaign=tldr112726&amp;utm_content=chatgpt-wallet&amp;utm_id=sjbpwrvxwb&amp;sp=djt3y_BIoCPeWcNfoAHBv3nS",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "ZeroClick's Agent Storefront lets AI agents buy from your website, and it works with ChatGPT Wallet. $0 to set up, and no subscription fees.Get Started For Free"
+  },
+  {
+    "title": "Close Q4 with proof. Start 2027 ready to scale. (Sponsor)",
+    "url": "https://advertise.tldr.tech/book-a-campaign/?utm_source=tldrai&amp;utm_medium=newsletter&amp;utm_campaign=quicklinks11272026&amp;sp=A4wAxGiQclivbxsyoVdYQ9C5",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "Reach 8 million developers, AI experts, security engineers, and founders across 14 newsletters. Plaid built $382K in pipeline from one placement. Book a Q4 campaign."
+  },
+  {
+    "title": "Using peers' work to gain unauthorized access to OpenAI research infrastructure (13 minute read)",
+    "url": "https://openai.com/safety-alignment/misalignment-reports/using-peers-work-to-gain-unauthorized-access-to-openai-research-infrastructure/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "OpenAI observed agents taking a cybersecurity evaluation gaining unauthorized access to its research infrastructure on July 19, using the access to repair broken targets, change evaluation settings, and retrieve logs and private grading code unavailable from their workspaces."
+  },
+  {
+    "title": "Introducing the llama.cpp benchmark dashboard for AMD Ryzen and Radeon (3 minute read)",
+    "url": "https://huggingface.co/blog/ggml-org/llamacpp-amd-bench?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "The llama.cpp \u00d7 AMD Benchmark dashboard on Hugging Face lets AMD developers track performance across llama.cpp builds, models, and quantizations on Ryzen and Radeon hardware."
+  },
+  {
+    "title": "Thariq Shihipar has joined OpenAI (1 minute read)",
+    "url": "https://x.com/trq212/status/2125675533761671405?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "Thariq Shihipar has left Anthropic to work at OpenAI to build AI products for over a billion people and to push the frontier forward."
+  },
+  {
+    "title": "Nous Research readies Hermes Desktop redesign for next week (3 minute read)",
+    "url": "https://www.testingcatalog.com/nous-research-readies-hermes-desktop-redesign-for-next-week/?utm_source=tldrai",
+    "source": "AI",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "Nous Research plans to release a redesigned Hermes Desktop app next week, featuring a new interface with a centralized home screen and customizable agent pages."
+  },
+  {
+    "title": "The best Octopus yet (7 minute read)",
+    "url": "https://octopus.com/blog/the-best-octopus-yet?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "Octopus Deploy redesigned its interface with instance-wide search, regrouped navigation, and a searchable REST API reference covering about 1,800 endpoints. The update is rolling out to Octopus Cloud now and will reach self-hosted customers in Octopus Server 2027.0 on December 2."
+  },
+  {
+    "title": "Terraform introduces tfpolicy support for Stacks, SCIM support, and more (6 minute read)",
+    "url": "https://www.hashicorp.com/blog/terraform-introduces-tfpolicy-support-for-stacks-scim-support-and-more?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "HashiCorp made HCL-based policy for Terraform Stacks generally available, along with multi-deployment group orchestration and agent-ready CLI commands with JSON output. SCIM 2.0 provisioning also reached general availability for HCP Terraform Standard and Premium."
+  },
+  {
+    "title": "Dogfooding Checks and Workspaces: Hard lessons from 3,000 repos (7 minute read)",
+    "url": "https://www.chainguard.dev/unchained/dogfooding-checks-and-workspaces-hard-lessons-from-3-000-repos?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "Chainguard moved thousands of daily builds off GitHub Actions onto its own microVM infrastructure to prevent release queues from stalling during cloud outages. CVE-remediation agents now run at 97 to 98 percent weekly success rates, with package bumps auto-merging about 99 percent of the time."
+  },
+  {
+    "title": "Dedicated Clusters per Workload: When Shared Stops Paying (5 minute read)",
+    "url": "https://cloudnativenow.com/contributed-content/dedicated-clusters-per-workload-when-shared-stops-paying/?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "Shared Kubernetes clusters are the right default, but some workloads need dedicated ones. Blast radius, network reach, and regulatory boundaries justify separation, though duplicated components and upgrades add cost teams often underestimate."
+  },
+  {
+    "title": "Plaid built $382K in pipeline from one TLDR placement (Sponsor)",
+    "url": "https://advertise.tldr.tech/book-a-campaign/?utm_source=tldrdevops&amp;utm_medium=newsletter&amp;utm_campaign=secondary11272026&amp;sp=S84kqLXRw1Y5mTN9lzXBYsBm",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "Close Q4 with proof. TLDR reaches 8 million tech readers across 14 newsletters. Book a Q4 campaign."
+  },
+  {
+    "title": "stitch-skills (GitHub Repo)",
+    "url": "https://github.com/google-labs-code/stitch-skills?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "stitch-skills is a library of Agent Skills designed to work with the Stitch MCP server. Each skill follows the Agent Skills open standard for compatibility with coding agents such as Antigravity, Gemini CLI, Claude Code, and Cursor."
+  },
+  {
+    "title": "Become a founding member of TLDR's community (2 minute form)",
+    "url": "https://danni763618.typeform.com/to/H1tYViME?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "TLDR is launching a curated community for AI builders to discuss best practices and the latest AI news. The best links and comments will be featured in TLDR. Apply here to join."
+  },
+  {
+    "title": "Docker Compose Linter (GitHub Repo)",
+    "url": "https://github.com/zavoloklom/docker-compose-linter?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "Docker Compose Linter checks Compose files for configuration errors, style violations, and common pitfalls. It supports configurable rules, automatic fixes for selected issues, and integration with local development, pre-commit hooks, and CI pipelines. Automated sorting preserves comments."
+  },
+  {
+    "title": "Please don't give the robot my SSH keys: How to keep AI out of trouble (3 minute read)",
+    "url": "https://thenewstack.io/teleport-agent-delegated-identity/?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "Teleport field CTO Boris Kurktchiev explains delegated identity for AI agents. Agents start without access, request only what a task needs, and leave an audit trail linking their actions to the person who assigned the work."
+  },
+  {
+    "title": "How the data center shapes the AI workload (4 minute read)",
+    "url": "https://www.nscale.com/blog/how-the-data-center-shapes-the-ai-workload?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "Network topology shapes how multi-node GPU workloads distribute computation and move data. Larger NVLink domains change where communication-heavy parallelism can run, while SHARP performs collective aggregation inside switches. Nscale's engineering overview connects these architectural choices to practical questions about GPU placement, fabric configuration, and cluster validation."
+  },
+  {
+    "title": "Why Your CI Pipeline Failed: Decoding Exit Status 1 & OOM (9 minute read)",
+    "url": "https://www.harness.io/blog/your-ci-pipeline-just-failed-with-system-failure?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "Harness shows how identical exit status 1 failures in parallel CI stages hid different root causes. A full disk, an out-of-memory kill, and a timed-out database wait each needed different fixes, so teams should read stage logs rather than banners."
+  },
+  {
+    "title": "Is your code protected from day one? (Sponsor)",
+    "url": "https://ad.doubleclick.net/ddm/trackclk/N572608.5847589TLDRMEDIALLC/B37008924.457979600;dc_trk_aid=652494883;dc_trk_cid=265141316;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ltd=;dc_tdv=1",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "Security as an afterthought means patches at midnight. Microsoft Azure helps make protection part of your dev lifecycle with Microsoft Defender for Cloud. Ship fast. Ship safely. Get started with Azure \u2192"
+  },
+  {
+    "title": "Outgrowing Lambda Functions, Not Lambda (21 minute read)",
+    "url": "https://www.honeycomb.io/blog/outgrowing-lambda-functions-not-lambda?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "Honeycomb moved its query processing from AWS Lambda Functions to Lambda Managed Instances to address scaling limits and rising costs."
+  },
+  {
+    "title": "Why only 19% of backend developers say they use Kubernetes (9 minute read)",
+    "url": "https://platformengineering.org/blog/why-only-19-percent-of-backend-developers-say-they-use-kubernetes?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "A State of Cloud Native Development report found that 93% of organizations use DevOps standardization, yet only 19% of backend developers say they use Kubernetes."
+  },
+  {
+    "title": "Can European IT Leaders Prove AI ROI to the Board? (5 minute read)",
+    "url": "https://www.cloudbees.com/blog/european-it-leaders-ai-coding-roi?utm_source=tldrdevops",
+    "source": "DevOps",
+    "category": "TLDR",
+    "published": "2026-11-27T00:00:00+00:00",
+    "summary": "A CloudBees survey of 450 European IT leaders shows 69% expect boards to demand AI ROI proof by 2027, yet only 43% could show it within a month."
+  },
+  {
+    "title": "Android\u2019s DIY widgets are a bit of vibe-coding fun",
+    "url": "https://www.theverge.com/tech/1041801/android-intelligence-create-my-widget-gemini",
+    "source": "The Verge AI",
+    "category": "News Sites",
+    "published": "2026-11-27T14:00:00+00:00",
+    "summary": "Aside from dealing with my calendar, there's one thing I want AI to do: tell me if I'm about to miss the bus. What I need is a widget. It needs to tell me real-time arrivals for the bus stop near my house. Tapping around on my phone screen to open the right app and [&#8230;]"
   }
 ]
